@@ -4,41 +4,25 @@
     
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/license/index.html</loc>
+     <loc>None/license/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/bigger_picture/index.html</loc>
+     <loc>None/bigger_picture/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/speakers/index.html</loc>
+     <loc>None/speakers/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/workshop_settings/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/lab_setup/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/lab_topology/index.html</loc>
+     <loc>None/workshop_settings/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -48,19 +32,13 @@
     
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/layers/index.html</loc>
+     <loc>None/lab_setup/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/socket_interface/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/packet_headers/index.html</loc>
+     <loc>None/lab_topology/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -70,7 +48,19 @@
     
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/python/index.html</loc>
+     <loc>None/layers/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/socket_interface/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/packet_headers/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -80,73 +70,7 @@
     
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/scapy_intro/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/scapy_modes/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/scapy_exploring/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/creating_packets/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/inspecting_packets/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/sending_recieving/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/sniffing/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/pcap_analysis/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/host_discovery/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/service_discovery/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/os_detection/index.html</loc>
-     <lastmod>2016-06-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/promisc/index.html</loc>
+     <loc>None/python/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -156,7 +80,73 @@
     
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/scapyhunt/index.html</loc>
+     <loc>None/scapy_intro/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/scapy_modes/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/scapy_exploring/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/creating_packets/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/inspecting_packets/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/sending_recieving/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/sniffing/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/pcap_analysis/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/host_discovery/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/service_discovery/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/os_detection/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/promisc/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -166,7 +156,17 @@
     
         
     <url>
-     <loc>https://yamakira.github.io/The-Art-of-Packet-Crafting-with-Scapy/feedback/index.html</loc>
+     <loc>None/scapyhunt/index.html</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/feedback/index.html</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
