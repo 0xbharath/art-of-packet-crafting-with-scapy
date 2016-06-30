@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>Python - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Python";
+    var mkdocs_page_input_path = "python.md";
+    var mkdocs_page_url = "/python/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Virtual Lab</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_setup/index.html">Virtual Lab</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_topology/index.html">Topology</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python Course</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Python</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#python-lightspeed-revision">Python - Lightspeed revision</a></li>
+                
+                    <li><a class="toctree-l4" href="#importing-modules">Importing modules</a></li>
+                
+                    <li><a class="toctree-l4" href="#introspection">Introspection</a></li>
+                
+                    <li><a class="toctree-l4" href="#python-lists">Python - Lists</a></li>
+                
+                    <li><a class="toctree-l4" href="#tuples">Tuples</a></li>
+                
+                    <li><a class="toctree-l4" href="#ifelifelse">If/elif/else</a></li>
+                
+                    <li><a class="toctree-l4" href="#while-loop">While loop</a></li>
+                
+                    <li><a class="toctree-l4" href="#for-loop">For Loop</a></li>
+                
+                    <li><a class="toctree-l4" href="#print-as-a-statement">print as a statement</a></li>
+                
+                    <li><a class="toctree-l4" href="#print-as-a-function">print as a function</a></li>
+                
+                    <li><a class="toctree-l4" href="#c-style-format-strings">C-Style format strings</a></li>
+                
+                    <li><a class="toctree-l4" href="#pythonic-style-string-format-method">Pythonic style - string format method.</a></li>
+                
+                    <li><a class="toctree-l4" href="#sysstdoutwrite">sys.stdout.write()</a></li>
+                
+                    <li><a class="toctree-l4" href="#list-comprehensions">List Comprehensions</a></li>
+                
+                    <li><a class="toctree-l4" href="#lambda-functions">Lambda functions</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy Course</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>ScapyHunt</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Python Course &raquo;</li>
+        
+      
+    
+    <li>Python</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/The-Art-of-Packet-Crafting-with-Scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="python-lightspeed-revision">Python - Lightspeed revision</h1>
+<p><br></p>
+<h2 id="importing-modules">Importing modules</h2>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="o">&gt;&gt;&gt;</span><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__package__&#39;</span><span class="p">,</span> <span class="s1">&#39;socket&#39;</span><span class="p">,</span> <span class="s1">&#39;argparse&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p><br></p>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">&#39;AF_APPLETALK&#39;</span><span class="p">,</span> <span class="s1">&#39;AF_ASH&#39;</span><span class="p">,</span> <span class="s1">&#39;SOCK_DGRAM&#39;</span><span class="p">,</span> <span class="s1">&#39;SOCK_RAW&#39;</span><span class="p">,</span> <span class="s1">&#39;SOCK_RDM&#39;</span><span class="p">,</span> <span class="s1">&#39;SOCK_SEQPACKET&#39;</span><span class="p">,</span> <span class="s1">&#39;SOCK_STREAM&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">...</span><span class="n">snipped</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+
+
+<p><br></p>
+<h2 id="introspection">Introspection</h2>
+<ul>
+<li>Extremely powerful pythonic feature.</li>
+<li>Features in Python that help understand other features.</li>
+<li>Everything in Python is an object, and introspection is to look at this objects in memory and provide information them(attributes &amp; methods).</li>
+</ul>
+<h3 id="help">help()</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="dir">dir()</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;__displayhook__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__excepthook__&#39;</span> <span class="p">[</span><span class="o">...</span><span class="n">snipped</span><span class="o">...</span><span class="p">]]</span>
+</pre></div>
+
+
+<h3 id="type">type()</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;module&#39;</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;int&#39;</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">()</span>
+</pre></div>
+
+
+<h3 id="doc-string">doc string</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">__doc__</span>
+<span class="s2">&quot;This module provides access to some objects used [...snipped...]&quot;</span>
+</pre></div>
+
+
+<p><br></p>
+<h2 id="python-lists">Python - Lists</h2>
+<ul>
+<li>Syntax: <strong>my_list = [item0, item1,item2]</strong></li>
+<li>Collection of elements of any data type.</li>
+<li>Lists are <strong>mutable</strong> (Can be changed even after creation).</li>
+<li>Python provides numerous methods on lists. Just <strong>dir(list_name)</strong> to get a list of all the methods available.</li>
+<li>Indexing &amp; Slicing mechanism is consistent with strings.</li>
+<li>Lists have very useful methods to manipulate them such as append, count, extend, index, insert, pop, remove, reverse,sort.
+<br></li>
+</ul>
+<div class="code"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1">## red</span>
+<span class="k">print</span> <span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1">## green</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>  <span class="c1">## 3</span>
+</pre></div>
+
+
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" width="500" src='../img/list1.png'>
+</p>
+
+<p><br>
+Assignment with an = on lists does not make a copy. Instead, assignment makes the two variables point to the one list in memory.
+<br><br>
+<p align = 'center'>
+<img alt='lists2' style="display:block; margin:0 auto" alt="calling sorted with key=len" width="500" src='../img/list2.png'>
+</p>
+</p>
+<br></p>
+<h3 id="list-of-lists-or-sublists">List of lists or sublists</h3>
+<p>Lists can have sublists as elements. These sublists may contain sublists as well, i.e. lists can be recursively constructed by sublist structures.</p>
+<p align = 'center'>
+<img alt='lists2' style="display:block; margin:0 auto" alt="calling sorted with key=len" width="550" src='../img/sublists.png'>
+</p>
+
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">employee_details</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Mark&#39;</span><span class="p">,</span><span class="s1">&#39;22489&#39;</span><span class="p">),(</span><span class="s1">&#39;Steph&#39;</span><span class="p">,</span><span class="s1">&#39;88153&#39;</span><span class="p">),(</span><span class="s1">&#39;Ajay&#39;</span><span class="p">,</span><span class="s1">&#39;99112&#39;</span><span class="p">)]</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">employee_details</span><span class="p">)):</span>
+<span class="o">...</span>          <span class="k">print</span> <span class="n">employee_details</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">employee_details</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">...</span> 
+<span class="n">Mark</span> <span class="mi">22489</span>
+<span class="n">Steph</span> <span class="mi">88153</span>
+<span class="n">Ajay</span> <span class="mi">99112</span>
+</pre></div>
+
+
+<h2 id="tuples">Tuples</h2>
+<ul>
+<li>Syntax <strong>my_tuple = (val0, val1)</strong></li>
+<li>A tuple is a <strong>fixed size</strong> grouping of elements.</li>
+<li>Tuples are like lists but are <strong>immutable</strong> and do not change size (tuples are not strictly immutable since one of the contained elements could be mutable).</li>
+<li>Tuples have no other methods other than builtin's
+<br></li>
+<li>Tuples are faster than lists.</li>
+<li>Tuples are immutable so they protect from data being changed.</li>
+<li>Tuples can be used as keys in a dictionary.</li>
+</ul>
+<div class="code"><pre><span></span>  <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">)</span>
+  <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>  <span class="c1">## 3</span>
+  <span class="k">print</span> <span class="nb">tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1">## hi</span>
+  <span class="nb">tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bye&#39;</span>  <span class="c1">## NO, tuples cannot be changed</span>
+  <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bye&#39;</span><span class="p">)</span>  <span class="c1">## this works</span>
+</pre></div>
+
+
+<h2 id="ifelifelse">If/elif/else</h2>
+<ul>
+<li>Any value can be used as an if-test. The "zero" values all count as false: None, 0, empty string, empty list, empty dictionary.</li>
+<li>Comparision operations: ==, !=, &lt;, &lt;=, &gt;, &gt;=</li>
+<li>The boolean operators are the spelled out words <em>and</em>, <em>or</em>, <em>not</em> (Python does not use the C-style &amp;&amp; || !).</li>
+</ul>
+<div class="code"><pre><span></span><span class="k">return</span> <span class="o">=</span> <span class="n">scan_target</span><span class="p">(</span><span class="s1">&#39;10.5.0.6&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="k">return</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;[+] Scan sucessful!!&quot;</span>
+    <span class="k">print</span> <span class="n">packet</span>
+<span class="k">elif</span> <span class="k">return</span> <span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;[-] Scan unsucessful!!&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;[*] Inspect with wireshark&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;[!] Unknown error&quot;</span>
+</pre></div>
+
+
+<div class="code"><pre><span></span>  <span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;License and registration please&#39;</span>
+    <span class="k">if</span> <span class="n">mood</span> <span class="o">==</span> <span class="s1">&#39;terrible&#39;</span> <span class="ow">or</span> <span class="n">speed</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+      <span class="k">print</span> <span class="s1">&#39;You have the right to remain silent.&#39;</span>
+    <span class="k">elif</span> <span class="n">mood</span> <span class="o">==</span> <span class="s1">&#39;bad&#39;</span> <span class="ow">or</span> <span class="n">speed</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+      <span class="k">print</span> <span class="s2">&quot;I&#39;m going to have to write you a ticket.&quot;</span>
+      <span class="n">write_ticket</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">print</span> <span class="s2">&quot;Let&#39;s try to keep it under 80 ok?</span>
+</pre></div>
+
+
+<h2 id="while-loop">While loop</h2>
+<p>Python also has the standard while-loop, and the <em>break</em> and <em>continue</em> statements work as in C++ and Java, altering the course of the innermost loop. The above for/in loops solves the common case of iterating over every element in a list, but the while loop gives you total control over the index numbers. Here's a while loop which accesses every 3rd element in a list:</p>
+<div class="code"><pre><span></span>  <span class="c1">## Access every 3rd element in a list</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+
+
+<h2 id="for-loop">For Loop</h2>
+<h3 id="for-in-construct">FOR - IN construct</h3>
+<ul>
+<li>Python's <em>for</em> and <em>in</em> constructs are extremely useful.</li>
+<li>The <em>for</em> construct -- <strong><code>for var in list</code></strong> -- is an easy way to look at each element in a list (or other collection). Do not add or remove from the list during iteration.</li>
+</ul>
+<div class="code"><pre><span></span>  <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">squares</span><span class="p">:</span>
+    <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
+  <span class="k">print</span> <span class="nb">sum</span>  <span class="c1">## 30</span>
+</pre></div>
+
+
+<ul>
+<li>The <em>in</em> construct on its own is an easy way to test if an element appears in a list (or other collection) -- <strong><code>value in collection</code></strong> -- tests if the value is in the collection, returning True/False.</li>
+</ul>
+<div class="code"><pre><span></span>  <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;larry&#39;</span><span class="p">,</span> <span class="s1">&#39;curly&#39;</span><span class="p">,</span> <span class="s1">&#39;moe&#39;</span><span class="p">]</span>
+  <span class="k">if</span> <span class="s1">&#39;curly&#39;</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;yay&#39;</span>
+</pre></div>
+
+
+<h3 id="range-xrange">Range &amp; Xrange</h3>
+<ul>
+<li>Python for loop iterates over a range of numbers, list of elements.</li>
+<li>The <strong>range(n)</strong> function yields the numbers 0, 1, ... n-1, and range(a, b) returns a, a+1, ... b-1 </li>
+</ul>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">open_ports</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">139</span><span class="p">,</span> <span class="mi">8080</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">open_ports</span><span class="p">)):</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="s2">&quot;[+] Port num: {} {} is open.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">open_ports</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">getservbyport</span><span class="p">(</span><span class="n">open_ports</span><span class="p">[</span><span class="n">a</span><span class="p">]))</span>
+<span class="o">...</span> 
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Port</span> <span class="n">num</span><span class="p">:</span> <span class="mi">21</span> <span class="n">ftp</span> <span class="ow">is</span> <span class="nb">open</span><span class="o">.</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Port</span> <span class="n">num</span><span class="p">:</span> <span class="mi">23</span> <span class="n">telnet</span> <span class="ow">is</span> <span class="nb">open</span><span class="o">.</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Port</span> <span class="n">num</span><span class="p">:</span> <span class="mi">25</span> <span class="n">smtp</span> <span class="ow">is</span> <span class="nb">open</span><span class="o">.</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Port</span> <span class="n">num</span><span class="p">:</span> <span class="mi">80</span> <span class="n">http</span> <span class="ow">is</span> <span class="nb">open</span><span class="o">.</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Port</span> <span class="n">num</span><span class="p">:</span> <span class="mi">139</span> <span class="n">netbios</span><span class="o">-</span><span class="n">ssn</span> <span class="ow">is</span> <span class="nb">open</span><span class="o">.</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Port</span> <span class="n">num</span><span class="p">:</span> <span class="mi">8080</span> <span class="n">http</span><span class="o">-</span><span class="n">alt</span> <span class="ow">is</span> <span class="nb">open</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<h2 id="print-as-a-statement"><code>print</code> as a statement</h2>
+<ul>
+<li>In <strong>Python2.X <code>print</code> is a statement</strong> not a function.</li>
+<li>Very intutive but not very powerful.</li>
+</ul>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s2">&quot;The answer is: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<span class="n">The</span> <span class="n">answer</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">42</span>
+</pre></div>
+
+
+<h2 id="print-as-a-function"><code>print</code> as a function</h2>
+<ul>
+<li>In <strong>Python 3.X <code>print</code> is a function</strong> which gives it more control on how to print stuff.</li>
+<li>You can import print funtion into python 2.7.X using the statement <strong><code>from future import print_function</code></strong></li>
+<li>I would recommend using print as a function even in Python2.X, for one your code will be more compatiable with Python3.X and also print function gives you more control on the output.</li>
+</ul>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>       <span class="c1"># This internally sets a flag that lets interpreter enable print function</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;The answer is: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<span class="n">The</span> <span class="n">answer</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">42</span>
+</pre></div>
+
+
+<ul>
+<li>Print as a funtion can take arguments which provide more control on how you ptint stuff.</li>
+</ul>
+<div class="code"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1">#    file: a file-like object (stream); defaults to the current sys.stdout.</span>
+<span class="c1">#    sep:  string inserted between values, default a space.</span>
+<span class="c1">#    end:  string appended after the last value, default a newline.</span>
+<span class="c1">#</span>
+</pre></div>
+
+
+<ul>
+<li>With the <code>end</code> argument you can choose what is appended as the last value.</li>
+</ul>
+<div class="code"><pre><span></span><span class="c1"># Building a simple NOP sled for memory exploits</span>
+<span class="c1"># Only one of the output works for a NOP sled. Which one? Why?(Out of this workshop context though)</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x90</span><span class="s1">&#39;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+<span class="err">������������������������������</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x90</span><span class="s1">&#39;</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="err">������������������������������</span><span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>By redefining the keyword parameter <code>file</code> we can send the output into a different stream e.g. to a file or stderr</li>
+</ul>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;42 is the answer, but what is the question?&quot;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">fh</span><span class="p">)</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>      <span class="c1"># we see no ouput  to console after print because it&#39;s directed into the file fh</span>
+</pre></div>
+
+
+<h2 id="c-style-format-strings">C-Style format strings</h2>
+<ul>
+<li>The nearest thing to c-style printf equivalent in python.</li>
+<li><code>'%s %s' % ('one', 'two')</code></li>
+</ul>
+<p>
+<img src="../img/format_string.png" style="display:block; margin:0 auto" alt="format string" width="500">
+</p>
+
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">port_number</span> <span class="o">=</span> <span class="mi">139</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;10.5.0.6&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s2">&quot;Port num: </span><span class="si">%d</span><span class="s2"> is open on Host: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">port_number</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
+<span class="n">Port</span> <span class="n">num</span><span class="p">:</span> <span class="mi">139</span> <span class="ow">is</span> <span class="nb">open</span> <span class="n">on</span> <span class="n">Host</span><span class="p">:</span> <span class="mf">10.5</span><span class="o">.</span><span class="mf">0.6</span>
+</pre></div>
+
+
+<p><br></p>
+<p>For more on format string modulo: <a href="http://www.python-course.eu/python3_formatted_output.php">http://www.python-course.eu/python3_formatted_output.php</a> </p>
+<h2 id="pythonic-style-string-format-method">Pythonic style - string format method.</h2>
+<ul>
+<li>
+<p>Python has awesome string formatters to produce beautifully formatted output.</p>
+</li>
+<li>
+<p>The "fields to be replaced" are surrounded by curly braces {}.
+&nbsp;<code>'{} {}'.format('one', 'two')</code></p>
+</li>
+</ul>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s2">&quot;[+] Port num: {} on host {} is open.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">port_number</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="placeholders">Placeholders</h3>
+<ul>
+<li>Python string format method supports placeholders and an explicit positional index. &nbsp;<code>{1} {0}'.format('one', 'two')</code></li>
+<li>A positional parameter of the format method can be accessed by placing the index of the parameter after the opening brace, e.g. {0} accesses the first parameter.</li>
+</ul>
+<p>
+<img src="../img/format_method.png" style="display:block; margin:0 auto" alt="format string" width="500">
+</p>
+
+<p><br>
+- Keywords can be used to index parameters as well.(Named placeholders)</p>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;Art: {a:5d},  Price: {p:8.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">453</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">59.058</span><span class="p">)</span>
+<span class="s1">&#39;Art:   453,  Price:    59.06&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> 
+</pre></div>
+
+
+<h3 id="padding-and-aligning-strings">Padding and aligning strings</h3>
+<p>By default values are formatted to take up only as many characters as needed to represent the content. It is however also possible to define that a value should be padded to a specific length.</p>
+<ul>
+<li>We can precede the formatting with a "&lt;" (left justify) or "&gt;" (right justify)</li>
+</ul>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;{:&gt;10}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>                             <span class="c1"># right align</span>
+<span class="s1">&#39;      test&#39;</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;{0:&lt;20s} {1:6.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Spam &amp; Eggs:&#39;</span><span class="p">,</span> <span class="mf">6.99</span><span class="p">)</span>    <span class="c1"># left align</span>
+<span class="s1">&#39;Spam &amp; Eggs:           6.99&#39;</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;{:^10}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>                          <span class="c1">#center align</span>
+<span class="s1">&#39;   test   &#39;</span>
+</pre></div>
+
+
+<ul>
+<li>Choose your character for padding. <code>'{:_&lt;10}'.format('test')</code></li>
+</ul>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;{:_&lt;10}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="s1">&#39;test______&#39;</span>
+</pre></div>
+
+
+<p><br>
+Further reading on string format method <a href="https://pyformat.info/">https://pyformat.info/</a> 
+<br></p>
+<h2 id="sysstdoutwrite">sys.stdout.write()</h2>
+<p>This could be used to write to standard output or consoles when print doesn’t seem to work.</p>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">pack</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x90\x32\x67\x70</span><span class="s1">&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pack</span><span class="p">)</span>
+<span class="err">�</span><span class="mi">2</span><span class="n">gp</span><span class="o">&gt;&gt;&gt;</span> 
+</pre></div>
+
+
+<h2 id="list-comprehensions">List Comprehensions</h2>
+<ul>
+<li>A list comprehension is a compact way to write an expression that expands to a whole list.</li>
+<li>List comprehension can almost substitute for the lambda function especially as map(), filter() and reduce().</li>
+</ul>
+<p>
+<img alt='list comprehensions' src='../img/list_comprehensions.png'>
+</p>
+
+<p><br></p>
+<h3 id="examples">Examples</h3>
+<div class="code"><pre><span></span><span class="c1"># compute a list of their squares of elements in a list</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">squares</span> <span class="o">=</span> <span class="p">[</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span> <span class="p">]</span>   <span class="c1">## [1, 4, 9, 16]</span>
+</pre></div>
+
+
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">port_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">139</span><span class="p">,</span><span class="mi">443</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">port_numbers</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">139</span><span class="p">,</span> <span class="mi">443</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">k</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>You can add an if test to the right of the for-loop to narrow the result. The if test is evaluated for each element, including only the elements where the test is true.</li>
+</ul>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">port_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">139</span><span class="p">,</span><span class="mi">443</span><span class="p">,</span><span class="mi">8080</span><span class="p">,</span><span class="mi">9999</span><span class="p">,</span><span class="mi">55555</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">port_numbers</span> <span class="k">if</span> <span class="n">k</span><span class="o">&lt;</span><span class="mi">1023</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">139</span><span class="p">,</span> <span class="mi">443</span><span class="p">]</span>
+</pre></div>
+
+
+<h2 id="lambda-functions">Lambda functions</h2>
+<p>Syntax: <strong>lambda arg1, arg2, ...argN : expression using arguments</strong>.</p>
+<p align = 'center'>
+<img alt='lists2' style="display:block; margin:0 auto" alt="calling sorted with key=len" width="800" src='../img/lambda.png'>
+</p>
+
+<p><br>
+<br>
+- Python supports the creation of anonymous functions (i.e. functions that are not bound to a name) at runtime, using a construct called "lambda".<br>
+- Lambda functions take any number of arguments but only has one expression, the result of this expression is returned.<br></p>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">f</span> <span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">f</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="mi">64</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">g</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">g</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="mi">64</span>
+</pre></div>
+
+
+<ul>
+<li>Lambda functions can be used anywhere a function is expected, not necessary to assign it to a variable.<br></li>
+<li>You can pass lambda functions to other functions to do stuff(for example lambda function as key to sorted())<br></li>
+</ul>
+<div class="code"><pre><span></span><span class="n">mult3</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+</pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Using Lambda</p>
+<p>Lambda funtions are good when they are short and as throw away functions. If you plan on doing anything remotely complex with it, put lambda away and define a real function.</p>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../scapy_intro/index.html" class="btn btn-neutral float-right" title="Scapy Intro">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../packet_headers/index.html" class="btn btn-neutral" title="Packet Headers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/The-Art-of-Packet-Crafting-with-Scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../packet_headers/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../scapy_intro/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

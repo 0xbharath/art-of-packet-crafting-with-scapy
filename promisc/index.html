@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>Promisc detection - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Promisc detection";
+    var mkdocs_page_input_path = "promisc.md";
+    var mkdocs_page_url = "/promisc/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Virtual Lab</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_setup/index.html">Virtual Lab</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_topology/index.html">Topology</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python Course</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy Course</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Promisc detection</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#promiscuous-node-detection">Promiscuous node detection</a></li>
+                
+                    <li><a class="toctree-l4" href="#promiscuous-mode">Promiscuous mode</a></li>
+                
+                    <li><a class="toctree-l4" href="#detecting-promisc-node-the-idea">Detecting promisc node -  The idea:</a></li>
+                
+                    <li><a class="toctree-l4" href="#hardware-filter">Hardware filter</a></li>
+                
+                    <li><a class="toctree-l4" href="#software-filter">Software Filter</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>ScapyHunt</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Scapy Course &raquo;</li>
+        
+      
+    
+    <li>Promisc detection</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/The-Art-of-Packet-Crafting-with-Scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="promiscuous-node-detection">Promiscuous node detection</h1>
+<p><br></p>
+<h2 id="promiscuous-mode">Promiscuous mode</h2>
+<ul>
+<li>Promiscuous mode allows a network device to intercept and read each network packet that arrives in its entirety.</li>
+<li>
+<p>Unlike Monitor mode, in promisc mode the listener has to be connected to the network.</p>
+</li>
+<li>
+<p>Some tools that use promiscuous mode - Wireshark, Tcpdump, Aircrack-ng, cain and abel, Snort, Virtualbox...</p>
+</li>
+<li>Extremely effective because of it's passive nature.</li>
+</ul>
+<p>Enable promiscuous mode:</p>
+<div class="code"><pre><span></span>$ sudo ifconfig &lt;iface&gt; promisc   
+</pre></div>
+
+
+<p>Disable promiscuous mode:</p>
+<div class="code"><pre><span></span>$ sudo ifconfig &lt;iface&gt; -promisc   
+</pre></div>
+
+
+<p><br></p>
+<h2 id="detecting-promisc-node-the-idea"><strong> Detecting promisc node -  The idea:</strong></h2>
+<ul>
+<li>
+<p>All the packets recieved by promisc NIC are passed on to the kernel, so the basic idea of detection is to send specially crafted packets that may trick the system kernel to respond to packets that it is not supposed to respond to.</p>
+</li>
+<li>
+<p>Fake ARP request packets, ICMP Ping(echo request) with wrong MAC but right IP address could do the job.</p>
+</li>
+</ul>
+<h3 id="arp-protocol">ARP Protocol</h3>
+<ul>
+<li>ARP protocol is used for resolution of network layer addresses into link layer addresses, IPV4 over Ethernet generally.</li>
+</ul>
+<blockquote>
+<p>ARP is depricated in IPv6 and the functionality is provided by  Network Discovery Protocol(NDP).</p>
+</blockquote>
+<ul>
+<li>ARP works inside a network and it is <strong>never routed</strong> outside.</li>
+<li>ARP is a <strong>layer 2 protocol</strong>(well, yeah yeah, <strong>2.5 layer maybe</strong>, for all the CCNA people)</li>
+<li>ARP is generally <strong>broadcasted</strong> in the local network.</li>
+</ul>
+<p><img alt="" src="../home/verax/Downloads/tapcs_notes/images/arp-request.png" /> 
+<img alt="" src="../home/verax/Downloads/tapcs_notes/images/arp-reply.png" /> </p>
+<h2 id="hardware-filter">Hardware filter</h2>
+<p>Normally,  NIC of a machine filters and accepts only packets that have destination address set to the NIC's own hardware address, broadcast address (FF FF FF FF FF FF), and multicast address 1(01 00 5E 00 00 01). Let's call this a hardware filter.
+But in promiscuous mode NIC is set to accept every packet that it recieves.</p>
+<ul>
+<li>Should be easy to find promisc nodes, right?
+Just send packet that is supposed to be filtered by normal mode hardware filter, only a promisc node would pass it to kernel and respond to that.</li>
+<li>Let's try: <strong>00:00:00:00:00:01</strong>. What happens??</li>
+</ul>
+<h2 id="software-filter">Software Filter</h2>
+<p>Operating system kernels implement a filter, let's call it <strong>software filter</strong>.
+Even though a packet passes through hardware filter, kernel is implementing another filter.</p>
+<h4 id="hardware-filter-vs-software-filter">Hardware filter vs Software filter</h4>
+<p>The hardware filter usually blocks packets that are not supposed to arrive to the system kernel. </p>
+<p>We need to craft a packet that is:<br>
+a. Blocked by the hardware filter in normal mode.<br>
+b. Should be able to pass the software filter.<br></p>
+<p><img alt="" src="../../img/promisc_table.png" /> </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../scapyhunt/index.html" class="btn btn-neutral float-right" title="Scapy Hunt">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../os_detection/index.html" class="btn btn-neutral" title="OS detection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/The-Art-of-Packet-Crafting-with-Scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../os_detection/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../scapyhunt/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

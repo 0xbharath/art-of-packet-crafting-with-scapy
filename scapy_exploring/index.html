@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>Exploring scapy - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Exploring scapy";
+    var mkdocs_page_input_path = "scapy_exploring.md";
+    var mkdocs_page_url = "/scapy_exploring/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Virtual Lab</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_setup/index.html">Virtual Lab</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_topology/index.html">Topology</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python Course</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy Course</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Exploring scapy</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#exploring-scapy">Exploring scapy</a></li>
+                
+                    <li><a class="toctree-l4" href="#list-of-protocols-supported">List of protocols supported</a></li>
+                
+                    <li><a class="toctree-l4" href="#dissecting-protocols">Dissecting protocols</a></li>
+                
+                    <li><a class="toctree-l4" href="#list-of-all-the-scapy-commands">List of all the scapy commands</a></li>
+                
+                    <li><a class="toctree-l4" href="#getting-help-on-any-function">Getting help on any function</a></li>
+                
+                    <li><a class="toctree-l4" href="#change-scapy-configuration">Change Scapy configuration</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>ScapyHunt</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Scapy Course &raquo;</li>
+        
+      
+    
+    <li>Exploring scapy</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/The-Art-of-Packet-Crafting-with-Scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="exploring-scapy">Exploring scapy</h1>
+<h3 id="list-of-protocols-supported">List of protocols supported</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ls</span><span class="p">()</span>
+<span class="n">ARP</span>        <span class="p">:</span> <span class="n">ARP</span>
+<span class="n">DNS</span>        <span class="p">:</span> <span class="n">DNS</span>
+<span class="n">Dot11</span>      <span class="p">:</span> <span class="mf">802.11</span>
+<span class="n">TCP</span>        <span class="p">:</span> <span class="n">TCP</span>
+<span class="n">Ether</span>      <span class="p">:</span> <span class="n">Ethernet</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+
+
+<h3 id="dissecting-protocols">Dissecting protocols</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ls</span><span class="p">(</span><span class="n">IP</span><span class="p">)</span>
+<span class="n">version</span>    <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ihl</span>        <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">tos</span>        <span class="p">:</span> <span class="n">XByteField</span>           <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">len</span>        <span class="p">:</span> <span class="n">ShortField</span>           <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="nb">id</span>         <span class="p">:</span> <span class="n">ShortField</span>           <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">flags</span>      <span class="p">:</span> <span class="n">FlagsField</span>           <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">frag</span>       <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ttl</span>        <span class="p">:</span> <span class="n">ByteField</span>            <span class="o">=</span> <span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+<span class="n">proto</span>      <span class="p">:</span> <span class="n">ByteEnumField</span>        <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">chksum</span>     <span class="p">:</span> <span class="n">XShortField</span>          <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">src</span>        <span class="p">:</span> <span class="n">Emph</span>                 <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">dst</span>        <span class="p">:</span> <span class="n">Emph</span>                 <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
+<span class="n">options</span>    <span class="p">:</span> <span class="n">PacketListField</span>      <span class="o">=</span> <span class="p">([])</span>
+</pre></div>
+
+
+<h3 id="list-of-all-the-scapy-commands">List of all the scapy commands</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">lsc</span><span class="p">()</span>
+<span class="n">rdpcap</span>     <span class="p">:</span> <span class="n">Read</span> <span class="n">a</span> <span class="n">pcap</span> <span class="nb">file</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">a</span> <span class="n">packet</span> 
+<span class="n">send</span>       <span class="p">:</span> <span class="n">Send</span> <span class="n">packets</span> <span class="n">at</span> <span class="n">layer</span> <span class="mi">3</span>
+<span class="n">sendp</span>      <span class="p">:</span> <span class="n">Send</span> <span class="n">packets</span> <span class="n">at</span> <span class="n">layer</span> <span class="mi">2</span>
+<span class="n">sendpfast</span>  <span class="p">:</span> <span class="n">Send</span> <span class="n">packets</span> <span class="n">at</span> <span class="n">layer</span> <span class="mi">2</span> <span class="n">using</span> <span class="n">tcpreplay</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+
+
+<h3 id="getting-help-on-any-function">Getting help on any function</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="n">arpcachepoison</span><span class="p">)</span>
+
+<span class="n">Help</span> <span class="n">on</span> <span class="n">function</span> <span class="n">arpcachepoison</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">scapy</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">l2</span><span class="p">:</span>
+
+<span class="n">arpcachepoison</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">victim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">Poison</span> <span class="n">target</span><span class="s1">&#39;s cache with (your MAC,victim&#39;</span><span class="n">s</span> <span class="n">IP</span><span class="p">)</span> <span class="n">couple</span>
+    <span class="n">arpcachepoison</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">victim</span><span class="p">,</span> <span class="p">[</span><span class="n">interval</span><span class="o">=</span><span class="mi">60</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span>
+
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+
+
+<h3 id="change-scapy-configuration">Change Scapy configuration</h3>
+<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">conf</span>
+<span class="n">iface</span>      <span class="o">=</span> <span class="s1">&#39;eth3&#39;</span>
+<span class="n">iface6</span>     <span class="o">=</span> <span class="s1">&#39;wlan0&#39;</span>
+<span class="n">wepkey</span>     <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">sniff_promisc</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Root Alert!</p>
+<p>Assembling and sending raw packets requires UID 0(root access) . Use sudo to become root.</p>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../creating_packets/index.html" class="btn btn-neutral float-right" title="Creating packets">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../scapy_modes/index.html" class="btn btn-neutral" title="Scapy Modes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/The-Art-of-Packet-Crafting-with-Scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../scapy_modes/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../creating_packets/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

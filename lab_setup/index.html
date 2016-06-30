@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>Virtual Lab - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Virtual Lab";
+    var mkdocs_page_input_path = "lab_setup.md";
+    var mkdocs_page_url = "/lab_setup/index.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Virtual Lab</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Virtual Lab</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#setting-up-virtual-lab">Setting up Virtual Lab</a></li>
+                
+                    <li><a class="toctree-l4" href="#virtualbox-vmware">VirtualBox / VMWare</a></li>
+                
+                    <li><a class="toctree-l4" href="#vagrant">Vagrant</a></li>
+                
+                    <li><a class="toctree-l4" href="#virtual-lab-setup-tasks">Virtual Lab Setup - Tasks</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_topology/index.html">Topology</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python Course</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy Course</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>ScapyHunt</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Virtual Lab &raquo;</li>
+        
+      
+    
+    <li>Virtual Lab</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/The-Art-of-Packet-Crafting-with-Scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="setting-up-virtual-lab">Setting up Virtual Lab</h1>
+<div class="admonition note">
+<p>“Give me six hours to chop down a tree and I will spend the first four sharpening the axe.” - Lincoln</p>
+</div>
+<h2 id="virtualbox-vmware">VirtualBox / VMWare</h2>
+<ul>
+<li>Old school way</li>
+<li>Mostly tasks are manual, automation is non-trivial.</li>
+<li>No provisioning support through shell, chef or puppet etc</li>
+</ul>
+<h2 id="vagrant">Vagrant</h2>
+<ul>
+<li>Builds on top of traditional virtualization software(Virtualbox, VMware, AWS...).</li>
+<li>Focused on saving environment setup time, disposability.</li>
+<li>One command to setup complete environment i.e. create VM, modify properties, configure networking, provide provisiong.</li>
+<li>Whole environment is built based on one configuration file , which allows version control.</li>
+<li>Supports provisioning through shell scripts, chef, puppet...</li>
+<li>Provides SSH to communcate with the host.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">TL;DR</p>
+<p>Hit <strong><code>vagrant up</code></strong> in the mysterious_boxes directory, get your environment up and running!</p>
+</div>
+<h3 id="vagrant-commands">Vagrant Commands:</h3>
+<p><strong>vagrant init</strong> - Initialize a new vagrant box in the current directory.<br>
+<strong>vagrant up</strong> - Start an existing vagrant environment &amp; provision it.<br>
+<strong>vagrant ssh</strong> - Shell into a running vagrant box.<br> 
+<strong>vagrant halt</strong> - Stop a running vagrant box (shut down).<br> 
+<strong>vagrant destroy</strong> - Completely destroy a vagrant box (delete all).<br></p>
+<h2 id="virtual-lab-setup-tasks">Virtual Lab Setup - Tasks</h2>
+<h3 id="step-i-installation">Step I - Installation</h3>
+<ul>
+<li>Install <strong>&gt; VirtualBox 5.0</strong>.</li>
+<li>Install <strong>&gt; Vagrant 1.6</strong>.</li>
+</ul>
+<h3 id="step-ii-modify-environmental-variables">Step II - Modify Environmental Variables</h3>
+<ul>
+<li>Change default <code>VAGRANT_HOME</code> envi' variable to point to the newly provided <code>.vagrant.d</code> folder(where your virtual boxes are).</li>
+</ul>
+<p><strong>Linux - BASH</strong></p>
+<div class="code"><pre><span></span><span class="nv">$nano</span> ~/.bashrc
+<span class="c1">#add the following line at the bottom of the .bashrc file:</span>
+<span class="nb">export</span> <span class="nv">VAGRANT_HOME</span><span class="o">=</span><span class="s2">&quot;/PATH/TO/.vagrant.d&quot;</span> 
+</pre></div>
+
+
+<p><br>
+For more on linux environmental variables <a href="http://unix.stackexchange.com/questions/117467/how-to-permanently-set-environmental-variables">How to set environmental variables on linux/unix</a> </p>
+<p><strong>WINDOWS - CMD</strong></p>
+<div class="code"><pre><span></span>setx VAGRANT_HOME <span class="s2">&quot;X:/your/path&quot;</span>
+</pre></div>
+
+
+<p><strong>WINDOWS - Powershell</strong></p>
+<div class="code"><pre><span></span>cmd /c setx VAGRANT_HOME <span class="s2">&quot;X:/your/path/&quot;</span>
+</pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Windows - Enviroment variables</p>
+<ul>
+<li>If you need the VAGRANT_HOME to stay across sessions you should do a <code>SETX</code> command not <code>set</code>on windows cmd or powershell (you need to run it as admin).</li>
+<li>Above command adds variable to the User Environment.</li>
+<li>If you want to add to the system/machine you need to add the /M option at the end of the command: <code>setx VAGRANT_HOME "X:/your/path" /M</code></li>
+</ul>
+</div>
+<p>For more on windows environmental variables <a href="https://harvsworld.com/2014/change-vagrant_home-directory-windows/">How to modify VAGRANT_HOME on windows</a> </p>
+<h3 id="step-iii-install-ssh-client">STEP III - Install SSH client</h3>
+<p><strong>Linux</strong></p>
+<p>On Linux there is an SSH client by default. You can simply SSH into the attacker box from host by running <code>vagrant ssh</code> from mysterious_boxes directory(where you VagrantFile is).
+<br></p>
+<p><strong>"Windows"</strong><br>
+-- TBD --</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lab_topology/index.html" class="btn btn-neutral float-right" title="Topology">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../workshop_settings/index.html" class="btn btn-neutral" title="Workshop settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/The-Art-of-Packet-Crafting-with-Scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../workshop_settings/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../lab_topology/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
