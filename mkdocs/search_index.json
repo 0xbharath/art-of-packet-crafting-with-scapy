@@ -27,7 +27,7 @@
         }, 
         {
             "location": "/speakers/index.html", 
-            "text": "Speakers\n\n\nBharath\n\n\nWebpage  \n: \nDisruptivelabs.in\n\nTwitter\n \n  \n  : \ntwitter.com/yamakira_\n\nGithub \n \n   :\n\n\n\n\nAbhinav\n\n\nWebpage  \n: \n\nTwitter\n \n  \n  : \ntwitter.com/geek_ji\n\nGithub \n \n   :", 
+            "text": "Speakers\n\n\nBharath\n\n\nWebpage  \n: \nDisruptivelabs.in\n\nTwitter\n \n  \n  : \ntwitter.com/yamakira_\n\nGithub \n \n   :", 
             "title": "Speakers"
         }, 
         {
@@ -39,11 +39,6 @@
             "location": "/speakers/index.html#bharath", 
             "text": "Webpage   :  Disruptivelabs.in \nTwitter        :  twitter.com/yamakira_ \nGithub       :", 
             "title": "Bharath"
-        }, 
-        {
-            "location": "/speakers/index.html#abhinav", 
-            "text": "Webpage   :  \nTwitter        :  twitter.com/geek_ji \nGithub       :", 
-            "title": "Abhinav"
         }, 
         {
             "location": "/workshop_settings/index.html", 
@@ -682,13 +677,13 @@
         }, 
         {
             "location": "/scapyhunt/index.html", 
-            "text": "Let\ns go hunting with ScapyHunt!\n\n\nTrivia\n\n\n\n\n\n\nTerminal-based game in which you will use common network attack vectors and penetration testing methods to analyze and compromise a virtual network.\n\n\n\n\n\n\nInvolves Network Security challenges designed to educate users on packet manipulation and common network attacks.\n\n\n\n\n\n\nThe whole challenge happens over sort of a software defined network(SDN).\n\n\n\n\n\n\nOriginally created by James Sullivan(MIT License).\n\n\n\n\n\n\n\n\nside note\nThe scapy hunt SDN itself is completely defined by handcrafted packets using scapy which simulates a typical network setup.\n\n\n\n\n\n\nThe Goal\n\n\nThere is an FTP server somewhere on the network containing a document:\n\n\n\n\nLocate the FTP server\n\n\nConnect to the service \n\n\nRetrieve the file!\n\n\n\n\nTools\n\n\n\n\nscapy\n\n\nnmap\n\n\nwireshark\n\n\ntelnet/nc\n\n\ndsniff\n\n\n\n\nConcepts\n\n\n\n\nBash terminal-fu\n\n\nPacket capture and manipulation in scapy\n\n\nPacket analysis in wireshark\n\n\nRouter modes of operation\n\n\nNetwork topography, gateways\n\n\nBasic telnet/nc commands\n\n\n\n\n\n\nHints\n\n\n\n\nYou may need to find a way to see all of the traffic on the network.\n\n\nOther clients on the network might give you useful clues, if you can coerce them.\n\n\nThe target will most likely be isolated from the immediate local network, and will have some preferred clients.\n\n\n\n\n\n\nTASKS\n\n\nTASK - I\n\n\nRun the script \n find the details about the interface.\n\n\nTASK - II\n\n\nUnderstand the Network.\n- The traffic \n The Devices.\n- The nature of layer 2 switches.\n\n\nTASK - III\n\n\nScapy tips:\n\n- RandMAC() - Generates random MAC addresses.\n\n- RandIP() - Generates random IP addresses. \n\n\nTASK - IV\n\n\nTASK - V\n\n\nTASK - VI\n\n\nTASK - VIII", 
+            "text": "Let\ns go hunting with NetworkHunt!\n\n\nTrivia\n\n\n\n\n\n\nTerminal-based game in which you will use common network attack vectors and penetration testing methods to analyze and compromise a virtual network.\n\n\n\n\n\n\nInvolves Network Security challenges designed to educate users on packet manipulation and common network attacks.\n\n\n\n\n\n\nThe whole challenge happens over sort of a software defined network(SDN).\n\n\n\n\n\n\nOriginally created by James Sullivan(MIT License).\n\n\n\n\n\n\n\n\nside note\nThe scapy hunt SDN itself is completely defined by handcrafted packets using scapy which simulates a typical network setup.\n\n\n\n\n\n\nThe Goal\n\n\nThere is an FTP server somewhere on the network containing a document:\n\n\n\n\nLocate the FTP server\n\n\nConnect to the service \n\n\nRetrieve the file!\n\n\n\n\nTools\n\n\n\n\nscapy\n\n\nnmap\n\n\nwireshark\n\n\ntelnet/nc\n\n\ndsniff\n\n\n\n\nConcepts\n\n\n\n\nBash terminal-fu\n\n\nPacket capture and manipulation in scapy\n\n\nPacket analysis in wireshark\n\n\nRouter modes of operation\n\n\nNetwork topography, gateways\n\n\nBasic telnet/nc commands\n\n\n\n\n\n\nHints\n\n\n\n\nYou may need to find a way to see all of the traffic on the network.\n\n\nOther clients on the network might give you useful clues, if you can coerce them.\n\n\nThe target will most likely be isolated from the immediate local network, and will have some preferred clients.\n\n\n\n\n\n\nTASKS\n\n\nTASK - I\n\n\nRun the script \n find the details about the interface.\n\n\nTASK - II\n\n\nUnderstand the Network.\n- The traffic \n The Devices.\n- The nature of layer 2 switches.\n\n\nTASK - III\n\n\nScapy tips:\n\n- RandMAC() - Generates random MAC addresses.\n\n- RandIP() - Generates random IP addresses. \n\n\nTASK - IV\n\n\nSubvert Layer 2 security\n\n\nTASK - V\n\n\nTASK - VI\n\n\nTASK - VIII", 
             "title": "Network Hunt"
         }, 
         {
-            "location": "/scapyhunt/index.html#lets-go-hunting-with-scapyhunt", 
+            "location": "/scapyhunt/index.html#lets-go-hunting-with-networkhunt", 
             "text": "", 
-            "title": "Let's go hunting with ScapyHunt!"
+            "title": "Let's go hunting with NetworkHunt!"
         }, 
         {
             "location": "/scapyhunt/index.html#trivia", 
@@ -732,7 +727,7 @@
         }, 
         {
             "location": "/scapyhunt/index.html#task-iv", 
-            "text": "", 
+            "text": "Subvert Layer 2 security", 
             "title": "TASK - IV"
         }, 
         {
