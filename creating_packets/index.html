@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -53,6 +53,13 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../index.html">Title</a>
+        
+    </li>
+<li>
           
             <li>
     <ul class="subnav">
@@ -262,12 +269,12 @@
           
             <li>
     <ul class="subnav">
-    <li><span>ScapyHunt</span></li>
+    <li><span>NetworkHunt CTF</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        <a class="" href="../scapyhunt/index.html">Network Hunt</a>
         
     </li>
 
@@ -300,7 +307,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html">The Art of Packet Crafting with Scapy!</a>
       </nav>
 
       
@@ -308,7 +315,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    <li><a href="../index.html">Docs</a> &raquo;</li>
     
       
         
@@ -338,34 +345,32 @@
 <li>To create a DNS query, you need to build Ether(sometimes optional), IP,UDP headers and stack them using <code>/</code> operator.</li>
 </ul>
 <p><strong>Creating packet in one line</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span> <span class="o">=</span> <span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;8.8.8.8&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">dport</span><span class="o">=</span><span class="mi">53</span><span class="p">,</span><span class="n">flags</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">)</span>
-</pre></div>
+<pre><code class="python">&gt;&gt;&gt; packet = Ether()/IP(dst='8.8.8.8')/TCP(dport=53,flags='S')
+</code></pre>
 
-
-<p><strong>Create each layer individually and stack them using '/' operator</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">Ether</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">l3</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;8.8.8.8/30&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">l4</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">(</span><span class="n">dport</span><span class="o">=</span><span class="mi">53</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="s1">&#39;S&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span> <span class="o">=</span> <span class="n">l2</span><span class="o">/</span><span class="n">l3</span><span class="o">/</span><span class="n">l4</span>
-</pre></div>
-
+<p><strong>Create each layer individually and stack them using &lsquo;/&rsquo; operator</strong></p>
+<pre><code class="python">&gt;&gt;&gt; l2 = Ether()
+&gt;&gt;&gt; l3 = IP(dst='8.8.8.8/30')
+&gt;&gt;&gt; l4 = TCP(dport=53, flags = 'S')
+&gt;&gt;&gt; packet = l2/l3/l4
+</code></pre>
 
 <p><br></p>
 <h3 id="scapy-ip-notations">Scapy IP notations</h3>
 <p>Scapy accepts plain dotted-quad IP notation, CIDR notation, hostnames.</p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span> <span class="o">=</span> <span class="s1">&#39;8.8.8.8&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span> <span class="o">=</span> <span class="s1">&#39;scanme.nmap.org&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span> <span class="o">=</span> <span class="s1">&#39;8.8.8.8/30&#39;</span><span class="p">)</span>
+<pre><code class="python">&gt;&gt;&gt; packet = IP(dst = '8.8.8.8')
+&gt;&gt;&gt; 
+&gt;&gt;&gt; packet = IP(dst = 'scanme.nmap.org')
+&gt;&gt;&gt; 
+&gt;&gt;&gt; packet = IP(dst = '8.8.8.8/30')
 
-<span class="c1"># Above line created 4 packets in one statements implicitly.</span>
-<span class="c1"># Using list comprehensions to view all the packets.</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">packet</span><span class="p">]</span>
-<span class="p">[</span><span class="o">&lt;</span><span class="n">IP</span>  <span class="n">dst</span><span class="o">=</span><span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span> <span class="o">|&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">IP</span>  <span class="n">dst</span><span class="o">=</span><span class="mf">8.8</span><span class="o">.</span><span class="mf">8.9</span> <span class="o">|&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">IP</span>  <span class="n">dst</span><span class="o">=</span><span class="mf">8.8</span><span class="o">.</span><span class="mf">8.10</span> <span class="o">|&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">IP</span>  <span class="n">dst</span><span class="o">=</span><span class="mf">8.8</span><span class="o">.</span><span class="mf">8.11</span> <span class="o">|&gt;</span><span class="p">]</span>
+# Above line created 4 packets in one statements implicitly.
+# Using list comprehensions to view all the packets.
+&gt;&gt;&gt; [a for a in packet]
+[&lt;IP  dst=8.8.8.8 |&gt;, &lt;IP  dst=8.8.8.9 |&gt;, &lt;IP  dst=8.8.8.10 |&gt;, &lt;IP  dst=8.8.8.11 |&gt;]
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span> <span class="o">=</span> <span class="s1">&#39;egadz.metasploit.com/30&#39;</span><span class="p">)</span>
-</pre></div>
+&gt;&gt;&gt; packet = IP(dst = 'egadz.metasploit.com/30')
+</code></pre>
               
             </div>
           </div>

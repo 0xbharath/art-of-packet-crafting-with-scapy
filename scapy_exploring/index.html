@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -53,6 +53,13 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../index.html">Title</a>
+        
+    </li>
+<li>
           
             <li>
     <ul class="subnav">
@@ -267,12 +274,12 @@
           
             <li>
     <ul class="subnav">
-    <li><span>ScapyHunt</span></li>
+    <li><span>NetworkHunt CTF</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        <a class="" href="../scapyhunt/index.html">Network Hunt</a>
         
     </li>
 
@@ -305,7 +312,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html">The Art of Packet Crafting with Scapy!</a>
       </nav>
 
       
@@ -313,7 +320,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    <li><a href="../index.html">Docs</a> &raquo;</li>
     
       
         
@@ -337,66 +344,61 @@
               
                 <h1 id="exploring-scapy">Exploring scapy</h1>
 <h3 id="list-of-protocols-supported">List of protocols supported</h3>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ls</span><span class="p">()</span>
-<span class="n">ARP</span>        <span class="p">:</span> <span class="n">ARP</span>
-<span class="n">DNS</span>        <span class="p">:</span> <span class="n">DNS</span>
-<span class="n">Dot11</span>      <span class="p">:</span> <span class="mf">802.11</span>
-<span class="n">TCP</span>        <span class="p">:</span> <span class="n">TCP</span>
-<span class="n">Ether</span>      <span class="p">:</span> <span class="n">Ethernet</span>
-<span class="p">[</span><span class="o">...</span><span class="p">]</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; ls()
+ARP        : ARP
+DNS        : DNS
+Dot11      : 802.11
+TCP        : TCP
+Ether      : Ethernet
+[...]
+</code></pre>
 
 <h3 id="dissecting-protocols">Dissecting protocols</h3>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ls</span><span class="p">(</span><span class="n">IP</span><span class="p">)</span>
-<span class="n">version</span>    <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">ihl</span>        <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">tos</span>        <span class="p">:</span> <span class="n">XByteField</span>           <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">len</span>        <span class="p">:</span> <span class="n">ShortField</span>           <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<span class="nb">id</span>         <span class="p">:</span> <span class="n">ShortField</span>           <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">flags</span>      <span class="p">:</span> <span class="n">FlagsField</span>           <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">frag</span>       <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ttl</span>        <span class="p">:</span> <span class="n">ByteField</span>            <span class="o">=</span> <span class="p">(</span><span class="mi">64</span><span class="p">)</span>
-<span class="n">proto</span>      <span class="p">:</span> <span class="n">ByteEnumField</span>        <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">chksum</span>     <span class="p">:</span> <span class="n">XShortField</span>          <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">src</span>        <span class="p">:</span> <span class="n">Emph</span>                 <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">dst</span>        <span class="p">:</span> <span class="n">Emph</span>                 <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
-<span class="n">options</span>    <span class="p">:</span> <span class="n">PacketListField</span>      <span class="o">=</span> <span class="p">([])</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; ls(IP)
+version    : BitField             = (4)
+ihl        : BitField             = (None)
+tos        : XByteField           = (0)
+len        : ShortField           = (None)
+id         : ShortField           = (1)
+flags      : FlagsField           = (0)
+frag       : BitField             = (0)
+ttl        : ByteField            = (64)
+proto      : ByteEnumField        = (0)
+chksum     : XShortField          = (None)
+src        : Emph                 = (None)
+dst        : Emph                 = ('127.0.0.1')
+options    : PacketListField      = ([])
+</code></pre>
 
 <h3 id="list-of-all-the-scapy-commands">List of all the scapy commands</h3>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">lsc</span><span class="p">()</span>
-<span class="n">rdpcap</span>     <span class="p">:</span> <span class="n">Read</span> <span class="n">a</span> <span class="n">pcap</span> <span class="nb">file</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">a</span> <span class="n">packet</span> 
-<span class="n">send</span>       <span class="p">:</span> <span class="n">Send</span> <span class="n">packets</span> <span class="n">at</span> <span class="n">layer</span> <span class="mi">3</span>
-<span class="n">sendp</span>      <span class="p">:</span> <span class="n">Send</span> <span class="n">packets</span> <span class="n">at</span> <span class="n">layer</span> <span class="mi">2</span>
-<span class="n">sendpfast</span>  <span class="p">:</span> <span class="n">Send</span> <span class="n">packets</span> <span class="n">at</span> <span class="n">layer</span> <span class="mi">2</span> <span class="n">using</span> <span class="n">tcpreplay</span>
-<span class="p">[</span><span class="o">...</span><span class="p">]</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; lsc()
+rdpcap     : Read a pcap file and return a packet 
+send       : Send packets at layer 3
+sendp      : Send packets at layer 2
+sendpfast  : Send packets at layer 2 using tcpreplay
+[...]
+</code></pre>
 
 <h3 id="getting-help-on-any-function">Getting help on any function</h3>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="n">arpcachepoison</span><span class="p">)</span>
+<pre><code class="python">&gt;&gt;&gt; help(arpcachepoison)
 
-<span class="n">Help</span> <span class="n">on</span> <span class="n">function</span> <span class="n">arpcachepoison</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">scapy</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">l2</span><span class="p">:</span>
+Help on function arpcachepoison in module scapy.layers.l2:
 
-<span class="n">arpcachepoison</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">victim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
-    <span class="n">Poison</span> <span class="n">target</span><span class="s1">&#39;s cache with (your MAC,victim&#39;</span><span class="n">s</span> <span class="n">IP</span><span class="p">)</span> <span class="n">couple</span>
-    <span class="n">arpcachepoison</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">victim</span><span class="p">,</span> <span class="p">[</span><span class="n">interval</span><span class="o">=</span><span class="mi">60</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span>
+arpcachepoison(target, victim, interval=60)
+    Poison target's cache with (your MAC,victim's IP) couple
+    arpcachepoison(target, victim, [interval=60]) -&gt; None
 
-<span class="p">[</span><span class="o">...</span><span class="p">]</span>
-</pre></div>
-
+[...]
+</code></pre>
 
 <h3 id="change-scapy-configuration">Change Scapy configuration</h3>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">conf</span>
-<span class="n">iface</span>      <span class="o">=</span> <span class="s1">&#39;eth3&#39;</span>
-<span class="n">iface6</span>     <span class="o">=</span> <span class="s1">&#39;wlan0&#39;</span>
-<span class="n">wepkey</span>     <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="n">sniff_promisc</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="p">[</span><span class="o">...</span><span class="p">]</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; conf
+iface      = 'eth3'
+iface6     = 'wlan0'
+wepkey     = ''
+sniff_promisc = 1
+[...]
+</code></pre>
 
 <div class="admonition warning">
 <p class="admonition-title">Root Alert!</p>

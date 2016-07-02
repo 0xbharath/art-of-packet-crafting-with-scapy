@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -53,6 +53,13 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../index.html">Title</a>
+        
+    </li>
+<li>
           
             <li>
     <ul class="subnav">
@@ -269,12 +276,12 @@
           
             <li>
     <ul class="subnav">
-    <li><span>ScapyHunt</span></li>
+    <li><span>NetworkHunt CTF</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        <a class="" href="../scapyhunt/index.html">Network Hunt</a>
         
     </li>
 
@@ -307,7 +314,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html">The Art of Packet Crafting with Scapy!</a>
       </nav>
 
       
@@ -315,7 +322,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    <li><a href="../index.html">Docs</a> &raquo;</li>
     
       
         
@@ -351,34 +358,33 @@
 <li>Send an empty TCP packet with only SYN bit set.</li>
 <li>SYN/ACK or RST in response indicates that a machine is up and running.</li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="p">,</span><span class="n">unans</span><span class="o">=</span><span class="n">sr</span><span class="p">(</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;192.168.1.*&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">dport</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">flags</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span> <span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span> <span class="k">lambda</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">r</span><span class="p">)</span> <span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;%IP.src</span><span class="si">% i</span><span class="s2">s alive&quot;</span><span class="p">)</span> <span class="p">)</span>
-<span class="mf">192.168</span><span class="o">.</span><span class="mf">56.101</span> <span class="ow">is</span> <span class="n">alive</span><span class="err">!</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; ans,unans=sr( IP(dst=&quot;192.168.1.*&quot;)/TCP(dport=80,flags=&quot;S&quot;) )
+&gt;&gt;&gt; ans.summary( lambda(s,r) : r.sprintf(&quot;%IP.src% is alive&quot;) )
+192.168.56.101 is alive!
+</code></pre>
 
 <h3 id="tcp-ack-ping"><strong>TCP ACK Ping</strong></h3>
 <ul>
 <li>Send an empty TCP packet with only ACK bit set.</li>
 <li>Unsolicited ACK packets should be responded with RST which reveals a machine.</li>
-<li>SYN ping and ACK ping might seem redundant but most of the stateless firewalls won't filter unsolicited ACK packets so it's a better approach to use both ping tecnhiques.</li>
+<li>SYN ping and ACK ping might seem redundant but most of the stateless firewalls won&rsquo;t filter unsolicited ACK packets so it&rsquo;s a better approach to use both ping tecnhiques.</li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="p">,</span> <span class="n">unans</span> <span class="o">=</span> <span class="n">sr</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;192.168.56.99-105&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">dport</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
-<span class="n">Begin</span> <span class="n">emission</span><span class="p">:</span>
-<span class="n">Finished</span> <span class="n">to</span> <span class="n">send</span> <span class="mi">7</span> <span class="n">packets</span><span class="o">.</span>
-<span class="o">......................^</span><span class="n">C</span>
-<span class="n">Received</span> <span class="mi">25</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">1</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">6</span> <span class="n">packets</span>
-<span class="o">&gt;&gt;&gt;</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="k">lambda</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">r</span><span class="p">):</span> <span class="n">r</span><span class="o">.</span><span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;{IP: %IP.src</span><span class="si">% i</span><span class="s1">s alive}&#39;</span><span class="p">))</span>
- <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.101</span> <span class="ow">is</span> <span class="n">alive</span>
-<span class="o">&gt;&gt;&gt;</span> 
-</pre></div>
+<pre><code class="python">&gt;&gt;&gt; ans, unans = sr(IP(dst='192.168.56.99-105')/TCP(dport=80, flags='A'))
+Begin emission:
+Finished to send 7 packets.
+......................^C
+Received 25 packets, got 1 answers, remaining 6 packets
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ans.summary(lambda(s,r): r.sprintf('{IP: %IP.src% is alive}'))
+ 192.168.56.101 is alive
+&gt;&gt;&gt; 
 
+</code></pre>
 
 <h3 id="udp-ping"><strong>UDP Ping</strong></h3>
 <ul>
 <li>Send UDP packet to the given ports with or without payload, though protocol specific payload makes the scan more effective.</li>
-<li>Choose a port that's most likely closed(Open UDP ports might recieve empty packets but ignore them).</li>
+<li>Choose a port that&rsquo;s most likely closed(Open UDP ports might recieve empty packets but ignore them).</li>
 <li>ICMP port unreachable signifies that the machine is up.</li>
 </ul>
 <h3 id="ip-protocol-ping"><strong>IP Protocol ping</strong></h3>
@@ -392,23 +398,22 @@
 <li>Faster and reliable because it operates on Layer 2 by using only ARP.</li>
 <li>ARP is the backbone protocol for any Layer 2 communication so always employ ARP ping when discovering hosts on local network.<blockquote>
 <ul>
-<li>ARP doesn't exist in IPv6 standard. For the equivalent, use Neighbor Discovery Protocol techniques instead.</li>
+<li>ARP doesn&rsquo;t exist in IPv6 standard. For the equivalent, use Neighbor Discovery Protocol techniques instead.</li>
 </ul>
 </blockquote>
 </li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="p">,</span><span class="n">unans</span><span class="o">=</span><span class="n">srp</span><span class="p">(</span><span class="n">Ether</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;ff:ff:ff:ff:ff:ff&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">ARP</span><span class="p">(</span><span class="n">pdst</span><span class="o">=</span><span class="s2">&quot;192.168.56.0/24&quot;</span><span class="p">),</span><span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">Begin</span> <span class="n">emission</span><span class="p">:</span>
-<span class="o">**</span><span class="n">Finished</span> <span class="n">to</span> <span class="n">send</span> <span class="mi">256</span> <span class="n">packets</span><span class="o">.</span>
+<pre><code class="python">&gt;&gt;&gt; ans,unans=srp(Ether(dst=&quot;ff:ff:ff:ff:ff:ff&quot;)/ARP(pdst=&quot;192.168.56.0/24&quot;),timeout=2)
+Begin emission:
+**Finished to send 256 packets.
 
-<span class="n">Received</span> <span class="mi">2</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">2</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">254</span> <span class="n">packets</span>
-<span class="o">&gt;&gt;&gt;</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">r</span><span class="p">):</span> <span class="n">r</span><span class="o">.</span><span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%E</span><span class="s2">ther.src</span><span class="si">% %</span><span class="s2">ARP.psrc%&quot;</span><span class="p">)</span> <span class="p">)</span>
-<span class="mi">08</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">7</span><span class="n">b</span><span class="p">:</span><span class="mi">2</span><span class="n">a</span><span class="p">:</span><span class="n">a9</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.100</span>
-<span class="mi">08</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">86</span><span class="p">:</span><span class="mi">85</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.101</span>
-<span class="o">&gt;&gt;&gt;</span> 
-</pre></div>
-
+Received 2 packets, got 2 answers, remaining 254 packets
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ans.summary(lambda (s,r): r.sprintf(&quot;%Ether.src% %ARP.psrc%&quot;) )
+08:00:27:7b:2a:a9 192.168.56.100
+08:00:27:37:86:85 192.168.56.101
+&gt;&gt;&gt; 
+</code></pre>
 
 <h3 id="icmp-ping"><strong>ICMP Ping</strong></h3>
 <ul>
@@ -417,14 +422,15 @@
 <li>Unfortunately, <strong>many hosts and firewalls now block these packets</strong> so a basic ICMP scan is unreliable.</li>
 <li>ICMP also supports<strong> timestamp request(13), and address mask request(17)</strong> which can reveal the availabilty of a machine.</li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="p">,</span><span class="n">unans</span><span class="o">=</span><span class="n">sr</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;192.168.56.99-110&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">())</span>
-<span class="n">Begin</span> <span class="n">emission</span><span class="p">:</span>
-<span class="n">Finished</span> <span class="n">to</span> <span class="n">send</span> <span class="mi">12</span> <span class="n">packets</span><span class="o">.</span>
-<span class="n">Received</span> <span class="mi">170</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">1</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">11</span> <span class="n">packets</span>
-<span class="o">&gt;&gt;&gt;</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span> <span class="k">lambda</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">r</span><span class="p">)</span> <span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;{IP: %IP.src</span><span class="si">% i</span><span class="s2">s alive}&quot;</span><span class="p">)</span> <span class="p">)</span>
-<span class="mf">192.168</span><span class="o">.</span><span class="mf">56.101</span> <span class="ow">is</span> <span class="n">alive</span>
-</pre></div>
+<pre><code class="python">&gt;&gt;&gt; ans,unans=sr(IP(dst=&quot;192.168.56.99-110&quot;)/ICMP())
+Begin emission:
+Finished to send 12 packets.
+Received 170 packets, got 1 answers, remaining 11 packets
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ans.summary( lambda(s,r) : r.sprintf(&quot;{IP: %IP.src% is alive}&quot;) )
+192.168.56.101 is alive
+
+</code></pre>
               
             </div>
           </div>

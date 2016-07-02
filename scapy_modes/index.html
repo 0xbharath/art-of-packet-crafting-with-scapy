@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -53,6 +53,13 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../index.html">Title</a>
+        
+    </li>
+<li>
           
             <li>
     <ul class="subnav">
@@ -260,12 +267,12 @@
           
             <li>
     <ul class="subnav">
-    <li><span>ScapyHunt</span></li>
+    <li><span>NetworkHunt CTF</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        <a class="" href="../scapyhunt/index.html">Network Hunt</a>
         
     </li>
 
@@ -298,7 +305,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html">The Art of Packet Crafting with Scapy!</a>
       </nav>
 
       
@@ -306,7 +313,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    <li><a href="../index.html">Docs</a> &raquo;</li>
     
       
         
@@ -331,31 +338,30 @@
                 <h2 id="scapy-interactive-mode">Scapy - Interactive mode</h2>
 <ul>
 <li>Just run <code>scapy</code> command in your terminal. You will be presented with an interactive interpreter.</li>
-<li>It's just a Python interpreter disguised as a Domain Specific Language i.e. python interpreter loaded with scapy classes and objects.</li>
+<li>It&rsquo;s just a Python interpreter disguised as a Domain Specific Language i.e. python interpreter loaded with scapy classes and objects.</li>
 <li>Scapy in interactive mode suits well for one-liners.</li>
 </ul>
-<div class="code"><pre><span></span><span class="n">verax</span><span class="nd">@humla</span> <span class="o">~/</span><span class="n">humla</span> <span class="err">$</span> <span class="n">scapy</span>
-<span class="n">Welcome</span> <span class="n">to</span> <span class="n">Scapy</span> <span class="p">(</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> 
-<span class="o">&gt;&gt;&gt;</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">sniff</span><span class="p">()</span>
-<span class="o">^</span><span class="n">C</span><span class="o">&lt;</span><span class="n">Sniffed</span><span class="p">:</span> <span class="n">TCP</span><span class="p">:</span><span class="mi">281</span> <span class="n">UDP</span><span class="p">:</span><span class="mi">0</span> <span class="n">ICMP</span><span class="p">:</span><span class="mi">0</span> <span class="n">Other</span><span class="p">:</span><span class="mi">2</span><span class="o">&gt;</span>
-<span class="o">&gt;&gt;&gt;</span>
-</pre></div>
-
+<pre><code class="python">verax@humla ~/humla $ scapy
+Welcome to Scapy (2.3.1)
+&gt;&gt;&gt; 
+&gt;&gt;&gt; 
+&gt;&gt;&gt; sniff()
+^C&lt;Sniffed: TCP:281 UDP:0 ICMP:0 Other:2&gt;
+&gt;&gt;&gt;
+</code></pre>
 
 <h2 id="importing-scapy-as-a-module">Importing Scapy as a module</h2>
 <ul>
 <li>Scapy can be imported as an externam module into any python scipt.</li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">()</span>
-<span class="p">[</span><span class="s1">&#39;AES&#39;</span><span class="p">,</span> <span class="s1">&#39;AH&#39;</span><span class="p">,</span> <span class="s1">&#39;ARC2&#39;</span><span class="p">,</span> <span class="s1">&#39;ARC4&#39;</span><span class="p">,</span> <span class="s1">&#39;ARP&#39;</span><span class="p">,</span> <span class="s1">&#39;ARPHDR_ETHER&#39;</span><span class="p">,</span> <span class="s1">&#39;ARPHDR_LOOPBACK&#39;</span><span class="p">,</span> <span class="s1">&#39;ARPHDR_METRICOM&#39;</span>   <span class="p">[</span><span class="o">...</span><span class="n">snipped</span><span class="o">...</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">IP</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">scapy</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">inet</span><span class="o">.</span><span class="n">IP</span><span class="s1">&#39;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">TCP</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">scapy</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">inet</span><span class="o">.</span><span class="n">TCP</span><span class="s1">&#39;&gt;</span>
-</pre></div>
+<pre><code class="python">&gt;&gt;&gt; from scapy.all import *
+&gt;&gt;&gt; dir()
+['AES', 'AH', 'ARC2', 'ARC4', 'ARP', 'ARPHDR_ETHER', 'ARPHDR_LOOPBACK', 'ARPHDR_METRICOM'   [...snipped...]
+&gt;&gt;&gt; IP
+&lt;class 'scapy.layers.inet.IP'&gt;
+&gt;&gt;&gt; TCP
+&lt;class 'scapy.layers.inet.TCP'&gt;
+</code></pre>
               
             </div>
           </div>

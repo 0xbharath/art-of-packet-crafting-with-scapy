@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -53,6 +53,13 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../index.html">Title</a>
+        
+    </li>
+<li>
           
             <li>
     <ul class="subnav">
@@ -265,12 +272,12 @@
           
             <li>
     <ul class="subnav">
-    <li><span>ScapyHunt</span></li>
+    <li><span>NetworkHunt CTF</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        <a class="" href="../scapyhunt/index.html">Network Hunt</a>
         
     </li>
 
@@ -303,7 +310,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html">The Art of Packet Crafting with Scapy!</a>
       </nav>
 
       
@@ -311,7 +318,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    <li><a href="../index.html">Docs</a> &raquo;</li>
     
       
         
@@ -342,19 +349,17 @@
 <p>Unlike Monitor mode, in promisc mode the listener has to be connected to the network.</p>
 </li>
 <li>
-<p>Some tools that use promiscuous mode - Wireshark, Tcpdump, Aircrack-ng, cain and abel, Snort, Virtualbox...</p>
+<p>Some tools that use promiscuous mode - Wireshark, Tcpdump, Aircrack-ng, cain and abel, Snort, Virtualbox&hellip;</p>
 </li>
-<li>Extremely effective because of it's passive nature.</li>
+<li>Extremely effective because of it&rsquo;s passive nature.</li>
 </ul>
 <p>Enable promiscuous mode:</p>
-<div class="code"><pre><span></span>$ sudo ifconfig &lt;iface&gt; promisc   
-</pre></div>
-
+<pre><code class="bash">$ sudo ifconfig &lt;iface&gt; promisc   
+</code></pre>
 
 <p>Disable promiscuous mode:</p>
-<div class="code"><pre><span></span>$ sudo ifconfig &lt;iface&gt; -promisc   
-</pre></div>
-
+<pre><code class="bash">$ sudo ifconfig &lt;iface&gt; -promisc   
+</code></pre>
 
 <p><br></p>
 <h2 id="detecting-promisc-node-the-idea"><strong> Detecting promisc node -  The idea:</strong></h2>
@@ -381,15 +386,15 @@
 <p><img alt="" src="../home/verax/Downloads/tapcs_notes/images/arp-request.png" /> 
 <img alt="" src="../home/verax/Downloads/tapcs_notes/images/arp-reply.png" /> </p>
 <h2 id="hardware-filter">Hardware filter</h2>
-<p>Normally,  NIC of a machine filters and accepts only packets that have destination address set to the NIC's own hardware address, broadcast address (FF FF FF FF FF FF), and multicast address 1(01 00 5E 00 00 01). Let's call this a hardware filter.
+<p>Normally,  NIC of a machine filters and accepts only packets that have destination address set to the NIC&rsquo;s own hardware address, broadcast address (FF FF FF FF FF FF), and multicast address 1(01 00 5E 00 00 01). Let&rsquo;s call this a hardware filter.
 But in promiscuous mode NIC is set to accept every packet that it recieves.</p>
 <ul>
 <li>Should be easy to find promisc nodes, right?
 Just send packet that is supposed to be filtered by normal mode hardware filter, only a promisc node would pass it to kernel and respond to that.</li>
-<li>Let's try: <strong>00:00:00:00:00:01</strong>. What happens??</li>
+<li>Let&rsquo;s try: <strong>00:00:00:00:00:01</strong>. What happens??</li>
 </ul>
 <h2 id="software-filter">Software Filter</h2>
-<p>Operating system kernels implement a filter, let's call it <strong>software filter</strong>.
+<p>Operating system kernels implement a filter, let&rsquo;s call it <strong>software filter</strong>.
 Even though a packet passes through hardware filter, kernel is implementing another filter.</p>
 <h4 id="hardware-filter-vs-software-filter">Hardware filter vs Software filter</h4>
 <p>The hardware filter usually blocks packets that are not supposed to arrive to the system kernel. </p>
@@ -404,7 +409,7 @@ b. Should be able to pass the software filter.<br></p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../scapyhunt/index.html" class="btn btn-neutral float-right" title="Scapy Hunt">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../scapyhunt/index.html" class="btn btn-neutral float-right" title="Network Hunt">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../os_detection/index.html" class="btn btn-neutral" title="OS detection"><span class="icon icon-circle-arrow-left"></span> Previous</a>

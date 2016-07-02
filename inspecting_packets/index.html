@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -53,6 +53,13 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../index.html">Title</a>
+        
+    </li>
+<li>
           
             <li>
     <ul class="subnav">
@@ -261,12 +268,12 @@
           
             <li>
     <ul class="subnav">
-    <li><span>ScapyHunt</span></li>
+    <li><span>NetworkHunt CTF</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        <a class="" href="../scapyhunt/index.html">Network Hunt</a>
         
     </li>
 
@@ -299,7 +306,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html">The Art of Packet Crafting with Scapy!</a>
       </nav>
 
       
@@ -307,7 +314,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    <li><a href="../index.html">Docs</a> &raquo;</li>
     
       
         
@@ -331,106 +338,98 @@
               
                 <h1 id="inspecting-packets">Inspecting packets</h1>
 <p><strong>Get detailed description of the packet along with datatypes</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span> <span class="o">=</span> <span class="n">IP</span><span class="p">()</span><span class="o">/</span><span class="n">TCP</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ls</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
-<span class="n">version</span>    <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="mi">4</span>               <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">ihl</span>        <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="bp">None</span>            <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">tos</span>        <span class="p">:</span> <span class="n">XByteField</span>           <span class="o">=</span> <span class="mi">0</span>               <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">len</span>        <span class="p">:</span> <span class="n">ShortField</span>           <span class="o">=</span> <span class="bp">None</span>            <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<span class="nb">id</span>         <span class="p">:</span> <span class="n">ShortField</span>           <span class="o">=</span> <span class="mi">1</span>               <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">flags</span>      <span class="p">:</span> <span class="n">FlagsField</span>           <span class="o">=</span> <span class="mi">0</span>               <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">frag</span>       <span class="p">:</span> <span class="n">BitField</span>             <span class="o">=</span> <span class="mi">0</span>               <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ttl</span>        <span class="p">:</span> <span class="n">ByteField</span>            <span class="o">=</span> <span class="mi">64</span>              <span class="p">(</span><span class="mi">64</span><span class="p">)</span>
-<span class="n">proto</span>      <span class="p">:</span> <span class="n">ByteEnumField</span>        <span class="o">=</span> <span class="mi">6</span>               <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">chksum</span>     <span class="p">:</span> <span class="n">XShortField</span>          <span class="o">=</span> <span class="bp">None</span>            <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">src</span>        <span class="p">:</span> <span class="n">Emph</span>                 <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>     <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">dst</span>        <span class="p">:</span> <span class="n">Emph</span>                 <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>     <span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
-<span class="n">options</span>    <span class="p">:</span> <span class="n">PacketListField</span>      <span class="o">=</span> <span class="p">[]</span>              <span class="p">([])</span>
-<span class="p">[</span><span class="o">--</span> <span class="n">snipped</span> <span class="o">--</span><span class="p">]</span>
-</pre></div>
+<pre><code class="python">&gt;&gt;&gt; packet = IP()/TCP()
+&gt;&gt;&gt; ls(packet)
+version    : BitField             = 4               (4)
+ihl        : BitField             = None            (None)
+tos        : XByteField           = 0               (0)
+len        : ShortField           = None            (None)
+id         : ShortField           = 1               (1)
+flags      : FlagsField           = 0               (0)
+frag       : BitField             = 0               (0)
+ttl        : ByteField            = 64              (64)
+proto      : ByteEnumField        = 6               (0)
+chksum     : XShortField          = None            (None)
+src        : Emph                 = '127.0.0.1'     (None)
+dst        : Emph                 = '127.0.0.1'     ('127.0.0.1')
+options    : PacketListField      = []              ([])
+[-- snipped --]
 
+</code></pre>
 
 <p><br></p>
 <p><strong>Display short  &amp; interesting summary of a packet.</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-<span class="s1">&#39;Ether / IP / TCP 192.168.1.100:ftp_data &gt; 8.8.8.8:domain S&#39;</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; packet.summary()
+'Ether / IP / TCP 192.168.1.100:ftp_data &gt; 8.8.8.8:domain S'
+</code></pre>
 
 <p><br></p>
 <p><strong>Show() function displays detailed headers but <em>does not assemble</em> the packet</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="c1">###[ IP ]###</span>
-  <span class="n">version</span><span class="o">=</span> <span class="mi">4</span>
-  <span class="n">ihl</span><span class="o">=</span> <span class="bp">None</span>
-  <span class="nb">len</span><span class="o">=</span> <span class="bp">None</span>
-  <span class="p">[</span><span class="o">...</span><span class="p">]</span>
-  <span class="n">proto</span><span class="o">=</span> <span class="n">hopopt</span>
-  <span class="n">chksum</span><span class="o">=</span> <span class="bp">None</span>
-  <span class="n">src</span><span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.100</span>
-  <span class="n">dst</span><span class="o">=</span> <span class="n">Net</span><span class="p">(</span><span class="s1">&#39;8.8.8.8/30&#39;</span><span class="p">)</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; packet.show()
+###[ IP ]###
+  version= 4
+  ihl= None
+  len= None
+  [...]
+  proto= hopopt
+  chksum= None
+  src= 192.168.1.100
+  dst= Net('8.8.8.8/30')
+</code></pre>
 
 <p><br>
 <strong>Show2() is similar to show() but also assembles
 the packet and calculates the checksums and IHL.</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="o">.</span><span class="n">show2</span><span class="p">()</span>
-<span class="c1">###[ IP ]###</span>
-  <span class="n">version</span><span class="o">=</span> <span class="il">4L</span>
-  <span class="n">ihl</span><span class="o">=</span> <span class="il">5L</span>
-  <span class="p">[</span><span class="o">...</span><span class="p">]</span>
-  <span class="n">ttl</span><span class="o">=</span> <span class="mi">64</span>
-  <span class="n">proto</span><span class="o">=</span> <span class="n">hopopt</span>
-  <span class="n">chksum</span><span class="o">=</span> <span class="mh">0xa8cd</span>
-  <span class="n">src</span><span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.100</span>
-  <span class="n">dst</span><span class="o">=</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span>
+<pre><code class="python">&gt;&gt;&gt; packet.show2()
+###[ IP ]###
+  version= 4L
+  ihl= 5L
+  [...]
+  ttl= 64
+  proto= hopopt
+  chksum= 0xa8cd
+  src= 192.168.1.100
+  dst= 8.8.8.8
 
-<span class="c1">### ** Get only the values supplied by the user.</span>
-</pre></div>
-
+### ** Get only the values supplied by the user.
+</code></pre>
 
 <p><br>
 <strong>Get only user supplied values</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">hide_defaults</span><span class="p">(</span> <span class="p">)</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; b.hide_defaults( )
+</code></pre>
 
 <p><br></p>
 <h3 id="interacting-with-fields-inside-packet">Interacting with fields inside packet</h3>
 <p><strong>To access a specific field: [packet_name].[field]</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="o">.</span><span class="n">dst</span>
-<span class="s1">&#39;d8:55:a3:fe:80:78&#39;</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; packet.dst
+'d8:55:a3:fe:80:78'
+</code></pre>
 
 <p><br>
 <strong>For fields that are not unique [packet_name][proto].[field]</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="p">[</span><span class="n">Ether</span><span class="p">]</span><span class="o">.</span><span class="n">dst</span>
-<span class="s1">&#39;d8:55:a3:fe:80:78&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="p">[</span><span class="n">IP</span><span class="p">]</span><span class="o">.</span><span class="n">dst</span>
-<span class="s1">&#39;8.8.8.8&#39;</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; packet[Ether].dst
+'d8:55:a3:fe:80:78'
+&gt;&gt;&gt; packet[IP].dst
+'8.8.8.8'
+</code></pre>
 
 <p><br>
 <strong><code>.payload</code> ignores the lowest layer and parses the next layer.</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">flags</span>
-<span class="mi">0</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">flags</span>
-<span class="mi">2</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; packet.payload.flags
+0
+&gt;&gt;&gt; packet.payload.payload.flags
+2
+</code></pre>
 
 <p><br>
 <strong><code>.haslayer</code> checks for presence of a layer in a packet</strong></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">packet</span><span class="o">.</span><span class="n">haslayer</span><span class="p">(</span><span class="n">TCP</span><span class="p">):</span>
-<span class="o">...</span>     <span class="k">print</span> <span class="n">packet</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">flags</span>
-<span class="o">...</span> 
-<span class="mi">2</span>
-<span class="o">&gt;&gt;&gt;</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; if packet.haslayer(TCP):
+...     print packet[TCP].flags
+... 
+2
+&gt;&gt;&gt;
+</code></pre>
 
 <p><br></p>
 <h2 id="scapy-sprintf-pythons-format">Scapy sprintf() &amp; Python’s .format()</h2>
@@ -439,18 +438,17 @@ the packet and calculates the checksums and IHL.</strong></p>
 <li>Very handy while writing custom tools.
 <br></li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span><span class="o">.</span><span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;Ethernet source is </span><span class="si">%E</span><span class="s2">ther.src% and IP proto is %IP.proto%&quot;</span><span class="p">)</span>
-<span class="s1">&#39;Ethernet source is 00:00:00:00:00:00 and IP proto is icmp&#39;</span>
-</pre></div>
+<pre><code class="python">&gt;&gt;&gt; packet.sprintf(&quot;Ethernet source is %Ether.src% and IP proto is %IP.proto%&quot;)
+'Ethernet source is 00:00:00:00:00:00 and IP proto is icmp'
 
+</code></pre>
 
 <p><br>
 - Python string format method generates beautiful output but unlike sprintf it prints literal values.
 <br></p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;Ether source is: {} &amp; IP proto is: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">packet</span><span class="o">.</span><span class="n">src</span><span class="p">,</span> <span class="n">packet</span><span class="o">.</span><span class="n">proto</span><span class="p">)</span>
-<span class="s1">&#39;Ether source is: 00:00:00:00:00:00 &amp; IP proto is: 1&#39;</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; &quot;Ether source is: {} &amp; IP proto is: {}&quot;.format(packet.src, packet.proto)
+'Ether source is: 00:00:00:00:00:00 &amp; IP proto is: 1'
+</code></pre>
 
 <p><br></p>
               

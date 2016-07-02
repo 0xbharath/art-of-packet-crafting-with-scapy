@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -53,6 +53,13 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../index.html">Title</a>
+        
+    </li>
+<li>
           
             <li>
     <ul class="subnav">
@@ -267,12 +274,12 @@
           
             <li>
     <ul class="subnav">
-    <li><span>ScapyHunt</span></li>
+    <li><span>NetworkHunt CTF</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        <a class="" href="../scapyhunt/index.html">Network Hunt</a>
         
     </li>
 
@@ -305,7 +312,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html">The Art of Packet Crafting with Scapy!</a>
       </nav>
 
       
@@ -313,7 +320,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    <li><a href="../index.html">Docs</a> &raquo;</li>
     
       
         
@@ -337,7 +344,7 @@
               
                 <h1 id="sending-recieving-packets">Sending &amp; recieving packets</h1>
 <ul>
-<li>Send &amp; recieve funtions are the heart of scapy's functionality.</li>
+<li>Send &amp; recieve funtions are the heart of scapy&rsquo;s functionality.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Fine grained options</p>
@@ -345,40 +352,37 @@
 </div>
 <h2 id="send">send()</h2>
 <p>Send packets at Layer 3(Scapy creates Layer 2 header), Does not recieve any packets.</p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">send</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;1.2.3.4&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">())</span>
-<span class="o">.</span>
-<span class="n">Sent</span> <span class="mi">1</span> <span class="n">packets</span><span class="o">.</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; send(IP(dst=&quot;1.2.3.4&quot;)/ICMP())
+.
+Sent 1 packets.
+</code></pre>
 
 <h2 id="sendp">sendp()</h2>
 <p>Send packets at Layer 2(Must provide Layer 2 header), Does not recieve any packets.</p>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">sendp</span><span class="p">(</span><span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;1.2.3.4&quot;</span><span class="p">,</span><span class="n">ttl</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span> <span class="n">iface</span><span class="o">=</span><span class="s2">&quot;eth1&quot;</span><span class="p">)</span>
-<span class="o">....</span>
-<span class="n">Sent</span> <span class="mi">4</span> <span class="n">packets</span><span class="o">.</span>
+<pre><code class="python">&gt;&gt;&gt; sendp(Ether()/IP(dst=&quot;1.2.3.4&quot;,ttl=(1,4)), iface=&quot;eth1&quot;)
+....
+Sent 4 packets.
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">sendp</span><span class="p">(</span><span class="s2">&quot;I’m travelling on Ethernet&quot;</span><span class="p">,</span> <span class="n">iface</span><span class="o">=</span><span class="s2">&quot;eth1&quot;</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inter</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+&gt;&gt;&gt; sendp(&quot;I’m travelling on Ethernet&quot;, iface=&quot;eth1&quot;, loop=1, inter=0.2)
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">sendp</span><span class="p">(</span><span class="n">rdpcap</span><span class="p">(</span><span class="s2">&quot;/tmp/pcapfile&quot;</span><span class="p">))</span> <span class="c1"># tcpreplay</span>
-<span class="o">...........</span>
-<span class="n">Sent</span> <span class="mi">11</span> <span class="n">packets</span><span class="o">.</span>
-</pre></div>
-
+&gt;&gt;&gt; sendp(rdpcap(&quot;/tmp/pcapfile&quot;)) # tcpreplay
+...........
+Sent 11 packets.
+</code></pre>
 
 <h2 id="sr">sr()</h2>
 <ul>
 <li>Sends packets and receiving answers. </li>
 <li>sr() returns a list of tuples of probe and answer in a packet list, and the unanswered packets.</li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">sr</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;192.168.8.1&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">dport</span><span class="o">=</span><span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">]))</span>
+<pre><code class="python">&gt;&gt;&gt; sr(IP(dst=&quot;192.168.8.1&quot;)/TCP(dport=[21,22,23]))
 
-<span class="n">Received</span> <span class="mi">6</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">3</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">0</span> <span class="n">packets</span>
-<span class="p">(</span><span class="o">&lt;</span><span class="n">Results</span><span class="p">:</span> <span class="n">UDP</span><span class="p">:</span><span class="mi">0</span> <span class="n">TCP</span><span class="p">:</span><span class="mi">3</span> <span class="n">ICMP</span><span class="p">:</span><span class="mi">0</span> <span class="n">Other</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Unanswered</span><span class="p">:</span> <span class="n">UDP</span><span class="p">:</span><span class="mi">0</span>
+Received 6 packets, got 3 answers, remaining 0 packets
+(&lt;Results: UDP:0 TCP:3 ICMP:0 Other:0&gt;, &lt;Unanswered: UDP:0
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="p">,</span><span class="n">unans</span><span class="o">=</span><span class="n">_</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-
+&gt;&gt;&gt; ans,unans=_
+&gt;&gt;&gt; ans.summary()
+</code></pre>
 
 <p align = 'center'>
 <img alt='sr_onevar' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../img/onevar.png'>
@@ -393,28 +397,27 @@
 <li>Sends packets and recieves only the first response . </li>
 <li>The function returns a couple of packet and answers, and the unanswered packets.</li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">=</span><span class="n">sr1</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;scanme.nmap.org&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">()</span><span class="o">/</span><span class="s2">&quot;XXXXXXXXXXX&quot;</span><span class="p">)</span>
-<span class="n">Begin</span> <span class="n">emission</span><span class="p">:</span>
-<span class="o">...</span><span class="n">Finished</span> <span class="n">to</span> <span class="n">send</span> <span class="mi">1</span> <span class="n">packets</span><span class="o">.</span>
-<span class="o">.*</span>
-<span class="n">Received</span> <span class="mi">5</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">1</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">0</span> <span class="n">packets</span>
-</pre></div>
-
+<pre><code class="python">&gt;&gt;&gt; p=sr1(IP(dst=&quot;scanme.nmap.org&quot;)/ICMP()/&quot;XXXXXXXXXXX&quot;)
+Begin emission:
+...Finished to send 1 packets.
+.*
+Received 5 packets, got 1 answers, remaining 0 packets
+</code></pre>
 
 <h2 id="srloop">srloop()</h2>
 <ul>
 <li>Sends packets, recieves and displays responses, in a loop . </li>
 <li>The function returns a couple of packet and answers, and the unanswered</li>
 </ul>
-<div class="code"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">packet</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;192.168.56.102&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">srloop</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
-<span class="n">RECV</span> <span class="mi">1</span><span class="p">:</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">ICMP</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.102</span> <span class="o">&gt;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.1</span> <span class="n">echo</span><span class="o">-</span><span class="n">reply</span> <span class="mi">0</span>
-<span class="n">RECV</span> <span class="mi">1</span><span class="p">:</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">ICMP</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.102</span> <span class="o">&gt;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.1</span> <span class="n">echo</span><span class="o">-</span><span class="n">reply</span> <span class="mi">0</span>
-<span class="n">RECV</span> <span class="mi">1</span><span class="p">:</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">ICMP</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.102</span> <span class="o">&gt;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.1</span> <span class="n">echo</span><span class="o">-</span><span class="n">reply</span> <span class="mi">0</span>
-<span class="o">^</span><span class="n">C</span>        
-<span class="n">Sent</span> <span class="mi">3</span> <span class="n">packets</span><span class="p">,</span> <span class="n">received</span> <span class="mi">3</span> <span class="n">packets</span><span class="o">.</span> <span class="mf">100.0</span><span class="o">%</span> <span class="n">hits</span><span class="o">.</span>
-<span class="p">(</span><span class="o">&lt;</span><span class="n">Results</span><span class="p">:</span> <span class="n">TCP</span><span class="p">:</span><span class="mi">0</span> <span class="n">UDP</span><span class="p">:</span><span class="mi">0</span> <span class="n">ICMP</span><span class="p">:</span><span class="mi">3</span> <span class="n">Other</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">PacketList</span><span class="p">:</span> <span class="n">TCP</span><span class="p">:</span><span class="mi">0</span> <span class="n">UDP</span><span class="p">:</span><span class="mi">0</span> <span class="n">ICMP</span><span class="p">:</span><span class="mi">0</span> <span class="n">Other</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">)</span>
-</pre></div>
+<pre><code class="python">&gt;&gt;&gt; packet = IP(dst='192.168.56.102')/ICMP()
+&gt;&gt;&gt; srloop(packet)
+RECV 1: IP / ICMP 192.168.56.102 &gt; 192.168.56.1 echo-reply 0
+RECV 1: IP / ICMP 192.168.56.102 &gt; 192.168.56.1 echo-reply 0
+RECV 1: IP / ICMP 192.168.56.102 &gt; 192.168.56.1 echo-reply 0
+^C        
+Sent 3 packets, received 3 packets. 100.0% hits.
+(&lt;Results: TCP:0 UDP:0 ICMP:3 Other:0&gt;, &lt;PacketList: TCP:0 UDP:0 ICMP:0 Other:0&gt;)
+</code></pre>
               
             </div>
           </div>

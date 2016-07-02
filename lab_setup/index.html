@@ -43,7 +43,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../license/index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -53,6 +53,13 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../index.html">Title</a>
+        
+    </li>
+<li>
           
             <li>
     <ul class="subnav">
@@ -263,12 +270,12 @@
           
             <li>
     <ul class="subnav">
-    <li><span>ScapyHunt</span></li>
+    <li><span>NetworkHunt CTF</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scapyhunt/index.html">Scapy Hunt</a>
+        <a class="" href="../scapyhunt/index.html">Network Hunt</a>
         
     </li>
 
@@ -301,7 +308,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../license/index.html">The Art of Packet Crafting with Scapy!</a>
+        <a href="../index.html">The Art of Packet Crafting with Scapy!</a>
       </nav>
 
       
@@ -309,7 +316,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../license/index.html">Docs</a> &raquo;</li>
+    <li><a href="../index.html">Docs</a> &raquo;</li>
     
       
         
@@ -343,11 +350,11 @@
 </ul>
 <h2 id="vagrant">Vagrant</h2>
 <ul>
-<li>Builds on top of traditional virtualization software(Virtualbox, VMware, AWS...).</li>
+<li>Builds on top of traditional virtualization software(Virtualbox, VMware, AWS&hellip;).</li>
 <li>Focused on saving environment setup time, disposability.</li>
 <li>One command to setup complete environment i.e. create VM, modify properties, configure networking, provide provisiong.</li>
 <li>Whole environment is built based on one configuration file , which allows version control.</li>
-<li>Supports provisioning through shell scripts, chef, puppet...</li>
+<li>Supports provisioning through shell scripts, chef, puppet&hellip;</li>
 <li>Provides SSH to communcate with the host.</li>
 </ul>
 <div class="admonition note">
@@ -368,26 +375,23 @@
 </ul>
 <h3 id="step-ii-modify-environmental-variables">Step II - Modify Environmental Variables</h3>
 <ul>
-<li>Change default <code>VAGRANT_HOME</code> envi' variable to point to the newly provided <code>.vagrant.d</code> folder(where your virtual boxes are).</li>
+<li>Change default <code>VAGRANT_HOME</code> envi&rsquo; variable to point to the newly provided <code>.vagrant.d</code> folder(where your virtual boxes are).</li>
 </ul>
 <p><strong>Linux - BASH</strong></p>
-<div class="code"><pre><span></span><span class="nv">$nano</span> ~/.bashrc
-<span class="c1">#add the following line at the bottom of the .bashrc file:</span>
-<span class="nb">export</span> <span class="nv">VAGRANT_HOME</span><span class="o">=</span><span class="s2">&quot;/PATH/TO/.vagrant.d&quot;</span> 
-</pre></div>
-
+<pre><code class="bash">$nano ~/.bashrc
+#add the following line at the bottom of the .bashrc file:
+export VAGRANT_HOME=&quot;/PATH/TO/.vagrant.d&quot; 
+</code></pre>
 
 <p><br>
 For more on linux environmental variables <a href="http://unix.stackexchange.com/questions/117467/how-to-permanently-set-environmental-variables">How to set environmental variables on linux/unix</a> </p>
 <p><strong>WINDOWS - CMD</strong></p>
-<div class="code"><pre><span></span>setx VAGRANT_HOME <span class="s2">&quot;X:/your/path&quot;</span>
-</pre></div>
-
+<pre><code class="bash">setx VAGRANT_HOME &quot;X:/your/path&quot;
+</code></pre>
 
 <p><strong>WINDOWS - Powershell</strong></p>
-<div class="code"><pre><span></span>cmd /c setx VAGRANT_HOME <span class="s2">&quot;X:/your/path/&quot;</span>
-</pre></div>
-
+<pre><code class="bash">cmd /c setx VAGRANT_HOME &quot;X:/your/path/&quot;
+</code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Windows - Enviroment variables</p>
@@ -402,8 +406,8 @@ For more on linux environmental variables <a href="http://unix.stackexchange.com
 <p><strong>Linux</strong></p>
 <p>On Linux there is an SSH client by default. You can simply SSH into the attacker box from host by running <code>vagrant ssh</code> from mysterious_boxes directory(where you VagrantFile is).
 <br></p>
-<p><strong>"Windows"</strong><br>
--- TBD --</p>
+<p><strong>&ldquo;Windows&rdquo;</strong><br>
+&ndash; TBD &ndash;</p>
               
             </div>
           </div>
