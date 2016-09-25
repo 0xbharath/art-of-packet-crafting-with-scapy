@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>Network Hunt - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Network Hunt";
+    var mkdocs_page_input_path = "exercises/network_hunt.md";
+    var mkdocs_page_url = "/exercises/network_hunt/index.html";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../index.html">The Art of Packet Crafting with Scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/disclaimer/index.html">Disclaimer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Lab setup</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/lab_setup/index.html">Mysterious boxes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../python/python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/import_export/index.html">Import & Export data</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Network recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/traceroute/index.html">Traceroute</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Wireless recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../wireless/wireless_recon/index.html">802.11</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Misc libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/netaddr/index.html">netaddr</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/netifaces/index.html">netifaces</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Exercises</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../misc_exercises/index.html">Misc exercises</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Network Hunt</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#lets-go-network-hunting">Let's go Network hunting!</a></li>
+                
+                    <li><a class="toctree-l4" href="#trivia">Trivia</a></li>
+                
+                    <li><a class="toctree-l4" href="#the-goal">The Goal</a></li>
+                
+                    <li><a class="toctree-l4" href="#tools">Tools</a></li>
+                
+                    <li><a class="toctree-l4" href="#concepts">Concepts</a></li>
+                
+                    <li><a class="toctree-l4" href="#tasks">TASKS</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/moving_forward/index.html">Moving forward</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Exercises &raquo;</li>
+        
+      
+    
+    <li>Network Hunt</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="lets-go-network-hunting">Let&rsquo;s go Network hunting!</h1>
+<h2 id="trivia">Trivia</h2>
+<ul>
+<li>
+<p>Terminal-based game in which you will use common network attack vectors and penetration testing methods to analyze and compromise a virtual network.</p>
+</li>
+<li>
+<p>Involves Network Security challenges designed to educate users on packet manipulation and common network attacks.</p>
+</li>
+<li>
+<p>The whole challenge happens over sort of a software defined network(SDN).</p>
+</li>
+<li>
+<p>Originally created by James Sullivan(MIT License), modified by us for a workshop setting.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Network Hunt</p>
+<ul>
+<li>The network hunt is a simple Software Defined Network </li>
+<li>The network is completely defined by handcrafted packets using scapy/python which simulates a typical network setup.</li>
+</ul>
+</div>
+<h2 id="the-goal">The Goal</h2>
+<p>There is an FTP server somewhere on the network containing a document:</p>
+<ul>
+<li>Locate the FTP server</li>
+<li>Connect to the service &amp;</li>
+<li>Retrieve the file!</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>scapy</li>
+<li><del>nmap</li>
+<li>wireshark or maybe <del>wireshark</li>
+<li>telnet/nc</li>
+<li><del>dsniff</li>
+</ul>
+<h2 id="concepts">Concepts</h2>
+<ul>
+<li>Bash terminal-fu</li>
+<li>Packet capture and manipulation in scapy</li>
+<li>Packet analysis in wireshark</li>
+<li>Router modes of operation</li>
+<li>Network topography, gateways</li>
+<li>Basic telnet/nc commands</li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hints</p>
+<ul>
+<li>You may need to find a way to see all of the traffic on the network.<br></li>
+<li>Other clients on the network might give you useful clues, if you can coerce them.<br></li>
+<li>The target will most likely be isolated from the immediate local network, and will have some preferred clients.</li>
+</ul>
+</div>
+<h2 id="tasks">TASKS</h2>
+<h3 id="task-i">TASK - I</h3>
+<p>Run the script &amp; find the details about the interface.</p>
+<h3 id="task-ii">TASK - II</h3>
+<p>Understand the Network.</p>
+<ul>
+<li>Is there any traffic on the network?</li>
+<li>Are there devices connected to the network?</li>
+</ul>
+<h3 id="task-iii">TASK - III</h3>
+<ul>
+<li>How to gain access to traffic beyond a network domain?</li>
+<li>The nature of layer 2 switches.</li>
+</ul>
+<p>Scapy tips:<br>
+- RandMAC() - Generates random MAC addresses.<br>
+- RandIP() - Generates random IP addresses. </p>
+<h3 id="task-iv">TASK - IV</h3>
+<h3 id="task-v">TASK - V</h3>
+<h3 id="task-vi">TASK - VI</h3>
+<h3 id="task-viii">TASK - VIII</h3>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../epilogue/moving_forward/index.html" class="btn btn-neutral float-right" title="Moving forward">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../misc_exercises/index.html" class="btn btn-neutral" title="Misc exercises"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../misc_exercises/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../epilogue/moving_forward/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

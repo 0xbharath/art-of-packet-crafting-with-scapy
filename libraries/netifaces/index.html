@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>netifaces - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "netifaces";
+    var mkdocs_page_input_path = "libraries/netifaces.md";
+    var mkdocs_page_url = "/libraries/netifaces/index.html";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../index.html">The Art of Packet Crafting with Scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/disclaimer/index.html">Disclaimer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Lab setup</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/lab_setup/index.html">Mysterious boxes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../python/python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/import_export/index.html">Import & Export data</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Network recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/traceroute/index.html">Traceroute</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Wireless recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../wireless/wireless_recon/index.html">802.11</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Misc libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../netaddr/index.html">netaddr</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">netifaces</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#netifaces">netifaces</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#basic-operations">Basic operations</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Exercises</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/misc_exercises/index.html">Misc exercises</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/moving_forward/index.html">Moving forward</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Misc libraries &raquo;</li>
+        
+      
+    
+    <li>netifaces</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="netifaces">netifaces</h1>
+<ul>
+<li><strong>A portable third-party library in Python to enumerate network interfaces on local machine.</strong></li>
+<li>Historically it has been difficult to straightforwardly get the network address(es) of the machine on which your Python scripts are running without compromising the portability of your script.<br/></li>
+<li>netifaces takes care of enumerating interfaces, network addresses and also preserves the portability(works on all *nix systems atleast).</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<ul>
+<li>netifaces needs python extension modules. In case you haven&rsquo;t already, you should install python-dev package.</li>
+</ul>
+<pre><code class="bash">verax@humla ~ $ sudo apt-get install python-dev
+</code></pre>
+
+<ul>
+<li>You can install netifaces using PIP.</li>
+</ul>
+<pre><code class="bash">verax@humla ~ $ pip install netifaces
+</code></pre>
+
+<h4 id="basic-operations">Basic operations</h4>
+<p>You can take a look at all the modules that are part of netifaces</p>
+<pre><code class="python">&gt;&gt;&gt; import netifaces
+&gt;&gt;&gt; 
+&gt;&gt;&gt; dir(netifaces)
+[ ... snipped ...
+'address_families', 'gateways', 'ifaddresses', 'interfaces', 'version']
+&gt;&gt;&gt; 
+
+</code></pre>
+
+<p>Getting a list of all the network interface identifiers on the machine.</p>
+<pre><code class="python">&gt;&gt;&gt; netifaces.interfaces()
+['lo', 'eth0', 'wlan0', 'eth3', 'vboxnet0']
+</code></pre>
+
+<p>You can ask for the addresses of a particular interface</p>
+<pre><code class="python">&gt;&gt;&gt; import netifaces
+&gt;&gt;&gt; from pprint import pprint
+&gt;&gt;&gt;
+&gt;&gt;&gt; pprint(netifaces.ifaddresses('eth3'))
+{2: [{'addr': '192.168.1.100',
+      'broadcast': '192.168.1.255',
+      'netmask': '255.255.255.0'}],
+ 10: [{'addr': 'fe80::364b:50ff:feb7:ef1d%eth3',
+       'netmask': 'ffff:ffff:ffff:ffff::/64'}],
+ 17: [{'addr': '34:4b:50:b7:ef:1d', 'broadcast': 'ff:ff:ff:ff:ff:ff'}]}
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">pprint</p>
+<ul>
+<li><strong>pprint</strong> contains a “pretty printer” for producing aesthetically pleasing representations of your data structures.<br/></li>
+<li>The formatter produces representations of data structures that can be parsed correctly by the interpreter, and are also easy for a human to read</li>
+</ul>
+</div>
+<p>You can also get list of all the gateways</p>
+<pre><code class="python">&gt;&gt;&gt; netifaces.gateways()
+{'default': {2: ('192.168.1.1', 'eth3')}, 2: [('192.168.1.1', 'eth3', True)]}
+</code></pre>
+
+<p>Getting list of IPv4 addresses excluding loopback and virtualbox adapters</p>
+<pre><code class="python">&gt;&gt;&gt; for iface in netifaces.interfaces():
+...     if iface == 'lo' or iface.startswith('vbox'):
+...         continue
+...     iface_details = netifaces.ifaddresses(iface)
+...     if iface_details.has_key(netifaces.AF_INET):
+...         print iface_details[netifaces.AF_INET]
+... 
+[{'broadcast': '192.168.1.255', 'netmask': '255.255.255.0', 'addr': '192.168.1.100'}]
+[{'broadcast': '192.168.1.255', 'netmask': '255.255.255.0', 'addr': '192.168.1.101'}]
+</code></pre>
+
+<div class="admonition important">
+<p class="admonition-title">Examples of netifaces usage in open source projects</p>
+<ul>
+<li>For more examples of netifaces usage in open source projects: <a href='http://www.programcreek.com/python/example/81895/netifaces.interfaces'>netifaces examples</a></li>
+</ul>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../exercises/misc_exercises/index.html" class="btn btn-neutral float-right" title="Misc exercises">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../netaddr/index.html" class="btn btn-neutral" title="netaddr"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../netaddr/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../exercises/misc_exercises/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

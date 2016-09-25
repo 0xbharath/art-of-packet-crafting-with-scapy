@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>OS detection - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "OS detection";
+    var mkdocs_page_input_path = "network_recon/os_detection.md";
+    var mkdocs_page_url = "/network_recon/os_detection/index.html";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../index.html">The Art of Packet Crafting with Scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/disclaimer/index.html">Disclaimer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Lab setup</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/lab_setup/index.html">Mysterious boxes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../python/python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/import_export/index.html">Import & Export data</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Network recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">OS detection</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#remote-os-detection">Remote OS Detection</a></li>
+                
+                    <li><a class="toctree-l4" href="#active-os-finger-printing">Active OS finger printing</a></li>
+                
+                    <li><a class="toctree-l4" href="#passive-os-fingerprinting">Passive OS fingerprinting</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../traceroute/index.html">Traceroute</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Wireless recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../wireless/wireless_recon/index.html">802.11</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Misc libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/netaddr/index.html">netaddr</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/netifaces/index.html">netifaces</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Exercises</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/misc_exercises/index.html">Misc exercises</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/moving_forward/index.html">Moving forward</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Network recon &raquo;</li>
+        
+      
+    
+    <li>OS detection</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="remote-os-detection">Remote OS Detection</h1>
+<p>There are two approaches to finger printing remote Operating Systems:</p>
+<ul>
+<li>
+<p>Active OS finger printing</p>
+<ul>
+<li>Active finger printing is when attacker sends a series of TCP and UDP packets to the remote host and  examines practically every bit in the responses. After the tests the results are compared against the general behaviour of Operating Systems for a match.</li>
+<li>Nmap is the most popular active OS detection tool. Nmap probes a target with large number of well crafted packets and the results are compared against Nmap&rsquo;s database of OS fingerprints (<code>nmap-os-db</code>).</li>
+<li><strong>For more details on Nmap&rsquo;s active OS detection techniques <a href="https://nmap.org/book/man-os-detection.html">Nmap OS Detection</a> </strong></li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>
+<p>Passive OS fingerprinting</p>
+<ul>
+<li>Passive OS finger prining is analyzing network traffic to detect what operating system the client/server are running. This possible because of the difference in TCP/IP stack implemention in various operating systems. P0f is a popular passive finger printing tool with large database of finger prints.</li>
+<li><strong>For more details on p0f finger printing <a href="http://lcamtuf.coredump.cx/p0f3/">Passive OS finger printing with p0f</a> </strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="active-os-finger-printing">Active OS finger printing</h2>
+<h5 id="differences-in-protocol-implementations">Differences in protocol implementations</h5>
+<p>RFC 793 says:
+&ldquo;ACK (1 bit) – indicates that the Acknowledgment field is significant. <strong>All packets after the initial SYN packet sent by the client should have this flag set&rdquo;</strong>.</p>
+<p>But, IP stacks are written for different OSs by different people who read the RFCs and then write their interpretation of what the RFC outlines into code. This leads to a difference in how IP stacks are implemeted across OSes.</p>
+<h3 id="linux-implementation">Linux implementation</h3>
+<p><strong>Linux kernel 2.4+ accepts and acknowledges a segment in an established session where no TCP flags are set and where the segment has payload</strong> No other well known current operating system accepts this same segment. <br/>
+This behaviour of Linux network stack is complied into the kernel so it isn&rsquo;t easy to alter it. This makes it a very foolproof technique for remote Linux OS detection.</p>
+<h3 id="the-technique">The Technique:</h3>
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/linux_detect.png'>
+</p>
+
+<ul>
+<li>Establish a TCP three-way handshake with the target.</li>
+<li>All we have to do after handshake is to create a segment with <strong>no TCP flags and add some payload</strong> and send it.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt;PUSH=(sport=1024,dport=80,flags=””,seq=12346,ack=my_ack)  # No flags set.
+&gt;&gt;&gt;data=”JUST A FILLER”
+&gt;&gt;&gt;send(ip/PUSH/data)
+</code></pre>
+
+<ul>
+<li>If the target is Linux server(2.4+ kernel), you&rsquo;ll see an ACK bit set in the response.</li>
+<li>In case of other operating systems, the response will most likely be a RST packet.</li>
+</ul>
+<h2 id="passive-os-fingerprinting">Passive OS fingerprinting</h2>
+<h3 id="ttl-window-size-analysis">TTL &amp; Window size analysis</h3>
+<p><img alt="" src="../../../img/ttl_window.png" /> </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../promisc/index.html" class="btn btn-neutral float-right" title="Promisc detection">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../service_discovery/index.html" class="btn btn-neutral" title="Service discovery"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../service_discovery/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../promisc/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

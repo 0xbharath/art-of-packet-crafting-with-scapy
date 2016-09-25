@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>netaddr - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "netaddr";
+    var mkdocs_page_input_path = "libraries/netaddr.md";
+    var mkdocs_page_url = "/libraries/netaddr/index.html";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../index.html">The Art of Packet Crafting with Scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/disclaimer/index.html">Disclaimer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Lab setup</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/lab_setup/index.html">Mysterious boxes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../python/python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/import_export/index.html">Import & Export data</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Network recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/traceroute/index.html">Traceroute</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Wireless recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../wireless/wireless_recon/index.html">802.11</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Misc libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">netaddr</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#netaddr">netaddr</a></li>
+                
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#layer-3-addressingip">Layer 3 addressing(IP)</a></li>
+                
+                    <li><a class="toctree-l4" href="#layer-2-addressingmac">Layer 2 addressing(MAC)</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../netifaces/index.html">netifaces</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Exercises</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/misc_exercises/index.html">Misc exercises</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/moving_forward/index.html">Moving forward</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Misc libraries &raquo;</li>
+        
+      
+    
+    <li>netaddr</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="netaddr">netaddr</h1>
+<h2 id="overview">Overview</h2>
+<p>A Python library for representing and manipulating network addresses.</p>
+<p>Provides support for:</p>
+<p>Layer 3 addresses</p>
+<ul>
+<li>IPv4 and IPv6 addresses, subnets, masks, prefixes</li>
+<li>iterating, slicing, sorting, summarizing and classifying IP networks</li>
+<li>dealing with various ranges formats (CIDR, arbitrary ranges and globs, nmap)</li>
+<li>set based operations (unions, intersections etc) over IP addresses and subnets</li>
+<li>parsing a large variety of different formats and notations</li>
+<li>looking up IANA IP block information</li>
+<li>generating DNS reverse lookups</li>
+<li>supernetting and subnetting</li>
+</ul>
+<p>Layer 2 addresses</p>
+<ul>
+<li>representation and manipulation MAC addresses and EUI-64 identifiers</li>
+<li>looking up IEEE organisational information (OUI, IAB)</li>
+<li>generating derived IPv6 addresses</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<p>Install the latest <code>netaddr</code> from PIP</p>
+<pre><code class="bash">pip install netaddr
+</code></pre>
+
+<h3 id="importing-netaddr">Importing netaddr</h3>
+<pre><code class="python">from netaddr import *
+</code></pre>
+
+<div class="admonition warning">
+<p class="admonition-title">importing modules</p>
+<p>Importing this way is not optimal and leads to name clashes.<br>
+In your own code, you should be explicit about the classes,
+functions and constants you import to avoid name clashes.</p>
+</div>
+<h2 id="layer-3-addressingip">Layer 3 addressing(IP)</h2>
+<h3 id="ipaddress">IPAddress</h3>
+<p>IPAddress object represents a single IP address.</p>
+<pre><code class="python">&gt;&gt;&gt; from netaddr import IPAddress
+&gt;&gt;&gt;
+&gt;&gt;&gt; ip = IPAddress('192.21.8.11')
+&gt;&gt;&gt; ip.version
+4
+&gt;&gt;&gt; dir(ip)
+[ ... Snipped... 'bin', 'bits', 'format', 'info', 'ipv4', 'ipv6', 
+'is_hostmask', 'is_ipv4_compat', 'is_ipv4_mapped', 'is_link_local',
+'is_loopback', 'is_multicast', 'is_netmask', 'is_private', 'is_reserved',
+'is_unicast', 'key', 'netmask_bits', 'packed', 'reverse_dns', 'sort_key',
+'value', 'version', 'words']
+&gt;&gt;&gt; 
+</code></pre>
+
+<p><br/>
+There are methods to handle coverting an IP adress into binary or bits, split an IP, pack an</p>
+<pre><code class="python">&gt;&gt;&gt; ip.bin
+'0b11000000000101010000100000001011'
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ip.bits()
+'11000000.00010101.00001000.00001011'
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ip.words
+(192, 21, 8, 11)
+&gt;&gt;&gt; ip.packed
+'\xc0\x15\x08\x0b'
+</code></pre>
+
+<p><br/>
+There are methods to check if the type of IP address(class, scope, type)</p>
+<pre><code class="python">&gt;&gt;&gt; ip.version
+6
+&gt;&gt;&gt; ip.is_unicast()
+True
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ip.is_link_local()
+True
+</code></pre>
+
+<h3 id="ipnetwork">IPNetwork</h3>
+<p>IPNetwork objects are used to represent subnets, networks or VLANs that accept CIDR prefixes and netmasks.</p>
+<pre><code class="python">&gt;&gt;&gt; from netaddr import IPNetwork
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ip_range = IPNetwork('192.241.21.6/24')
+&gt;&gt;&gt; 
+&gt;&gt;&gt; dir(ip_range)
+[ ... snipped ...  'broadcast', 'cidr', 'first', 'hostmask', 'info',
+'ip', 'ipv4', 'ipv6', 'is_ipv4_compat', 'is_ipv4_mapped', 'is_link_local',
+'is_loopback', 'is_multicast', 'is_private', 'is_reserved', 'is_unicast',
+'iter_hosts', 'key', 'last', 'netmask', 'network', 'next', 'prefixlen',
+'previous', 'size', 'sort_key', 'subnet', 'supernet', 'value', 'version']
+&gt;&gt;&gt;
+</code></pre>
+
+<p>There are a bunch of methods associated with IPNetwork to understand the network defined.</p>
+<pre><code class="python">&gt;&gt;&gt; ip_range.network
+IPAddress('192.241.21.0')
+&gt;&gt;&gt;
+&gt;&gt;&gt; ip_range.hostmask
+IPAddress('0.0.0.255')
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ip_range.netmask
+IPAddress('255.255.255.0')
+&gt;&gt;&gt;
+&gt;&gt;&gt; ip_range.broadcast
+IPAddress('192.241.21.255')
+&gt;&gt;&gt;
+&gt;&gt;&gt; ip_range.size
+256
+</code></pre>
+
+<p>You can use a simple for loop to iterate over the list of IP addresses in the network range defined.</p>
+<pre><code class="python">&gt;&gt;&gt; for i in ip_range:
+...     print i
+... 
+192.241.21.0
+192.241.21.1
+... snipped ...
+192.241.21.255
+
+</code></pre>
+
+<h3 id="list-operations-on-ipnetwork-object">List operations on IPNetwork object</h3>
+<p>If you treat an IPNetwork object as if it were a standard Python list object it will give you access to a list of individual
+IP address objects also various standard python list methods.</p>
+<pre><code class="python">&gt;&gt;&gt; ip_range = IPNetwork('192.0.2.16/29')
+&gt;&gt;&gt; 
+&gt;&gt;&gt; ip_range_list = list(ip_range)
+&gt;&gt;&gt; 
+&gt;&gt;&gt; len(ip_range_list)
+8
+&gt;&gt;&gt; ip_range_list
+[IPAddress('192.0.2.16'), IPAddress('192.0.2.17'), ...snipped... IPAddress('192.0.2.23')]
+&gt;&gt;&gt;
+&gt;&gt;&gt; ip_range_list[6]        # indexing
+IPAddress('192.0.2.22')
+&gt;&gt;&gt;
+&gt;&gt;&gt; ip_range_list[2:5
+
+]      # slicing
+[IPAddress('192.0.2.18'), IPAddress('192.0.2.19'), IPAddress('192.0.2.20')]
+</code></pre>
+
+<h3 id="iprange">IPRange</h3>
+<p>You can represent an arbitrary IP address range using a lower and upper bound address in the form of an IPRange
+object.</p>
+<pre><code class="python">&gt;&gt;&gt; ip_range = IPRange('192.168.1.0', '192.168.1.20')
+&gt;&gt;&gt; 
+&gt;&gt;&gt; for i in ip_range:
+...     print i
+... 
+192.168.1.0
+... snipped ...
+192.168.1.19
+192.168.1.20
+</code></pre>
+
+<h3 id="ip-sets">IP sets</h3>
+<p>You can specify either IP addresses and networks as strings. Alternatively, you can use IPAddress, IPNetwork, IPRange
+or other IPSet objects.</p>
+<pre><code class="python">&gt;&gt;&gt; IPSet(['192.0.2.0'])
+IPSet(['192.0.2.0/32'])
+&gt;&gt;&gt;
+&gt;&gt;&gt; IPSet([IPAddress('192.0.2.0')])
+IPSet(['192.0.2.0/32'])
+&gt;&gt;&gt;
+&gt;&gt;&gt; IPSet([IPNetwork('192.0.2.0/24')])
+IPSet(['192.0.2.0/24'])
+&gt;&gt;&gt;
+&gt;&gt;&gt; IPSet(IPRange(&quot;10.0.0.0&quot;, &quot;10.0.1.31&quot;))
+IPSet(['10.0.0.0/24', '10.0.1.0/27'])
+</code></pre>
+
+<p>You can interate over all the IP addresses that are members of the IP set.</p>
+<pre><code class="python">&gt;&gt;&gt; for ip in IPSet(['192.0.2.0/28']):
+...     print ip
+192.0.2.0
+192.0.2.1
+... snipped ...
+192.168.2.15
+</code></pre>
+
+<h3 id="adding-and-removing-set-elements">Adding and removing set elements</h3>
+<pre><code class="python">&gt;&gt;&gt; from netaddr import IPSet
+&gt;&gt;&gt; 
+&gt;&gt;&gt; s1 = IPSet()
+&gt;&gt;&gt; 
+&gt;&gt;&gt; s1.add('192.168.1.0/30')
+&gt;&gt;&gt; s1.size
+4
+&gt;&gt;&gt; 
+&gt;&gt;&gt; '192.168.1.3' in s1
+True
+&gt;&gt;&gt; 
+&gt;&gt;&gt; s1.remove('192.168.1.3')
+&gt;&gt;&gt; s1.size
+3
+</code></pre>
+
+<p>You can do all sorts of set operations on IPSets </p>
+<pre><code class="python">&gt;&gt;&gt; scan1 = IPSet(['192.168.1.0/30'])
+&gt;&gt;&gt; 
+&gt;&gt;&gt; scan1
+IPSet(['192.168.1.0/30'])
+&gt;&gt;&gt; 
+&gt;&gt;&gt; scan1.size
+4
+&gt;&gt;&gt; 
+&gt;&gt;&gt; scan2 = IPSet(['192.168.1.0/31'])
+&gt;&gt;&gt; 
+&gt;&gt;&gt; scan2.size
+2
+&gt;&gt;&gt; 
+&gt;&gt;&gt; scan1 | scan2
+IPSet(['192.168.1.0/30'])
+&gt;&gt;&gt; 
+&gt;&gt;&gt; scan1 &amp; scan2
+IPSet(['192.168.1.0/31'])
+&gt;&gt;&gt;
+&gt;&gt;&gt; scan1 ^ scan2
+IPSet(['192.168.1.2/31'])
+</code></pre>
+
+<p><br/></p>
+<h2 id="layer-2-addressingmac">Layer 2 addressing(MAC)</h2>
+<p>Instances of the EUI class are used to represent MAC addresses.</p>
+<pre><code class="python">&gt;&gt;&gt; mac = EUI('ec:f4:bb:87:2d:0c')
+</code></pre>
+
+<p>There are methods to print out common properties of an address</p>
+<pre><code class="python">&gt;&gt;&gt; dir(mac)
+ ... snipped ... 'bin', 'bits', 'dialect', 'ei', 'eui64', 'iab',
+'info', 'ipv6', 'ipv6_link_local', 'is_iab', 'modified_eui64', 'oui',
+'packed', 'value', 'version', 'words']
+&gt;&gt;&gt;
+&gt;&gt;&gt; str(mac), str(mac.ei), str(mac.oui), str(mac.version)
+('EC-F4-BB-87-2D-0C', '87-2D-0C', 'EC-F4-BB', '48')
+</code></pre>
+
+<p>There are methods to provide info on OUI and other organizational info.</p>
+<pre><code class="python">&gt;&gt;&gt; mac.info
+{'OUI': {'address': ['one dell way',
+             'MS:RR5-45',
+             'Round rock Texas 78682',
+             'UNITED STATES'],
+ 'idx': 15529147,
+ 'offset': 3429092,
+ 'org': 'Dell Inc',
+ 'oui': 'EC-F4-BB',
+ 'size': 141}}
+&gt;&gt;&gt; 
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; oui = mac.oui
+&gt;&gt;&gt; 
+&gt;&gt;&gt; dir(oui)
+[ ... snipped ... 'records', 'reg_count', 'registration']
+&gt;&gt;&gt; 
+&gt;&gt;&gt; oui.registration().org
+'Dell Inc'
+&gt;&gt;&gt;
+&gt;&gt;&gt; oui.registration().address
+['one dell way', 'MS:RR5-45', 'Round rock Texas 78682', 'UNITED STATES']
+</code></pre>
+
+<div class="admonition important">
+<p class="admonition-title">Examples of netaddr usage in open source projects</p>
+<ul>
+<li>For more examples of various netaddr modules usage in open source projects: <a href='http://www.programcreek.com/python/index/2955/netaddr'>Python netaddr examples</a></li>
+</ul>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../netifaces/index.html" class="btn btn-neutral float-right" title="netifaces">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../wireless/wireless_recon/index.html" class="btn btn-neutral" title="802.11"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../wireless/wireless_recon/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../netifaces/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

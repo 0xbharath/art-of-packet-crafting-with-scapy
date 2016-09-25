@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>Service discovery - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Service discovery";
+    var mkdocs_page_input_path = "network_recon/service_discovery.md";
+    var mkdocs_page_url = "/network_recon/service_discovery/index.html";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../index.html">The Art of Packet Crafting with Scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/disclaimer/index.html">Disclaimer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Lab setup</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/lab_setup/index.html">Mysterious boxes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../python/python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sending_recieving/index.html">Sending & Recieving</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/import_export/index.html">Import & Export data</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../scapy/sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Network recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Service discovery</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#service-discoveryport-scanning">Service discovery(Port Scanning)</a></li>
+                
+                    <li><a class="toctree-l4" href="#tcp-three-way-handshake">TCP Three way handshake</a></li>
+                
+                    <li><a class="toctree-l4" href="#syn-scan">SYN scan</a></li>
+                
+                    <li><a class="toctree-l4" href="#fin-scan">Fin scan</a></li>
+                
+                    <li><a class="toctree-l4" href="#null-scan">Null scan</a></li>
+                
+                    <li><a class="toctree-l4" href="#xmas-scan">Xmas scan</a></li>
+                
+                    <li><a class="toctree-l4" href="#udp-scan">UDP scan</a></li>
+                
+                    <li><a class="toctree-l4" href="#ip-id-scan-nmap-idle-scan">IP ID Scan (nmap idle scan)</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../traceroute/index.html">Traceroute</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Wireless recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../wireless/wireless_recon/index.html">802.11</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Misc libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/netaddr/index.html">netaddr</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/netifaces/index.html">netifaces</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Exercises</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/misc_exercises/index.html">Misc exercises</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/moving_forward/index.html">Moving forward</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Network recon &raquo;</li>
+        
+      
+    
+    <li>Service discovery</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="service-discoveryport-scanning">Service discovery(Port Scanning)</h1>
+<h2 id="tcp-three-way-handshake">TCP Three way handshake</h2>
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/threewayhandshake.png'>
+</p>
+
+<p><strong>Three-way handshake captured using tcpdump</strong></p>
+<pre><code>192.168.56.1.35555 &gt; 192.168.56.102.4444: Flags [S] seq=12345   
+192.168.56.102.4444 &gt; 192.168.56.1.35555: Flags [S.],  seq=9998 ack=12346
+192.168.56.1.35555 &gt; 192.168.56.102.4444: Flags [.] seq=12346 ack=9999  
+</code></pre>
+
+<p>A note on tcpdump output:</p>
+<ul>
+<li>A port number is appended to the IP address with an additional dot. <code>192.168.56.1.35555</code> is IP <code>192.168.56.1</code> port <code>35555</code>.</li>
+<li>An ACK bit is represented by a <code>.</code> so <code>[S.]</code> is <code>SYN-ACK</code>, <code>[.]</code> is <code>ACK</code>.</li>
+</ul>
+<p><br/></p>
+<h3 id="crafting-the-three-way-handshake-in-scapy">Crafting the Three-way Handshake in Scapy</h3>
+<ul>
+<li>To craft three-way handshake we need to be able to record the response of the server and craft our responses based on server response.</li>
+</ul>
+<p><strong>Step I - Send the client’s SYN to a listening server (SYN)</strong></p>
+<ul>
+<li>Craft an IP header with the source and destination IP addresses.</li>
+<li>Craft a TCP header where we generate the TCP source port, assign the destination port that the server listens on, set the TCP flags to turn the <strong>SYN bit on, and generate the client’s ISN.</strong></li>
+</ul>
+<pre><code class="python">ip = IP(src='192.168.56.1', dst='192.168.56.101')
+syn = TCP(sport=4000, dport=80, flags='S', seq='12345')
+syn_pkt = ip/syn
+</code></pre>
+
+<p><strong>Step II - Listen for the server&rsquo;s response (SYN - ACK)</strong></p>
+<ul>
+<li>Save the server’s response. (ideally the response should be syn-ack).</li>
+<li>Extract the server’s TCP sequence number and increment the value by one.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; syn_ack = sr1(packet)
+&gt;&gt;&gt; my_ack = syn_ack.seq+1
+</code></pre>
+
+<p><strong>Send an acknowledgement from client for server&rsquo;s response (ACK)</strong></p>
+<ul>
+<li>IP header has the same source and destination as the intial SYN packet.</li>
+<li>TCP header has the same TCP source and destination ports as syn packet, only ACK bit is set, increment the client’s ISN by one since the SYN packet consumes one sequence number, set the acknowledgement value to the incremented server’s sequence number value.</li>
+</ul>
+<pre><code class="python">ack = TCP(sport=4000, dport=80, flags='A', seq='12346', ack=my_ack)
+ack_pkt = ip/ack
+send(ack_pkt)
+</code></pre>
+
+<p><strong>If everything went right, we have just sucessfully established TCP three-way handshake</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Why RST??</p>
+<ul>
+<li>If you have noticed whenever we recieve a packet, our machine automatically responds with an RST packet.</li>
+<li>The kernel is not aware of what Scapy is doing behind it&rsquo;s back(Scapy is userland program). If Scapy sends a SYN, the target replies with a SYN-ACK and your kernel sees it as unsolicited packet, it will reply with an RST.</li>
+<li>To prevent this, use local firewall rules (e.g. NetFilter/IPtables for Linux). Scapy does not mind about local firewalls.<pre><code>  iptables -A OUTPUT -p tcp --tcp-flags RST RST -s 192.168.1.1 -j DROP
+</code></pre>
+</li>
+</ul>
+</div>
+<h2 id="syn-scan">SYN scan</h2>
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/connect_open.png'>
+</p>
+
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/connect_close.png'>
+</p>
+
+<p><br/></p>
+<h6 id="syn-scan-on-single-target-single-port">SYN scan on single target, single port</h6>
+<ul>
+<li>We send packets using <code>sr1</code> function.</li>
+<li>The response is just a single packet.</li>
+<li>We use Scapy&rsquo;s <code>sprintf</code> method to print interesting fields in the response. (&lsquo;SA&rsquo; flags indicates open ports, &lsquo;RA&rsquo; flags indicates closed ports)</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; syn_packet = IP(dst='192.168.56.102')/TCP(dport=4444,flags='S')
+&gt;&gt;&gt; resp = sr1(syn_packet)
+&gt;&gt;&gt; resp.sprintf('%TCP.src% \t %TCP.sport% \t %TCP.flags%')
+'192.168.56.102     4444      SA'
+</code></pre>
+
+<h6 id="syn-scan-on-single-target-multiple-ports">SYN scan on single target, multiple ports</h6>
+<ul>
+<li>We use <code>sr</code> functions send our packets.</li>
+<li><code>sr</code> returns answered probes and unanswered probes that we assign to two variables.</li>
+<li><code>ans</code> has all the answered probes in stimulus/response pairs(a tuple).</li>
+<li>We use a simple lambda function to loop over the answered probes and print interesting fields.</li>
+<li>In the below example, each entry in <code>ans</code> i.e. a stimuli response pair is passed on to a lambda function(stimuli &amp; response as <code>s</code>, <code>r</code> respectively). Inside lambda function, we use sprintf to extract interesting fields.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; ans, unans = sr(IP(dst=&quot;192.168.56.90-110&quot;)/TCP(dport=(20,24),flags=&quot;S&quot;))
+&gt;&gt;&gt; ans.summary( lambda(s,r): r.sprintf(&quot;%TCP.sport% \t %TCP.flags%&quot;) )
+'ftp_data    RA'
+'21          RA
+'ssh         SA'
+'telnet      RA'
+'24          RA'
+</code></pre>
+
+<h6 id="syn-scan-on-multiple-targets-multiple-ports">SYN scan on multiple targets, multiple ports</h6>
+<ul>
+<li><code>make_table</code> is an advanced feature in scapy that helps you visualize larger and complex scans.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; ans,unans = sr(IP(dst=[&quot;scanme.nmap.org&quot;,&quot;egadz.metasploit.com&quot;])/TCP(dport=[10,20,30],flags=&quot;S&quot;))
+&gt;&gt;&gt;
+&gt;&gt;&gt; ans.make_table(lambda(s,r): (s.dst, s.dport,r.sprintf(&quot;%TCP.flags%&quot;)))
+
+   45.33.32.156 198.58.109.32 
+10 RA           SA            
+20 RA           SA            
+30 RA           SA
+</code></pre>
+
+<h2 id="fin-scan">Fin scan</h2>
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/fin_scan.png'>
+</p>
+
+<p><strong>Fin scan on open port - scapy</strong></p>
+<pre><code class="python">&gt;&gt;&gt; fin_packet = IP(dst='192.168.56.102')/TCP(dport=4444,flags='F')
+&gt;&gt;&gt; resp = sr1(fin_packet)
+Begin emission:
+Finished to send 1 packets.
+^C
+Received 0 packets, got 0 answers, remaining 1 packets
+</code></pre>
+
+<p><strong>Fin scan on closed port - scapy</strong></p>
+<pre><code>&gt;&gt;&gt; fin_packet = IP(dst='192.168.56.102')/TCP(dport=6767,flags='F')
+&gt;&gt;&gt; resp = sr1(fin_packet)
+&gt;&gt;&gt; resp.sprintf('%TCP.flags%')
+'RA'
+</code></pre>
+
+<h2 id="null-scan">Null scan</h2>
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/ns.png'>
+</p>
+
+<h2 id="xmas-scan">Xmas scan</h2>
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/xmas_scan.png'>
+</p>
+
+<h2 id="udp-scan">UDP scan</h2>
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/udp_scan.png'>
+</p>
+
+<h2 id="ip-id-scan-nmap-idle-scan">IP ID Scan (nmap idle scan)</h2>
+<p>In 1998, security researcher Antirez posted to the Bugtraq mailing list an ingenious new port scanning technique. <strong>Idle scan</strong>, as it has become known, allows for completely blind port scanning. <strong>Attackers can actually scan a target without sending a single packet to the target from their own IP address!</strong> Instead, a clever side-channel attack allows for the scan to be bounced off a dumb “zombie host”. Intrusion detection system (IDS) reports will finger the innocent zombie as the attacker.
+<br/><br/>
+Idle scan can be explained in following steps:
+<br/></p>
+<ul>
+<li>
+<p>One way to determine whether a TCP port is open is to send a SYN (session establishment) packet to the port. The target machine will respond with a SYN/ACK (session request acknowledgment) packet if the port is open, and RST (reset) if the port is closed. This is the basis of the previously discussed SYN scan.</p>
+</li>
+<li>
+<p>A machine that receives an unsolicited SYN/ACK packet will respond with a RST. An unsolicited RST will be ignored.</p>
+</li>
+<li>
+<p>Every IP packet on the Internet has a fragment identification number (IP ID). Since many operating systems simply increment this number for each packet they send, probing for the IP ID can tell an attacker how many packets have been sent since the last probe.</p>
+</li>
+</ul>
+<p>By combining these traits, it is possible to scan a target network while forging your identity so that it looks like an innocent zombie machine did the scanning.</p>
+<p align = 'center'>
+<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/ipid_scan.png'>
+</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../os_detection/index.html" class="btn btn-neutral float-right" title="OS detection">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../host_discovery/index.html" class="btn btn-neutral" title="Host discovery"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../host_discovery/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../os_detection/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Bharath(yamakira_)">
+  
+  <title>Sending & Recieving - The Art of Packet Crafting with Scapy!</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Sending & Recieving";
+    var mkdocs_page_input_path = "scapy/sending_recieving.md";
+    var mkdocs_page_url = "/scapy/sending_recieving/index.html";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="icon icon-home"> The Art of Packet Crafting with Scapy!</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Workshop intro</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../index.html">The Art of Packet Crafting with Scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/license/index.html">License</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/bigger_picture/index.html">Bigger picture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/speakers/index.html">Speakers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/workshop_settings/index.html">Workshop settings</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../workshop_intro/disclaimer/index.html">Disclaimer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Lab setup</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/lab_setup/index.html">Mysterious boxes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../lab_setup/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/layers/index.html">Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../networking/packet_headers/index.html">Packet Headers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Python</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../python/python/index.html">Python</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scapy</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_intro/index.html">Scapy Intro</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_modes/index.html">Scapy Modes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../scapy_exploring/index.html">Exploring scapy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../creating_packets/index.html">Creating packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../inspecting_packets/index.html">Inspecting packets</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Sending & Recieving</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#sending-recieving-packets">Sending &amp; recieving packets</a></li>
+                
+                    <li><a class="toctree-l4" href="#send">send()</a></li>
+                
+                    <li><a class="toctree-l4" href="#sendp">sendp()</a></li>
+                
+                    <li><a class="toctree-l4" href="#sr">sr()</a></li>
+                
+                    <li><a class="toctree-l4" href="#sr1">sr1()</a></li>
+                
+                    <li><a class="toctree-l4" href="#srloop">srloop()</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../import_export/index.html">Import & Export data</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sniffing/index.html">Sniffing</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Network recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/host_discovery/index.html">Host discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/service_discovery/index.html">Service discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/os_detection/index.html">OS detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/promisc/index.html">Promisc detection</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/traceroute/index.html">Traceroute</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Wireless recon</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../wireless/wireless_recon/index.html">802.11</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Misc libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/netaddr/index.html">netaddr</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/netifaces/index.html">netifaces</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Exercises</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/misc_exercises/index.html">Misc exercises</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../exercises/network_hunt/index.html">Network Hunt</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Epilogue</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/moving_forward/index.html">Moving forward</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../epilogue/feedback/index.html">Feedback</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">The Art of Packet Crafting with Scapy!</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Scapy &raquo;</li>
+        
+      
+    
+    <li>Sending & Recieving</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="sending-recieving-packets">Sending &amp; recieving packets</h1>
+<ul>
+<li>Send &amp; recieve funtions are the heart of scapy&rsquo;s functionality.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Fine grained options</p>
+<p>Most scapy funtions like send(), sniff() functions has fine grain options like applying bpf filters, timeout, retry, verbosity etc. Use help(function_name) to find out more options.</p>
+</div>
+<h2 id="send">send()</h2>
+<p>Send packets at Layer 3(Scapy creates Layer 2 header), Does not recieve any packets.</p>
+<pre><code class="python">&gt;&gt;&gt; send(IP(dst=&quot;1.2.3.4&quot;)/ICMP())
+.
+Sent 1 packets.
+</code></pre>
+
+<h2 id="sendp">sendp()</h2>
+<p>Send packets at Layer 2(Must provide Layer 2 header), Does not recieve any packets.</p>
+<pre><code class="python">&gt;&gt;&gt; sendp(Ether()/IP(dst=&quot;1.2.3.4&quot;,ttl=(1,4)), iface=&quot;eth1&quot;)
+....
+Sent 4 packets.
+
+&gt;&gt;&gt; sendp(&quot;I’m travelling on Ethernet&quot;, iface=&quot;eth1&quot;, loop=1, inter=0.2)
+
+&gt;&gt;&gt; sendp(rdpcap(&quot;/tmp/pcapfile&quot;)) # tcpreplay
+...........
+Sent 11 packets.
+</code></pre>
+
+<h2 id="sr">sr()</h2>
+<ul>
+<li>Sends packets and receiving answers. </li>
+<li>sr() returns a list of tuples of probe and answer in a packet list, and the unanswered packets.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; sr(IP(dst=&quot;192.168.8.1&quot;)/TCP(dport=[21,22,23]))
+
+Received 6 packets, got 3 answers, remaining 0 packets
+(&lt;Results: UDP:0 TCP:3 ICMP:0 Other:0&gt;, &lt;Unanswered: UDP:0
+
+&gt;&gt;&gt; ans,unans=_
+&gt;&gt;&gt; ans.summary()
+</code></pre>
+
+<p align = 'center'>
+<img alt='sr_onevar' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/onevar.png'>
+</p>
+
+<p align = 'center'>
+<img alt='sr_twovar' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/twovar.png'>
+</p>
+
+<h2 id="sr1">sr1()</h2>
+<ul>
+<li>Sends packets and recieves only the first response . </li>
+<li>The function returns a couple of packet and answers, and the unanswered packets.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; p=sr1(IP(dst=&quot;scanme.nmap.org&quot;)/ICMP()/&quot;XXXXXXXXXXX&quot;)
+Begin emission:
+...Finished to send 1 packets.
+.*
+Received 5 packets, got 1 answers, remaining 0 packets
+</code></pre>
+
+<h2 id="srloop">srloop()</h2>
+<ul>
+<li>Sends packets, recieves and displays responses, in a loop . </li>
+<li>The function returns a couple of packet and answers, and the unanswered</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; packet = IP(dst='192.168.56.102')/ICMP()
+&gt;&gt;&gt; srloop(packet)
+RECV 1: IP / ICMP 192.168.56.102 &gt; 192.168.56.1 echo-reply 0
+RECV 1: IP / ICMP 192.168.56.102 &gt; 192.168.56.1 echo-reply 0
+RECV 1: IP / ICMP 192.168.56.102 &gt; 192.168.56.1 echo-reply 0
+^C        
+Sent 3 packets, received 3 packets. 100.0% hits.
+(&lt;Results: TCP:0 UDP:0 ICMP:3 Other:0&gt;, &lt;PacketList: TCP:0 UDP:0 ICMP:0 Other:0&gt;)
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Corner cases: Curious case of 127.0.0.1</p>
+<p>The loopback interface is a very special. Packets going through it are not really assembled and dissassembled.</p>
+<p>The kernel routes the packet to its destination while it is still stored an internal structure. The kernel is not aware of what Scapy is doing behind his back, so what you see on the lo interface is also a fake. Except this one did not come from a local structure. Thus the kernel will never receive it.</p>
+<p>To speak to local applications, you need to build your packets one layer upper, using a PF_INET/SOCK_RAW socket instead of a PF_PACKET/SOCK_RAW (or its equivalent on other systems that Linux).</p>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../import_export/index.html" class="btn btn-neutral float-right" title="Import & Export data">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../inspecting_packets/index.html" class="btn btn-neutral" title="Inspecting packets"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../inspecting_packets/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../import_export/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
