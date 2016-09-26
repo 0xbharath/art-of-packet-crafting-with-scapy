@@ -1,5 +1,7 @@
 # The-Art-of-Packet-Crafting-with-Scapy
 
+Online notes for this workshop is available at - https://yamakira.github.io/art-of-packet-crafting-with-scapy/ 
+
 ##Prerequisites
 - Little bit of programming experience in some language, not necessarily Python is preferable. (enough to know what's a "variable" or "if statement" etc)
 - Knowledge of Linux command-line skills is necessary but we'll pick it up in the workshop. (Usage of commands like cd, ls, grep, less...)
