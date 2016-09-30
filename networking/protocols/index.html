@@ -8,7 +8,7 @@
   
   <meta name="author" content="Bharath(yamakira_)">
   
-  <title>OS detection - The Art of Packet Crafting with Scapy!</title>
+  <title>Protocols - The Art of Packet Crafting with Scapy!</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "OS detection";
-    var mkdocs_page_input_path = "network_recon/os_detection.md";
-    var mkdocs_page_url = "/network_recon/os_detection/index.html";
+    var mkdocs_page_name = "Protocols";
+    var mkdocs_page_input_path = "networking/protocols.md";
+    var mkdocs_page_url = "/networking/protocols/index.html";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -133,28 +133,39 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../networking/layers/index.html">Layers</a>
+        <a class="" href="../layers/index.html">Layers</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../networking/socket_interface/index.html">Socket Interface</a>
+        <a class="" href="../socket_interface/index.html">Socket Interface</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">Protocols</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#address-resolution-protocolarp">Address Resolution Protocol(ARP)</a></li>
+                
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#arp-resolution">ARP resolution</a></li>
+                
+            
+            </ul>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../networking/protocols/index.html">Protocols</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../networking/packet_headers/index.html">Packet Headers</a>
+        <a class="" href="../packet_headers/index.html">Packet Headers</a>
         
     </li>
 
@@ -248,53 +259,42 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        <a class="" href="../../network_recon/host_discovery/index.html">Host discovery</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../service_discovery/index.html">Service discovery</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="index.html">OS detection</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#remote-os-detection">Remote OS Detection</a></li>
-                
-                    <li><a class="toctree-l4" href="#active-os-finger-printing">Active OS finger printing</a></li>
-                
-                    <li><a class="toctree-l4" href="#passive-os-fingerprinting">Passive OS fingerprinting</a></li>
-                
-            
-            </ul>
+        <a class="" href="../../network_recon/service_discovery/index.html">Service discovery</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../promisc/index.html">Promisc detection</a>
+        <a class="" href="../../network_recon/os_detection/index.html">OS detection</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        <a class="" href="../../network_recon/promisc/index.html">Promisc detection</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../traceroute/index.html">Traceroute</a>
+        <a class="" href="../../network_recon/pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/traceroute/index.html">Traceroute</a>
         
     </li>
 
@@ -427,11 +427,11 @@
     
       
         
-          <li>Network recon &raquo;</li>
+          <li>Networking &raquo;</li>
         
       
     
-    <li>OS detection</li>
+    <li>Protocols</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -445,57 +445,58 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="remote-os-detection">Remote OS Detection</h1>
-<p>There are two approaches to finger printing remote Operating Systems:</p>
+                <h2 id="address-resolution-protocolarp">Address Resolution Protocol(ARP)</h2>
+<h4 id="overview">Overview</h4>
 <ul>
-<li>
-<p>Active OS finger printing</p>
-<ul>
-<li>Active finger printing is when attacker sends a series of TCP and UDP packets to the remote host and  examines practically every bit in the responses. After the tests the results are compared against the general behaviour of Operating Systems for a match.</li>
-<li>Nmap is the most popular active OS detection tool. Nmap probes a target with large number of well crafted packets and the results are compared against Nmap&rsquo;s database of OS fingerprints (<code>nmap-os-db</code>).</li>
-<li><strong>For more details on Nmap&rsquo;s active OS detection techniques <a href="https://nmap.org/book/man-os-detection.html">Nmap OS Detection</a> </strong></li>
+<li>ARP is used for mapping a network address (e.g. an IPv4 address) to a physical address like an Ethernet address (also named a MAC address).</li>
+<li>ARP has been implemented with many combinations of network and data link layer technologies but the most common being <strong>IPv4 over Ethernet</strong>.</li>
+<li>The purpose of ARP is to find out the MAC address of a device in your Local Area Network (LAN), for the corresponding IPv4 address, which network application is trying to communicate.</li>
 </ul>
-</li>
-</ul>
-<p><br></p>
-<ul>
-<li>
-<p>Passive OS fingerprinting</p>
-<ul>
-<li>Passive OS finger prining is analyzing network traffic to detect what operating system the client/server are running. This possible because of the difference in TCP/IP stack implemention in various operating systems. P0f is a popular passive finger printing tool with large database of finger prints.</li>
-<li><strong>For more details on p0f finger printing <a href="http://lcamtuf.coredump.cx/p0f3/">Passive OS finger printing with p0f</a> </strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="active-os-finger-printing">Active OS finger printing</h2>
-<h5 id="differences-in-protocol-implementations">Differences in protocol implementations</h5>
-<p>RFC 793 says:
-&ldquo;ACK (1 bit) – indicates that the Acknowledgment field is significant. <strong>All packets after the initial SYN packet sent by the client should have this flag set&rdquo;</strong>.</p>
-<p>But, IP stacks are written for different OSs by different people who read the RFCs and then write their interpretation of what the RFC outlines into code. This leads to a difference in how IP stacks are implemeted across OSes.</p>
-<h3 id="linux-implementation">Linux implementation</h3>
-<p><strong>Linux kernel 2.4+ accepts and acknowledges a segment in an established session where no TCP flags are set and where the segment has payload</strong> No other well known current operating system accepts this same segment. <br/>
-This behaviour of Linux network stack is complied into the kernel so it isn&rsquo;t easy to alter it. This makes it a very foolproof technique for remote Linux OS detection.</p>
-<h3 id="the-technique">The Technique:</h3>
-<p align = 'center'>
-<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/linux_detect.png'>
+<h4 id="arp-resolution">ARP resolution</h4>
+<p align="center">
+<img align="center" STYLE="WIDTH:400px" src="../../img/arp-request.png">
 </p>
 
-<ul>
-<li>Establish a TCP three-way handshake with the target.</li>
-<li>All we have to do after handshake is to create a segment with <strong>no TCP flags and add some payload</strong> and send it.</li>
-</ul>
-<pre><code class="python">&gt;&gt;&gt;PUSH=(sport=1024,dport=80,flags=””,seq=12346,ack=my_ack)  # No flags set.
-&gt;&gt;&gt;data=”JUST A FILLER”
-&gt;&gt;&gt;send(ip/PUSH/data)
-</code></pre>
+<p align="center">
+<img align="center" STYLE="WIDTH:400px" " src="../../img/arp-reply.png">
+</p>
 
+<p>Step 1:</p>
 <ul>
-<li>If the target is Linux server(2.4+ kernel), you&rsquo;ll see an ACK bit set in the response.</li>
-<li>In case of other operating systems, the response will most likely be a RST packet.</li>
+<li>When a source device want to communicate with another device, source device checks its ARP cache to find it already has a resolved MAC Address of the destination device. If it is there, it will use that MAC Address for communication. To view your Local ARP cache. (<code>arp -a</code> displays local arp cache)</li>
 </ul>
-<h2 id="passive-os-fingerprinting">Passive OS fingerprinting</h2>
-<h3 id="ttl-window-size-analysis">TTL &amp; Window size analysis</h3>
-<p><img alt="" src="../../../img/ttl_window.png" /> </p>
+<p>Step 2:</p>
+<ul>
+<li>If ARP resolution is not there in local cache, the source machine will generate an ARP request message(who-has), it puts its own data link layer address as the Sender Hardware Address and its own IPv4 Address as the Sender Protocol Address. It fills the destination IPv4 Address as the Target Protocol Address. <strong>The Target Hardware Address will be left blank</strong>, since the machine is trying to find that. </li>
+</ul>
+<p>Step 3:</p>
+<ul>
+<li>The source broadcast the Address Resolution Protocol (ARP) request message to the local network. </li>
+</ul>
+<p>Step 4:</p>
+<ul>
+<li>The message is received by each device on the LAN since it is a broadcast. Each device compare the Target Protocol Address (IPv4 Address of the machine to which the source is trying to communicate) with its own Protocol Address (IPv4 Address). Those who do not match will drop the packet without any action.</li>
+</ul>
+<p>Step 5:</p>
+<ul>
+<li>When the targeted device checks the Target Protocol Address, it will find a match and will generate an Address Resolution Protocol (ARP) reply message. It takes the Sender Hardware Address and the Sender Protocol Address fields from the Address Resolution Protocol (ARP) request message and uses these values for the Targeted Hardware Address and Targeted Protocol Address of the reply message.</li>
+</ul>
+<p>Step 6:</p>
+<ul>
+<li>The destination device will update its Address Resolution Protocol (ARP) cache, since it need to contact the sender machine soon.</li>
+</ul>
+<p>Step 7:</p>
+<ul>
+<li>Destination device send the Address Resolution Protocol (ARP) reply message and it will NOT be a broadcast, but a unicast.</li>
+</ul>
+<p>Step 8:</p>
+<ul>
+<li>The source machine will process the Address Resolution Protocol (ARP) reply from destination, it store the Sender Hardware Address as the layer 2 address of the destination.</li>
+</ul>
+<p>Step 9:</p>
+<ul>
+<li>The source machine will update its Address Resolution Protocol (ARP) cache with the Sender Hardware Address and Sender Protocol Address it received from the Address Resolution Protocol (ARP) reply message. </li>
+</ul>
               
             </div>
           </div>
@@ -503,10 +504,10 @@ This behaviour of Linux network stack is complied into the kernel so it isn&rsqu
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../promisc/index.html" class="btn btn-neutral float-right" title="Promisc detection">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../packet_headers/index.html" class="btn btn-neutral float-right" title="Packet Headers">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../service_discovery/index.html" class="btn btn-neutral" title="Service discovery"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../socket_interface/index.html" class="btn btn-neutral" title="Socket Interface"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -534,10 +535,10 @@ This behaviour of Linux network stack is complied into the kernel so it isn&rsqu
           <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../service_discovery/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../socket_interface/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../promisc/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../packet_headers/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

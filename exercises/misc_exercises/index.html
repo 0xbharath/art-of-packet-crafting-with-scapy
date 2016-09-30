@@ -147,6 +147,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../networking/protocols/index.html">Protocols</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../networking/packet_headers/index.html">Packet Headers</a>
         
     </li>
@@ -277,6 +284,28 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../network_recon/traceroute/index.html">Traceroute</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Network attacks</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_attacks/cam_overflow/index.html">CAM overflow</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_attacks/arp_spoofing/index.html">ARP spoofing</a>
         
     </li>
 
@@ -491,13 +520,11 @@ True
 <pre><code class="python">verax@untamed $ sudo python ipidscanner.py 192.168.56.102 192.168.56.103 4444
 
 [+] Sending syn-ack to zombie
-
 [+] Recording initial IPID
 
 [+] Sending spoofed syn to victim
 
 [+] Sending syn-ack to zombie
-
 [+] Recording final IPID
 
 [*] Initial IPID of zombie: 14
@@ -572,9 +599,12 @@ The port 4444 on 192.168.56.103 is open
 </ul>
 <p><em>Boilerplate syntax is provided, can be found in code directory</em></p>
 <h6 id="example">Example:</h6>
-<pre><code class="bash">xxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxx
+<pre><code class="bash">verax@humla $ python list_scan.py --range 192.168.56.1/30 --exclude 192.168.56.2
+Range   =&gt; IPSet(['192.168.56.1/30'])
+Exclude =&gt; IPSet(['192.168.56.2/32'])
+192.168.56.0
+192.168.56.1
+192.168.56.3
 </code></pre>
 
 <p><br/></p>

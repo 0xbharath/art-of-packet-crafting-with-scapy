@@ -8,7 +8,7 @@
   
   <meta name="author" content="Bharath(yamakira_)">
   
-  <title>OS detection - The Art of Packet Crafting with Scapy!</title>
+  <title>CAM overflow - The Art of Packet Crafting with Scapy!</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "OS detection";
-    var mkdocs_page_input_path = "network_recon/os_detection.md";
-    var mkdocs_page_url = "/network_recon/os_detection/index.html";
+    var mkdocs_page_name = "CAM overflow";
+    var mkdocs_page_input_path = "network_attacks/cam_overflow.md";
+    var mkdocs_page_url = "/network_attacks/cam_overflow/index.html";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -248,53 +248,42 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        <a class="" href="../../network_recon/host_discovery/index.html">Host discovery</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../service_discovery/index.html">Service discovery</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="index.html">OS detection</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#remote-os-detection">Remote OS Detection</a></li>
-                
-                    <li><a class="toctree-l4" href="#active-os-finger-printing">Active OS finger printing</a></li>
-                
-                    <li><a class="toctree-l4" href="#passive-os-fingerprinting">Passive OS fingerprinting</a></li>
-                
-            
-            </ul>
+        <a class="" href="../../network_recon/service_discovery/index.html">Service discovery</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../promisc/index.html">Promisc detection</a>
+        <a class="" href="../../network_recon/os_detection/index.html">OS detection</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        <a class="" href="../../network_recon/promisc/index.html">Promisc detection</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../traceroute/index.html">Traceroute</a>
+        <a class="" href="../../network_recon/pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/traceroute/index.html">Traceroute</a>
         
     </li>
 
@@ -308,15 +297,26 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../../network_attacks/cam_overflow/index.html">CAM overflow</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">CAM overflow</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#cam-overflow-mac-flooding-attack">CAM overflow/ MAC flooding attack</a></li>
+                
+                    <li><a class="toctree-l4" href="#background">Background</a></li>
+                
+                    <li><a class="toctree-l4" href="#exploitation">Exploitation</a></li>
+                
+            
+            </ul>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../network_attacks/arp_spoofing/index.html">ARP spoofing</a>
+        <a class="" href="../arp_spoofing/index.html">ARP spoofing</a>
         
     </li>
 
@@ -427,11 +427,11 @@
     
       
         
-          <li>Network recon &raquo;</li>
+          <li>Network attacks &raquo;</li>
         
       
     
-    <li>OS detection</li>
+    <li>CAM overflow</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -445,57 +445,26 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="remote-os-detection">Remote OS Detection</h1>
-<p>There are two approaches to finger printing remote Operating Systems:</p>
+                <h2 id="cam-overflow-mac-flooding-attack">CAM overflow/ MAC flooding attack</h2>
+<h4 id="background">Background</h4>
 <ul>
-<li>
-<p>Active OS finger printing</p>
+<li>Content Addressable Memory (CAM) Table Overflow is a Layer 2 attack on a switch.</li>
+<li>A switch&rsquo;s CAM table contains network information such as MAC addresses available on physical switch ports and associated VLAN parameters.</li>
+<li>MAC address flooding attack (CAM table flooding attack) is a type of network attack where an attacker connected to a switch port floods the switch interface with very large number of Ethernet frames with different fake source MAC address.</li>
+<li>CAM Table Overflows occur when an influx of MAC addresses are flooded into the table and the CAM table threshold is reached. This causes the switch to act like a hub, flooding the network with traffic out all ports.</li>
+</ul>
+<p>More about CAM over flow: <a href="http://hakipedia.com/index.php/CAM_Table_Overflow">CAM overflow</a></p>
 <ul>
-<li>Active finger printing is when attacker sends a series of TCP and UDP packets to the remote host and  examines practically every bit in the responses. After the tests the results are compared against the general behaviour of Operating Systems for a match.</li>
-<li>Nmap is the most popular active OS detection tool. Nmap probes a target with large number of well crafted packets and the results are compared against Nmap&rsquo;s database of OS fingerprints (<code>nmap-os-db</code>).</li>
-<li><strong>For more details on Nmap&rsquo;s active OS detection techniques <a href="https://nmap.org/book/man-os-detection.html">Nmap OS Detection</a> </strong></li>
+<li>MAC address flooding exploits the memory and hardware limitations in a switch&rsquo;s CAM table.</li>
+<li>Switchs are able to store numerous amounts of entries in the CAM table, however, once the resources are exhausted, the traffic is flooded out on all ports(or source VLAN), as the CAM table can no longer store MAC addresses, thus is no longer able to locate the MAC destination MAC address within a packet.</li>
+<li>An attacker is able to exploit this limitation by flooding the switch with an influx of (mostly invalid) MAC addresses, until the CAM tables resources are depleted. - When the aforementioned transpires, the switch has no choice but to flood all ports with all incoming traffic. This is due to the fact that it cannot find the switch port number for a corresponding MAC address within the CAM table. By definition, the switch, acts like, and becomes a hub.</li>
 </ul>
-</li>
-</ul>
-<p><br></p>
+<h4 id="exploitation">Exploitation</h4>
 <ul>
-<li>
-<p>Passive OS fingerprinting</p>
-<ul>
-<li>Passive OS finger prining is analyzing network traffic to detect what operating system the client/server are running. This possible because of the difference in TCP/IP stack implemention in various operating systems. P0f is a popular passive finger printing tool with large database of finger prints.</li>
-<li><strong>For more details on p0f finger printing <a href="http://lcamtuf.coredump.cx/p0f3/">Passive OS finger printing with p0f</a> </strong></li>
+<li>CAM overflow attacks are very trivial and are very easy to lauch.</li>
+<li>Tools like macof(part of dsniff suite) make it even easier to exploit.</li>
+<li>To make the attacks reliable have an IP payload with random source and destination IP addresses. </li>
 </ul>
-</li>
-</ul>
-<h2 id="active-os-finger-printing">Active OS finger printing</h2>
-<h5 id="differences-in-protocol-implementations">Differences in protocol implementations</h5>
-<p>RFC 793 says:
-&ldquo;ACK (1 bit) – indicates that the Acknowledgment field is significant. <strong>All packets after the initial SYN packet sent by the client should have this flag set&rdquo;</strong>.</p>
-<p>But, IP stacks are written for different OSs by different people who read the RFCs and then write their interpretation of what the RFC outlines into code. This leads to a difference in how IP stacks are implemeted across OSes.</p>
-<h3 id="linux-implementation">Linux implementation</h3>
-<p><strong>Linux kernel 2.4+ accepts and acknowledges a segment in an established session where no TCP flags are set and where the segment has payload</strong> No other well known current operating system accepts this same segment. <br/>
-This behaviour of Linux network stack is complied into the kernel so it isn&rsquo;t easy to alter it. This makes it a very foolproof technique for remote Linux OS detection.</p>
-<h3 id="the-technique">The Technique:</h3>
-<p align = 'center'>
-<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/linux_detect.png'>
-</p>
-
-<ul>
-<li>Establish a TCP three-way handshake with the target.</li>
-<li>All we have to do after handshake is to create a segment with <strong>no TCP flags and add some payload</strong> and send it.</li>
-</ul>
-<pre><code class="python">&gt;&gt;&gt;PUSH=(sport=1024,dport=80,flags=””,seq=12346,ack=my_ack)  # No flags set.
-&gt;&gt;&gt;data=”JUST A FILLER”
-&gt;&gt;&gt;send(ip/PUSH/data)
-</code></pre>
-
-<ul>
-<li>If the target is Linux server(2.4+ kernel), you&rsquo;ll see an ACK bit set in the response.</li>
-<li>In case of other operating systems, the response will most likely be a RST packet.</li>
-</ul>
-<h2 id="passive-os-fingerprinting">Passive OS fingerprinting</h2>
-<h3 id="ttl-window-size-analysis">TTL &amp; Window size analysis</h3>
-<p><img alt="" src="../../../img/ttl_window.png" /> </p>
               
             </div>
           </div>
@@ -503,10 +472,10 @@ This behaviour of Linux network stack is complied into the kernel so it isn&rsqu
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../promisc/index.html" class="btn btn-neutral float-right" title="Promisc detection">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../arp_spoofing/index.html" class="btn btn-neutral float-right" title="ARP spoofing">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../service_discovery/index.html" class="btn btn-neutral" title="Service discovery"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../network_recon/traceroute/index.html" class="btn btn-neutral" title="Traceroute"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -534,10 +503,10 @@ This behaviour of Linux network stack is complied into the kernel so it isn&rsqu
           <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../service_discovery/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../network_recon/traceroute/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../promisc/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../arp_spoofing/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

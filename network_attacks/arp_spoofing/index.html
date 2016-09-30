@@ -8,7 +8,7 @@
   
   <meta name="author" content="Bharath(yamakira_)">
   
-  <title>OS detection - The Art of Packet Crafting with Scapy!</title>
+  <title>ARP spoofing - The Art of Packet Crafting with Scapy!</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "OS detection";
-    var mkdocs_page_input_path = "network_recon/os_detection.md";
-    var mkdocs_page_url = "/network_recon/os_detection/index.html";
+    var mkdocs_page_name = "ARP spoofing";
+    var mkdocs_page_input_path = "network_attacks/arp_spoofing.md";
+    var mkdocs_page_url = "/network_attacks/arp_spoofing/index.html";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -248,53 +248,42 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../host_discovery/index.html">Host discovery</a>
+        <a class="" href="../../network_recon/host_discovery/index.html">Host discovery</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../service_discovery/index.html">Service discovery</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="index.html">OS detection</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#remote-os-detection">Remote OS Detection</a></li>
-                
-                    <li><a class="toctree-l4" href="#active-os-finger-printing">Active OS finger printing</a></li>
-                
-                    <li><a class="toctree-l4" href="#passive-os-fingerprinting">Passive OS fingerprinting</a></li>
-                
-            
-            </ul>
+        <a class="" href="../../network_recon/service_discovery/index.html">Service discovery</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../promisc/index.html">Promisc detection</a>
+        <a class="" href="../../network_recon/os_detection/index.html">OS detection</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../pcap_analysis/index.html">PCAP Analysis</a>
+        <a class="" href="../../network_recon/promisc/index.html">Promisc detection</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../traceroute/index.html">Traceroute</a>
+        <a class="" href="../../network_recon/pcap_analysis/index.html">PCAP Analysis</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../network_recon/traceroute/index.html">Traceroute</a>
         
     </li>
 
@@ -309,14 +298,21 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../network_attacks/cam_overflow/index.html">CAM overflow</a>
+        <a class="" href="../cam_overflow/index.html">CAM overflow</a>
         
     </li>
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../../network_attacks/arp_spoofing/index.html">ARP spoofing</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="index.html">ARP spoofing</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#arp-spoofingmitm">ARP Spoofing(MiTM)</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -427,11 +423,11 @@
     
       
         
-          <li>Network recon &raquo;</li>
+          <li>Network attacks &raquo;</li>
         
       
     
-    <li>OS detection</li>
+    <li>ARP spoofing</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -445,57 +441,37 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="remote-os-detection">Remote OS Detection</h1>
-<p>There are two approaches to finger printing remote Operating Systems:</p>
+                <h1 id="arp-spoofingmitm">ARP Spoofing(MiTM)</h1>
+<div class="admonition caution">
+<p class="admonition-title">Messing with ARP</p>
 <ul>
-<li>
-<p>Active OS finger printing</p>
+<li>ARP attacks can potentially mess your LAN configuration. Be very cautious about testing the attacks or runnign tools in production environment(or in any network for that matter)</li>
+<li>Fortunately a mess up at layer 2 will be corrected to orignal state in few minutes. If you do happen to mess up your LAN anyway, take a walk, come back several minutes later, pretending the network was still working when you left. </li>
+</ul>
+</div>
 <ul>
-<li>Active finger printing is when attacker sends a series of TCP and UDP packets to the remote host and  examines practically every bit in the responses. After the tests the results are compared against the general behaviour of Operating Systems for a match.</li>
-<li>Nmap is the most popular active OS detection tool. Nmap probes a target with large number of well crafted packets and the results are compared against Nmap&rsquo;s database of OS fingerprints (<code>nmap-os-db</code>).</li>
-<li><strong>For more details on Nmap&rsquo;s active OS detection techniques <a href="https://nmap.org/book/man-os-detection.html">Nmap OS Detection</a> </strong></li>
+<li>In common hub networks all traffic can be seen by all hosts whose NICs (network interface card) are in promiscuous mode, but things are a bit different on switched networks.</li>
+<li>A switch looks at the data sent to it and tries to only forward packets to its intended recipient based on the MAC address.</li>
+<li>Switched networks are more secure and help speed up the network by only sending packets where they need to go.</li>
+<li>There are ways around switches though. Using a program like Arpspoof (part of the Dsniff package), we can lie to other machines on the local area network and tell them we have the IP they are looking for, thus funneling their traffic through us.</li>
 </ul>
-</li>
-</ul>
-<p><br></p>
-<ul>
-<li>
-<p>Passive OS fingerprinting</p>
-<ul>
-<li>Passive OS finger prining is analyzing network traffic to detect what operating system the client/server are running. This possible because of the difference in TCP/IP stack implemention in various operating systems. P0f is a popular passive finger printing tool with large database of finger prints.</li>
-<li><strong>For more details on p0f finger printing <a href="http://lcamtuf.coredump.cx/p0f3/">Passive OS finger printing with p0f</a> </strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="active-os-finger-printing">Active OS finger printing</h2>
-<h5 id="differences-in-protocol-implementations">Differences in protocol implementations</h5>
-<p>RFC 793 says:
-&ldquo;ACK (1 bit) – indicates that the Acknowledgment field is significant. <strong>All packets after the initial SYN packet sent by the client should have this flag set&rdquo;</strong>.</p>
-<p>But, IP stacks are written for different OSs by different people who read the RFCs and then write their interpretation of what the RFC outlines into code. This leads to a difference in how IP stacks are implemeted across OSes.</p>
-<h3 id="linux-implementation">Linux implementation</h3>
-<p><strong>Linux kernel 2.4+ accepts and acknowledges a segment in an established session where no TCP flags are set and where the segment has payload</strong> No other well known current operating system accepts this same segment. <br/>
-This behaviour of Linux network stack is complied into the kernel so it isn&rsquo;t easy to alter it. This makes it a very foolproof technique for remote Linux OS detection.</p>
-<h3 id="the-technique">The Technique:</h3>
-<p align = 'center'>
-<img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/linux_detect.png'>
+<p align="center">
+<img align="center" src="../../img/mitm.png" alt="ARP spoofing">
 </p>
 
 <ul>
-<li>Establish a TCP three-way handshake with the target.</li>
-<li>All we have to do after handshake is to create a segment with <strong>no TCP flags and add some payload</strong> and send it.</li>
+<li>In the above image, the attacker is telling Alan&rsquo;s box that he has the IP that corresponds to Brian&rsquo;s box and vice versa. By doing this the attacker receives all network traffic going between Alan and Brian. Once the attacker has ARP Spoofed his way between two nodes he can sniff the connection. By ARP Spoofing between a computer and the LAN&rsquo;s gateway an attacker can see all the traffic the computer is sending out and receiving.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt;PUSH=(sport=1024,dport=80,flags=””,seq=12346,ack=my_ack)  # No flags set.
-&gt;&gt;&gt;data=”JUST A FILLER”
-&gt;&gt;&gt;send(ip/PUSH/data)
+<p><strong>Step I</strong></p>
+<ul>
+<li>Make sure that the kernel IP forwarding is enabled, otherwise our machine will drop all traffic between the hosts we are trying to sniff, causing a denial of service.(&ldquo;IP forwarding&rdquo; is a synonym for &ldquo;routing.&rdquo; It is called &ldquo;kernel IP forwarding&rdquo; because it is a feature of the Linux kernel.)</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.system('echo 1 &gt; /proc/sys/net/ipv4/ip_forward')           # enable kernel IP forwarding
+&gt;&gt;&gt; os.system('echo 0 &gt; /proc/sys/net/ipv4/ip_forward')           # disable kernel IP forwarding
 </code></pre>
 
-<ul>
-<li>If the target is Linux server(2.4+ kernel), you&rsquo;ll see an ACK bit set in the response.</li>
-<li>In case of other operating systems, the response will most likely be a RST packet.</li>
-</ul>
-<h2 id="passive-os-fingerprinting">Passive OS fingerprinting</h2>
-<h3 id="ttl-window-size-analysis">TTL &amp; Window size analysis</h3>
-<p><img alt="" src="../../../img/ttl_window.png" /> </p>
+<p>More on kernel IP forwarding: <a href="http://unix.stackexchange.com/questions/14056/what-is-kernel-ip-forwarding">What is kernel IP forwarding?</a></p>
               
             </div>
           </div>
@@ -503,10 +479,10 @@ This behaviour of Linux network stack is complied into the kernel so it isn&rsqu
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../promisc/index.html" class="btn btn-neutral float-right" title="Promisc detection">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../wireless/wireless_recon/index.html" class="btn btn-neutral float-right" title="802.11">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../service_discovery/index.html" class="btn btn-neutral" title="Service discovery"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cam_overflow/index.html" class="btn btn-neutral" title="CAM overflow"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -534,10 +510,10 @@ This behaviour of Linux network stack is complied into the kernel so it isn&rsqu
           <a href="https://github.com/yamakira/art-of-packet-crafting-with-scapy" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../service_discovery/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../cam_overflow/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../promisc/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../wireless/wireless_recon/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
