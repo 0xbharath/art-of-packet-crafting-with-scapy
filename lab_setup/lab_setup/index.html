@@ -461,42 +461,104 @@
          │   
          └───mysterious_boxes
 
-              lab_setup.sh
-              lab_setup.bat
-                ...         
+              import_labs.sh
+              start_labs.sh
+              stop_labs.sh
+              ...         
+              import_labs.bat
+              start_labs.bat
+              stop_labs.bat
 </code></pre>
 
 <p><br/></p>
+<p>Follow the guidlines listed below depending on your primary/host OS.</p>
+<h3 id="linuxmac">Linux/Mac</h3>
+<p><strong>Step I</strong>   </p>
 <ul>
-<li>Follow the guidlines listed below depending on your primary OS.</li>
+<li>Copy the directory <em>&lsquo;null-workshop-packet-crafting-oct2016&rsquo;</em> from USB provided on to your machine.</li>
+</ul>
+<p><strong>Step II</strong></p>
+<ul>
+<li>Install Virtualbox(preferably 5.0 or later). Installers are provided in the directory copied.</li>
+</ul>
+<p><strong>Step III</strong></p>
+<ul>
+<li><code>cd</code> into the sub-directory <strong>mysterious_boxes_lab</strong>
+<br>
+<br></li>
+<li>
+<p>Run the script <strong><code>import_labs.sh</code></strong></p>
+<ul>
+<li>This script will import all the OVA files needed into your virtualbox.</li>
+<li>In the end, this script will display list of all the VMs available in Virtualbox.</li>
+<li>If you see <em>victim1, victim2, attacker</em> in the VMs list, the importing is sucessful.
+<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p>Run the script <strong><code>start_labs.sh</code></strong></p>
+<ul>
+<li>This script will setup and run your lab VMs.</li>
+<li>All the victims will run in the background. You&rsquo;ll be displayed only one VM, which will be our attacker.</li>
+<li>This script will display all the running VMs.</li>
+<li>If you see two victims and an attacker running, you are ready!
+<br>
+<br></li>
+</ul>
+</li>
+<li>Run the script <strong><code>stop_labs.sh</code></strong> when done with the labs. This will gracefully shutdown all the lab VMs.</li>
 </ul>
 <h3 id="windows">Windows</h3>
 <p><strong>Step I</strong>   </p>
-<p>Copy the directory <em>&lsquo;null-workshop-packet-crafting-oct2016&rsquo;</em> from USB provided on to your Windows machine.</p>
+<ul>
+<li>Copy the directory <em>&lsquo;null-workshop-packet-crafting-oct2016&rsquo;</em> from USB provided on to your Windows machine.</li>
+</ul>
 <p><strong>Step II</strong></p>
-<p>Install Virtualbox(preferably 5.0 or later). Installers are provided in the directory copied.</p>
+<ul>
+<li>Install Virtualbox(preferably 5.0 or later). Installers are provided in the directory copied.</li>
+</ul>
 <p><strong>Step III</strong></p>
-<p>Find the sub-directory <em>&lsquo;mysterious_boxes_lab&rsquo;</em> and run the script <strong>&lsquo;lab_setup.bat&rsquo;</strong></p>
-<p><strong>Step IV</strong></p>
-<p>Once the script finshed executing, ping 192.168.56.101. If the pings are sucessful, your lab is configured correctly.</p>
-<h3 id="linux">Linux</h3>
-<p><strong>Step I</strong></p>
-<p>Copy the directory <em>&lsquo;null-workshop-packet-crafting-oct2016&rsquo;</em> from USB provided on to your Linux machine.</p>
-<p><strong>Step II</strong></p>
-<p>Install Virtualbox(preferably 5.0 or later). Installers are provided in the directory copied.</p>
-<p><strong>Step III</strong></p>
-<p>Got to the directory &lsquo;mysterious_boxes_lab&rsquo; and run the script <strong>&lsquo;lab_setup.sh&rsquo;</strong> <code>$ ./lab_sh</code></p>
-<p><strong>Step IV</strong></p>
-<p>Once the script finshed executing, ping 192.168.56.101. If the pings are sucessful, your lab is configured correctly.</p>
-<h3 id="mac-osx">Mac OSX</h3>
-<p><strong>Step I</strong></p>
-<p>Copy the directory <em>&lsquo;null-workshop-packet-crafting-oct2016&rsquo;</em> from USB provided on to your mac.</p>
-<p><strong>Step II</strong></p>
-<p>Install Virtualbox(preferably 5.0 or later). Installers are provided in the directory copied.</p>
-<p><strong>Step III</strong></p>
-<p>Go to the directory &lsquo;mysterious_boxes_lab&rsquo; and run the script &lsquo;lab_setup.sh&rsquo;</p>
-<p><strong>Step IV</strong></p>
-<p>Once the script finshed executing, ping 192.168.56.101. If the pings are sucessful, your lab is configured correctly.</p>
+<ul>
+<li><code>cd</code> into the sub-directory <strong>mysterious_boxes_lab</strong>
+<br>
+<br></li>
+<li>
+<p>Run the script <strong><code>import_labs.bat</code></strong></p>
+<ul>
+<li>This script will import all the OVA files needed into your virtualbox.</li>
+<li>In the end, this script will display list of all the VMs available in Virtualbox.</li>
+<li>If you see <em>victim1, victim2, attacker</em> in the VMs list, the importing is sucessful.
+<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p>Run the script <strong><code>start_labs.bat</code></strong></p>
+<ul>
+<li>This script will setup and run your lab VMs.</li>
+<li>All the victims will run in the background. You&rsquo;ll be displayed only one VM, which will be our attacker.</li>
+<li>This script will display all the running VMs.</li>
+<li>If you see two victims and an attacker running, you are ready!
+<br>
+<br></li>
+</ul>
+</li>
+<li>Run the script <strong><code>stop_labs.bat</code></strong> when done with the labs. This will gracefully shutdown all the lab VMs.</li>
+</ul>
+<h6 id="troubleshootingwindows">Troubleshooting(Windows)</h6>
+<ul>
+<li>All the scripts assume the virtualbox installation is at <code>C:\Program Files\Oracle\VirtualBox</code>. Incase if the installation is at a different location, edit the following line in script manually to point to the right location.</li>
+</ul>
+<pre><code class="cmd">PATH=%PATH%;C:\Program Files\Oracle\VirtualBox
+</code></pre>
+
+<ul>
+<li>All the VMs have host-only interface turned on by default. Windows interface naming convention tend to be inconsistent. Incase you have trouble starting VMs due to network problems, change the interface name in script manually to match your virtualbox interface name.</li>
+</ul>
+<pre><code>vboxmanage modifyvm &quot;victim1&quot; --nic1 hostonly --hostonlyadapter1 &quot;vboxnet1&quot;
+</code></pre>
+
 <h2 id="topology">Topology</h2>
 <h3 id="host-machine">Host machine</h3>
 <ul>
@@ -505,7 +567,7 @@
 </ul>
 <h3 id="attacker-machine">Attacker machine</h3>
 <ul>
-<li>The machine with IP address XXX.XXX.XXX.XXX acts as attacker machine.</li>
+<li>The VM displayed after starting labs is your attacker.</li>
 <li>This is our &lsquo;base box&rsquo; for this workshop from where we orchestrate our attacks.</li>
 <li>Pre-configured with all the software neccesary(Scapy, nmap, netdiscover, dsniff, tcpdump&hellip;).</li>
 <li>You&rsquo;ll be able to login to this machine using GUI.</li>
@@ -513,6 +575,7 @@
 <h3 id="victim-machines">Victim machines</h3>
 <ul>
 <li>Bunch of pre-configured VM&rsquo;s.</li>
+<li>Configured to run in the background(headless mode).</li>
 <li>Various OSs with some listening services and security policies, nothing fancy though.</li>
 </ul>
 <h2 id="the-goal">The Goal</h2>
