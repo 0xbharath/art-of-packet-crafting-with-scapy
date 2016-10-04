@@ -554,9 +554,9 @@
 </code></pre>
 
 <ul>
-<li>All the VMs have host-only interface turned on by default. Windows interface naming convention tend to be inconsistent. Incase you have trouble starting VMs due to network problems, change the interface name in script manually to match your virtualbox interface name.</li>
+<li>All the VMs have host-only interface turned on by default. Windows interface naming convention tend to be inconsistent. In case are having trouble starting VMs due to network interface problems, change the interface name in script manually to match your virtualbox host-only adapter interface name.</li>
 </ul>
-<pre><code>vboxmanage modifyvm &quot;victim1&quot; --nic1 hostonly --hostonlyadapter1 &quot;vboxnet1&quot;
+<pre><code>vboxmanage modifyvm &quot;victim1&quot; --nic1 hostonly --hostonlyadapter1 &quot;your_interface_name_here&quot;
 </code></pre>
 
 <h2 id="topology">Topology</h2>

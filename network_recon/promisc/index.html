@@ -482,20 +482,6 @@
 <p>Fake ARP request packets, ICMP Ping(echo request) with wrong MAC but right IP address could do the job.</p>
 </li>
 </ul>
-<h3 id="arp-protocol">ARP Protocol</h3>
-<ul>
-<li>ARP protocol is used for resolution of network layer addresses into link layer addresses, IPV4 over Ethernet generally.</li>
-</ul>
-<blockquote>
-<p>ARP is depricated in IPv6 and the functionality is provided by  Network Discovery Protocol(NDP).</p>
-</blockquote>
-<ul>
-<li>ARP works inside a network and it is <strong>never routed</strong> outside.</li>
-<li>ARP is a <strong>layer 2 protocol</strong>(well, yeah yeah, <strong>2.5 layer maybe</strong>, for all the CCNA people)</li>
-<li>ARP is generally <strong>broadcasted</strong> in the local network.</li>
-</ul>
-<p><img alt="" src="../../home/verax/Downloads/tapcs_notes/images/arp-request.png" /> 
-<img alt="" src="../../home/verax/Downloads/tapcs_notes/images/arp-reply.png" /> </p>
 <h2 id="hardware-filter">Hardware filter</h2>
 <p>Normally,  NIC of a machine filters and accepts only packets that have destination address set to the NIC&rsquo;s own hardware address, broadcast address (FF FF FF FF FF FF), and multicast address 1(01 00 5E 00 00 01). Let&rsquo;s call this a hardware filter.
 But in promiscuous mode NIC is set to accept every packet that it recieves.</p>
@@ -512,7 +498,9 @@ Even though a packet passes through hardware filter, kernel is implementing anot
 <p>We need to craft a packet that is:<br>
 a. Blocked by the hardware filter in normal mode.<br>
 b. Should be able to pass the software filter.<br></p>
-<p><img alt="" src="../../../img/promisc_table.png" /> </p>
+<p align="center">
+<img align="center" src="../../img/promisc_table.png">
+</p>
               
             </div>
           </div>
