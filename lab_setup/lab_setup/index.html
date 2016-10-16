@@ -459,7 +459,7 @@
     │    
     └─────labs
          │   
-         └───mysterious_boxes
+         └───mysterious_boxes_lab
 
               import_labs.sh
               start_labs.sh
@@ -475,11 +475,11 @@
 <h3 id="linuxmac">Linux/Mac</h3>
 <p><strong>Step I</strong>   </p>
 <ul>
-<li>Copy the directory <em>&lsquo;null-workshop-packet-crafting-oct2016&rsquo;</em> from USB provided on to your machine.</li>
+<li>Copy the directory <em>&lsquo;null-workshop-packet-crafting-scapy&rsquo;</em> from USB provided on to your machine.</li>
 </ul>
 <p><strong>Step II</strong></p>
 <ul>
-<li>Install Virtualbox(preferably 5.0 or later). Installers are provided in the directory copied.</li>
+<li>Install VirtualBox(preferably 5.0 or later). Installers are provided in the directory copied.</li>
 </ul>
 <p><strong>Step III</strong></p>
 <ul>
@@ -489,8 +489,8 @@
 <li>
 <p>Run the script <strong><code>import_labs.sh</code></strong></p>
 <ul>
-<li>This script will import all the OVA files needed into your virtualbox.</li>
-<li>In the end, this script will display list of all the VMs available in Virtualbox.</li>
+<li>This script will import all the OVA files from the directory into your VirtualBox.</li>
+<li>In the end, this script will display list of all the VMs available in VirtualBox.</li>
 <li>If you see <em>victim1, victim2, attacker</em> in the VMs list, the importing is sucessful.
 <br>
 <br></li>
@@ -501,7 +501,7 @@
 <ul>
 <li>This script will setup and run your lab VMs.</li>
 <li>All the victims will run in the background. You&rsquo;ll be displayed only one VM, which will be our attacker.</li>
-<li>This script will display all the running VMs.</li>
+<li>This script will display all the running VMs in the end.</li>
 <li>If you see two victims and an attacker running, you are ready!
 <br>
 <br></li>
@@ -512,11 +512,11 @@
 <h3 id="windows">Windows</h3>
 <p><strong>Step I</strong>   </p>
 <ul>
-<li>Copy the directory <em>&lsquo;null-workshop-packet-crafting-oct2016&rsquo;</em> from USB provided on to your Windows machine.</li>
+<li>Copy the directory <em>&lsquo;null-workshop-packet-crafting-scapy&rsquo;</em> from USB provided on to your Windows machine.</li>
 </ul>
 <p><strong>Step II</strong></p>
 <ul>
-<li>Install Virtualbox(preferably 5.0 or later). Installers are provided in the directory copied.</li>
+<li>Install VirtualBox(preferably 5.0 or later). Installers are provided in the directory copied.</li>
 </ul>
 <p><strong>Step III</strong></p>
 <ul>
@@ -526,8 +526,8 @@
 <li>
 <p>Run the script <strong><code>import_labs.bat</code></strong></p>
 <ul>
-<li>This script will import all the OVA files needed into your virtualbox.</li>
-<li>In the end, this script will display list of all the VMs available in Virtualbox.</li>
+<li>This script will import all the OVA files needed into your VirtualBox.</li>
+<li>In the end, this script will display list of all the VMs available in VirtualBox.</li>
 <li>If you see <em>victim1, victim2, attacker</em> in the VMs list, the importing is sucessful.
 <br>
 <br></li>
@@ -538,7 +538,7 @@
 <ul>
 <li>This script will setup and run your lab VMs.</li>
 <li>All the victims will run in the background. You&rsquo;ll be displayed only one VM, which will be our attacker.</li>
-<li>This script will display all the running VMs.</li>
+<li>This script will display all the running VMs in the end.</li>
 <li>If you see two victims and an attacker running, you are ready!
 <br>
 <br></li>
@@ -548,13 +548,13 @@
 </ul>
 <h6 id="troubleshootingwindows">Troubleshooting(Windows)</h6>
 <ul>
-<li>All the scripts assume the virtualbox installation is at <code>C:\Program Files\Oracle\VirtualBox</code>. Incase if the installation is at a different location, edit the following line in script manually to point to the right location.</li>
+<li>All the scripts assume the VirtualBox installation is at <code>C:\Program Files\Oracle\VirtualBox</code>. Incase if the installation is at a different location, edit the following line in script manually to point to the right location.</li>
 </ul>
 <pre><code class="cmd">PATH=%PATH%;C:\Program Files\Oracle\VirtualBox
 </code></pre>
 
 <ul>
-<li>All the VMs have host-only interface turned on by default. Windows interface naming convention tend to be inconsistent. In case are having trouble starting VMs due to network interface problems, change the interface name in script manually to match your virtualbox host-only adapter interface name.</li>
+<li>All the VMs have host-only interface turned on by default. Windows interface naming convention tend to be inconsistent. In case are having trouble starting VMs due to network interface problems, change the interface name in script manually to match your VirtualBox host-only adapter interface name.</li>
 </ul>
 <pre><code>vboxmanage modifyvm &quot;victim1&quot; --nic1 hostonly --hostonlyadapter1 &quot;your_interface_name_here&quot;
 </code></pre>
@@ -562,18 +562,18 @@
 <h2 id="topology">Topology</h2>
 <h3 id="host-machine">Host machine</h3>
 <ul>
-<li>Host OS is the primary Operating System on which you are running virtualbox</li>
+<li>Host OS is the primary Operating System on which you are running VirtualBox</li>
 <li>Host OS is on the same sub-net as the VM&rsquo;s</li>
 </ul>
 <h3 id="attacker-machine">Attacker machine</h3>
-<p><strong>Username</strong>: attacker
-<strong>Password</strong>: attacker</p>
-<p>Python third-party modules available - scapy, netaddr
-Other security tools available - nmap, wireshark, dsniff(macof), tcpdump.</p>
+<p><strong>Username</strong>: attacker <br>
+<strong>Password</strong>: attacker <br></p>
+<p>Python third-party modules available - scapy, netaddr <br>
+Other security tools available - nmap, wireshark, dsniff(macof), tcpdump. <br></p>
 <ul>
 <li>The VM displayed after starting labs is your attacker.</li>
 <li>This is our &lsquo;base box&rsquo; for this workshop from where we orchestrate our attacks.</li>
-<li>Login using the above credentials and run <code>startx</code> to get a GUI.</li>
+<li>Login using the above credentials and <strong>run <code>startx</code> command to get a GUI.</strong></li>
 <li>The GUI is openbox based, it is intended to be super minimal so don&rsquo;t be surprised about lack of some &lsquo;features&rsquo;.</li>
 </ul>
 <h3 id="victim-machines">Victim machines</h3>
