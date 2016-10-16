@@ -455,7 +455,7 @@
 <h3 id="directory-tree">Directory tree</h3>
 <pre><code>USB
 │
-└───null-workshop-packet-crafting-oct2016 
+└───null-workshop-packet-crafting-scapy 
     │    
     └─────labs
          │   
@@ -566,20 +566,24 @@
 <li>Host OS is on the same sub-net as the VM&rsquo;s</li>
 </ul>
 <h3 id="attacker-machine">Attacker machine</h3>
+<p><strong>Username</strong>: attacker
+<strong>Password</strong>: attacker</p>
+<p>Python third-party modules available - scapy, netaddr
+Other security tools available - nmap, wireshark, dsniff(macof), tcpdump.</p>
 <ul>
 <li>The VM displayed after starting labs is your attacker.</li>
 <li>This is our &lsquo;base box&rsquo; for this workshop from where we orchestrate our attacks.</li>
-<li>Pre-configured with all the software neccesary(Scapy, nmap, netdiscover, dsniff, tcpdump&hellip;).</li>
-<li>You&rsquo;ll be able to login to this machine using GUI.</li>
+<li>Login using the above credentials and run <code>startx</code> to get a GUI.</li>
+<li>The GUI is openbox based, it is intended to be super minimal so don&rsquo;t be surprised about lack of some &lsquo;features&rsquo;.</li>
 </ul>
 <h3 id="victim-machines">Victim machines</h3>
 <ul>
 <li>Bunch of pre-configured VM&rsquo;s.</li>
 <li>Configured to run in the background(headless mode).</li>
-<li>Various OSs with some listening services and security policies, nothing fancy though.</li>
+<li>Victims vary in their operating systems,  listening services and security policies, nothing fancy though.</li>
 </ul>
 <h2 id="the-goal">The Goal</h2>
-<p>To find as much information as we can about the victim machines using Scapy.<br></p>
+<p>To find as much information as we can about the victim machines using Scapy on attacker machine.<br></p>
 <ul>
 <li>Fingerprinting OSs.<br></li>
 <li>Find listening services.<br></li>
