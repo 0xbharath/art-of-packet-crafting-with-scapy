@@ -375,6 +375,8 @@
                 
                     <li><a class="toctree-l4" href="#exercise-6">Exercise 6</a></li>
                 
+                    <li><a class="toctree-l4" href="#exercise-7">Exercise 7</a></li>
+                
             
             </ul>
         
@@ -468,6 +470,20 @@
 </code></pre>
 
 <h2 id="exercise-2">Exercise 2</h2>
+<h3 id="port-scanning">Port scanning</h3>
+<ul>
+<li>Write a script to perform port scanning i.e. given an IP address, find status of ports on the machine(atleast find any open ports under 1024).</li>
+<li>Use any of the port scanning techniques that have been discussed.</li>
+</ul>
+<pre><code class="python">verax@untamed  $ sudo python tcp_syn_scan.py 192.168.56.107
+'ftp_data    RA'
+'21          RA
+'ssh         SA'
+'telnet      RA'
+'24          RA'
+</code></pre>
+
+<h2 id="exercise-3">Exercise 3</h2>
 <h3 id="ip-id-pattern-finder">IP ID pattern finder</h3>
 <ul>
 <li>Write a script that takes a target IP and checks for patterns in the IP ID generation.</li>
@@ -509,7 +525,7 @@ True
 <li>Send packets to target IP address, save the IPIDs from responses in a data structure. (looping might help)</li>
 <li>Compare the IPIDs stored in data structure for patterns.</li>
 </ul>
-<h2 id="exercise-3">Exercise 3</h2>
+<h2 id="exercise-4">Exercise 4</h2>
 <h3 id="ip-id-scanner">IP ID scanner</h3>
 <ul>
 <li>Your might have found a potential &lsquo;zombie&rsquo; from the previous scan.</li>
@@ -560,7 +576,7 @@ The port 4444 on 192.168.56.103 is open
 <p>If zombie IPIP increases by more than two, it usually indicates a bad zombie host. It might not have predictable IPID numbers, or might be engaged in communication unrelated to the idle scan.</p>
 </li>
 </ul>
-<h2 id="exercise-4">Exercise 4</h2>
+<h2 id="exercise-5">Exercise 5</h2>
 <h3 id="packet-hunting">Packet hunting</h3>
 <ul>
 <li>You are given a PCAP &lsquo;boston2016&rsquo;, this PCAP is suspected to be having covert channel activity. (someone trying to transfer data in packet using unsual methods).</li>
@@ -587,7 +603,7 @@ The port 4444 on 192.168.56.103 is open
 <li>You have to read the checksums in &ldquo;0x:(hex) format first. <code>format(text,'0x')</code></li>
 <li>Decode the hex checksums into ascii and that&rsquo;s the exfiltrated data.</li>
 </ul>
-<h2 id="exercise-5">Exercise 5</h2>
+<h2 id="exercise-6">Exercise 6</h2>
 <h4 id="dummy-network-scanner">Dummy network scanner</h4>
 <ul>
 <li>
@@ -614,7 +630,7 @@ Exclude =&gt; IPSet(['192.168.56.2/32'])
 <li><code>netaddr.IPSet</code> has a remove method to remove elements.</li>
 </ul>
 <p><br/></p>
-<h2 id="exercise-6">Exercise 6</h2>
+<h2 id="exercise-7">Exercise 7</h2>
 <h4 id="local-network-interface-enumeration">Local network interface enumeration.</h4>
 <ul>
 <li>Use a python library to list all the interfaces on your machine, find as much as you can(interface labels, addressing etc).</li>
