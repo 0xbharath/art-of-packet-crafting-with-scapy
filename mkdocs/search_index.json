@@ -42,22 +42,22 @@
         }, 
         {
             "location": "/workshop_intro/bigger_picture/index.html", 
-            "text": "", 
+            "text": "The training material could be found at \ndisruptivelabs.in/training", 
             "title": "Bigger picture"
         }, 
         {
             "location": "/workshop_intro/speakers/index.html", 
-            "text": "Bharath\n\n\nWebpage \n \n  \n  \ndisruptivelabs.in\n\nTwitter\n \n  \n \n  \n  \n   \ntwitter.com/yamakira_\n\nGithub \n \n \n \n \ngithub.com/yamakira\n \n\n\nAbhinav\n\n\nWebpage \n \n  \n  \n\nTwitter\n \n  \n \n  \n  \n   \ntwitter.com/geek_ji\n\nGithub", 
+            "text": "Bharath\n\n\nWebpage \n \n  \n  \nDisruptivelabs.in\n\nTwitter\n \n  \n \n  \n  \n   \nTwitter.com/yamakira_\n\nGithub \n \n \n \n \nGithub.com/yamakira\n \n\n\nAbhinav\n\n\nTwitter\n \n  \n \n  \n  \n   \nTwitter.com/geek_ji", 
             "title": "Speakers"
         }, 
         {
             "location": "/workshop_intro/speakers/index.html#bharath", 
-            "text": "Webpage          disruptivelabs.in \nTwitter                  twitter.com/yamakira_ \nGithub          github.com/yamakira", 
+            "text": "Webpage          Disruptivelabs.in \nTwitter                  Twitter.com/yamakira_ \nGithub          Github.com/yamakira", 
             "title": "Bharath"
         }, 
         {
             "location": "/workshop_intro/speakers/index.html#abhinav", 
-            "text": "Webpage          \nTwitter                  twitter.com/geek_ji \nGithub", 
+            "text": "Twitter                  Twitter.com/geek_ji", 
             "title": "Abhinav"
         }, 
         {
@@ -87,12 +87,12 @@
         }, 
         {
             "location": "/workshop_intro/disclaimer/index.html", 
-            "text": "Legal ramifications!\n\n\nThe legal ramifications surrounding scanning networks are complex and controversial(like with many other laws pertaining to computer security). When using tools like Scapy/Nmap the line between doing something benign and malignant is thin. Always have written permission before scanning a network that you don\nt own, know what you are doing, know your jurisdictions and speak to a lawyer!\n\n\nThe general rules for this class are:\n\n\n\n\nYou don\nt own it; You don\nt scan it!\n\n\n\n\n\n\nDO NOT\n scan any machines at the venue that you don\nt have permission to scan.\n\n\n\n\nLimit your scanning to the following:\n\n\n\n\nThe virtual machines provided as part of the labs.\n\n\nscanme.nmap.org\n\n\negadz.metasploit.com\n\n\nhackme.irongeek.com", 
+            "text": "Legal ramifications!\n\n\nThe legal ramifications surrounding scanning networks are complex and controversial(like with many other laws pertaining to computer security). When using tools like Scapy/Nmap the line between doing something benign and malignant is thin. Always have written permission before scanning a network that you don\nt own, know what you are doing, know your jurisdictions and speak to a lawyer!\n\n\nThe general rules for this class are:\n\n\n\n\nYou don\nt own it; You don\nt scan it!\n\n\n\n\n\n\nDO NOT\n scan any machines at the venue that you don\nt have permission to scan.\n\n\n\n\nLimit your scanning to the following:\n\n\n\n\nThe virtual machines provided as part of the labs.\n\n\nscanme.nmap.org\n\n\negadz.metasploit.com\n\n\nhackme.irongeek.com\n\n\n\n\n\n\n\n\n\n(Feel free to do any sort of scan against your VMs but for other public services listed above, limit your scans as much as you can.)", 
             "title": "Disclaimer"
         }, 
         {
             "location": "/workshop_intro/disclaimer/index.html#legal-ramifications", 
-            "text": "The legal ramifications surrounding scanning networks are complex and controversial(like with many other laws pertaining to computer security). When using tools like Scapy/Nmap the line between doing something benign and malignant is thin. Always have written permission before scanning a network that you don t own, know what you are doing, know your jurisdictions and speak to a lawyer!  The general rules for this class are:   You don t own it; You don t scan it!    DO NOT  scan any machines at the venue that you don t have permission to scan.   Limit your scanning to the following:   The virtual machines provided as part of the labs.  scanme.nmap.org  egadz.metasploit.com  hackme.irongeek.com", 
+            "text": "The legal ramifications surrounding scanning networks are complex and controversial(like with many other laws pertaining to computer security). When using tools like Scapy/Nmap the line between doing something benign and malignant is thin. Always have written permission before scanning a network that you don t own, know what you are doing, know your jurisdictions and speak to a lawyer!  The general rules for this class are:   You don t own it; You don t scan it!    DO NOT  scan any machines at the venue that you don t have permission to scan.   Limit your scanning to the following:   The virtual machines provided as part of the labs.  scanme.nmap.org  egadz.metasploit.com  hackme.irongeek.com     (Feel free to do any sort of scan against your VMs but for other public services listed above, limit your scans as much as you can.)", 
             "title": "Legal ramifications!"
         }, 
         {
@@ -157,7 +157,7 @@
         }, 
         {
             "location": "/lab_setup/network_hunt/index.html", 
-            "text": "Network hunt\n lab setup\n\n\nSetting up\n\n\nDirectory tree\n\n\nOn your attacker box\n\n\n/\n\u2502\n\u2514\u2500\u2500\u2500home\n    \u2502\n    \u2514\u2500\u2500\u2500network_hunt_challenge\n        \u2502    \n        \u2514\u2500\u2500 network_hunt.py\n\n\n\n\nInstructions\n\n\n\n\nRun the network_hunt.py script.\n\n\nIf the script executed without errors, the challenge is setup!\n\n\nRefer to \nexercises\n section \n \nnetwork hunt\n page in this notes for instruction on cracking the challenge.", 
+            "text": "Network hunt\n lab setup\n\n\nSetting up\n\n\nDirectory tree\n\n\nOn your attacker box\n\n\n/\n\u2502\n\u2514\u2500\u2500\u2500home\n    \u2502\n    \u2514\u2500\u2500\u2500network_hunt_challenge\n        \u2502    \n        \u2514\u2500\u2500 network_hunt.py\n\n\n\n\nInstructions\n\n\n\n\nRun the \nnetwork_hunt.py\n script as root.\n\n\n\n\nverax@humla ~/network_hunt_challenge $ sudo python network_hunt.py \nThe game is now running - tap0 interface allocated.\nEnding the process will deallocate this interface and release all state.\n\n\n\n\n\n\nIf the script executed without errors, the challenge is setup!\n\n\nRefer to \nexercises\n section \n \nnetwork hunt\n page in this notes for instruction on cracking the challenge.", 
             "title": "Network Hunt"
         }, 
         {
@@ -177,7 +177,7 @@
         }, 
         {
             "location": "/lab_setup/network_hunt/index.html#instructions", 
-            "text": "Run the network_hunt.py script.  If the script executed without errors, the challenge is setup!  Refer to  exercises  section    network hunt  page in this notes for instruction on cracking the challenge.", 
+            "text": "Run the  network_hunt.py  script as root.   verax@humla ~/network_hunt_challenge $ sudo python network_hunt.py \nThe game is now running - tap0 interface allocated.\nEnding the process will deallocate this interface and release all state.   If the script executed without errors, the challenge is setup!  Refer to  exercises  section    network hunt  page in this notes for instruction on cracking the challenge.", 
             "title": "Instructions"
         }, 
         {
