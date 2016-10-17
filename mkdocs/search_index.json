@@ -1152,17 +1152,17 @@
         }, 
         {
             "location": "/epilogue/moving_forward/index.html", 
-            "text": "Moving forward\n\n\n\n\nScapy project needs more contributors.\n\n\nThere is a lot of scope for improvement and it makes a great starting place for contributing to open source.\n\n\nWrite add-ons, protocol dissector, jupyter notebooks, improve documentation etc.\n\n\nFind a problem/technique/utility.. code it yourself!", 
+            "text": "Moving forward\n\n\n\n\nScapy project needs more contributors.\n\n\nThere is a lot of scope for improvement and it makes a great starting place for contributing to open source.\n\n\nImprove the documentation.\n\n\nWrite add-ons, protocol dissectors etc.\n\n\nFind a problem/technique/utility.. code it yourself!\n\n\n\n\nScapy github page is a good place to start \nScapy github - Issues\n\n\nFrom Scapy project maintainers:\n\n\n\n\nadd unit tests to protocols in contrib/ Some of them don\nt have any test. This is problematic when we make changes to the core;\n\n\ncheck that the documentation is still up to date with the code;\n\n\nmove examples from Scapy presentations to the documentation. According to some recent discussions I had, it seems that they are no synced.\n\n\n\n\nAnother option is to try to do something with Scapy, and either write functions to do it, or write a documentation to show how you did it, maybe as an iPython Notebook.", 
             "title": "Moving forward"
         }, 
         {
             "location": "/epilogue/moving_forward/index.html#moving-forward", 
-            "text": "Scapy project needs more contributors.  There is a lot of scope for improvement and it makes a great starting place for contributing to open source.  Write add-ons, protocol dissector, jupyter notebooks, improve documentation etc.  Find a problem/technique/utility.. code it yourself!", 
+            "text": "Scapy project needs more contributors.  There is a lot of scope for improvement and it makes a great starting place for contributing to open source.  Improve the documentation.  Write add-ons, protocol dissectors etc.  Find a problem/technique/utility.. code it yourself!   Scapy github page is a good place to start  Scapy github - Issues  From Scapy project maintainers:   add unit tests to protocols in contrib/ Some of them don t have any test. This is problematic when we make changes to the core;  check that the documentation is still up to date with the code;  move examples from Scapy presentations to the documentation. According to some recent discussions I had, it seems that they are no synced.   Another option is to try to do something with Scapy, and either write functions to do it, or write a documentation to show how you did it, maybe as an iPython Notebook.", 
             "title": "Moving forward"
         }, 
         {
             "location": "/epilogue/feedback/index.html", 
-            "text": "Feedback \n Suggestions\n\n\n\n\nSlack channel\n\n\n\n\nCredits\n\n\nnull - The Open Security Community. \n |  \n \nhttp://swachalit.null.co.in/\n\nPhillipe Biondi for Scapy tool \n excellent literature on it.  \n |  \n \nhttp://secdev.org/\n\nJames Sullivan for his brilliant ScapyHunt program. \n |  \n \nhttps://github.com/JamesSullivan1/scapyHunt/\n\nPeople at packetstan esp. Judy Novak. \n |  \n \npacketstan.com\n\nTom Christie, Dougal Matthews for their beautiful documentation generator \n |  \n \nmkdocs.org\n\n\nReferences\n\n\nhack pedia\n\n\niphelix from The Sprawl | \nScapy Intro @ The Sprawl", 
+            "text": "Feedback \n Suggestions\n\n\n\n\nSlack channel\n\n\n\n\nCredits\n\n\nnull - The Open Security Community. \n |  \n \nhttp://swachalit.null.co.in/\n\nPhillipe Biondi for Scapy tool \n excellent literature on it.  \n |  \n \nhttp://secdev.org/\n\nJames Sullivan for his brilliant ScapyHunt program. \n |  \n \nhttps://github.com/JamesSullivan1/scapyHunt/\n\nPeople at packetstan esp. Judy Novak. \n |  \n \npacketstan.com\n\nTom Christie, Dougal Matthews for the documentation generator \n |  \n \nmkdocs.org\n\n\nReferences\n\n\nScapy documentation \n presentations\n \n\n\nNmap book\n \n\n\nScapy notes by iphelix\n \n\n\nBoston2016 pcap discussion\n \n\n\nTaste of Scapy by Judy Novak\n [PDF] \n\n\nDetection of Promiscuous Nodes Using ARP Packets\n [PDF]\n\n\nCAM overflow attack - Hackpedia\n \n\n\nHow to arp spoof on Linux\n\n\nPassive OS fingerprinting", 
             "title": "Feedback"
         }, 
         {
@@ -1172,12 +1172,12 @@
         }, 
         {
             "location": "/epilogue/feedback/index.html#credits", 
-            "text": "null - The Open Security Community.   |     http://swachalit.null.co.in/ \nPhillipe Biondi for Scapy tool   excellent literature on it.    |     http://secdev.org/ \nJames Sullivan for his brilliant ScapyHunt program.   |     https://github.com/JamesSullivan1/scapyHunt/ \nPeople at packetstan esp. Judy Novak.   |     packetstan.com \nTom Christie, Dougal Matthews for their beautiful documentation generator   |     mkdocs.org", 
+            "text": "null - The Open Security Community.   |     http://swachalit.null.co.in/ \nPhillipe Biondi for Scapy tool   excellent literature on it.    |     http://secdev.org/ \nJames Sullivan for his brilliant ScapyHunt program.   |     https://github.com/JamesSullivan1/scapyHunt/ \nPeople at packetstan esp. Judy Novak.   |     packetstan.com \nTom Christie, Dougal Matthews for the documentation generator   |     mkdocs.org", 
             "title": "Credits"
         }, 
         {
             "location": "/epilogue/feedback/index.html#references", 
-            "text": "hack pedia  iphelix from The Sprawl |  Scapy Intro @ The Sprawl", 
+            "text": "Scapy documentation   presentations    Nmap book    Scapy notes by iphelix    Boston2016 pcap discussion    Taste of Scapy by Judy Novak  [PDF]   Detection of Promiscuous Nodes Using ARP Packets  [PDF]  CAM overflow attack - Hackpedia    How to arp spoof on Linux  Passive OS fingerprinting", 
             "title": "References"
         }
     ]
