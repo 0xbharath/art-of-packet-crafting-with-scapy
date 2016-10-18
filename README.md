@@ -1,6 +1,6 @@
 # The-Art-of-Packet-Crafting-with-Scapy
 
-Online notes for this workshop is available at - https://yamakira.github.io/art-of-packet-crafting-with-scapy/ 
+Online notes for this workshop is available at - http://disruptivelabs.in/art-of-packet-crafting-with-scapy/
 
 ##Prerequisites
 - Little bit of programming experience in some language, not necessarily Python is preferable. (enough to know what's a "variable" or "if statement" etc)
