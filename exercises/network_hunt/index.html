@@ -378,6 +378,8 @@
                 
                     <li><a class="toctree-l4" href="#concepts">Concepts</a></li>
                 
+                    <li><a class="toctree-l4" href="#choose-your-difficulty">Choose your difficulty</a></li>
+                
                     <li><a class="toctree-l4" href="#tasks">TASKS</a></li>
                 
             
@@ -506,11 +508,26 @@
 <li>The target will most likely be isolated from the immediate local network, and will have some preferred clients.</li>
 </ul>
 </div>
+<h2 id="choose-your-difficulty">Choose your difficulty</h2>
+<p>In general the goal is to retrive FTP payload from the target system. You choose how difficult/challenging you want this exercise to be.</p>
+<h6 id="mega-pwn">Mega Pwn</h6>
+<p>Run the script, crack the challenge without looking at any further hints/tasks.</p>
+<h6 id="full-pwn">Full Pwn</h6>
+<p>Run the script, read through the tasks mentioned below for help and crack the challange</p>
+<h6 id="medium-pwn">Medium Pwn</h6>
+<ul>
+<li>Run the script, read through the tasks mentioned below for help.</li>
+<li>If you still find it challenging(which is fine), ask for the solution file, you&rsquo;ll be provided with a file that has more in-depth discussion on the steps towards cracking the challenge.</li>
+</ul>
+<h6 id="mini-pwn">Mini pwn</h6>
+<ul>
+<li>Use the tasks, solutin file and take a look at the challenge source code to understand how things work and crack the challenge.</li>
+</ul>
 <h2 id="tasks">TASKS</h2>
 <h3 id="task-i">TASK - I</h3>
-<p>Run the script &amp; find the details about the interface.</p>
+<p>Run the script &amp; find the details about the new interface(<code>ipconfig</code>, <code>route</code>).</p>
 <h3 id="task-ii">TASK - II</h3>
-<p>Understand the Network.</p>
+<p>Understand the network.</p>
 <ul>
 <li>Is there any traffic on the network?</li>
 <li>Are there devices connected to the network? Perform a network sweep?</li>
@@ -531,7 +548,7 @@ Hint: Port knocking. (Reference docs has more details on what port knocking is)<
 <h3 id="task-v">TASK - V</h3>
 <p>Did you manage to get access to some service on some machine? try some standard commands for that service to get more hints.</p>
 <h3 id="task-vi">TASK - VI</h3>
-<p>The target is not in the same sub-network and also doesn&rsquo;t accepts connections from specific machines.How do you compromise the machine?
+<p>The target is not in the same sub-network and also accepts connections from only specific machines.How do you compromise the machine? <br>
 Hint: ARP MitM</p>
 <h3 id="task-viii">TASK - VIII</h3>
 <p>Retrive the payload using standard FTP commands.</p>

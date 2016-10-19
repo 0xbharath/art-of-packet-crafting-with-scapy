@@ -1082,7 +1082,7 @@
         }, 
         {
             "location": "/exercises/network_hunt/index.html", 
-            "text": "Let\ns go Network hunting!\n\n\nTrivia\n\n\n\n\n\n\nTerminal-based game in which you will use common network attack vectors and penetration testing methods to analyze and compromise a virtual network.\n\n\n\n\n\n\nInvolves Network Security challenges designed to educate users on packet manipulation and common network attacks.\n\n\n\n\n\n\nThe whole challenge happens over sort of a software defined network(SDN).\n\n\n\n\n\n\nOriginally created by James Sullivan(MIT License), modified by us for a workshop setting.\n\n\n\n\n\n\n\n\nNetwork Hunt\n\n\n\n\nThe network hunt is a simple Software Defined Network \n\n\nThe network is completely defined by handcrafted packets using scapy/python which simulates a typical network setup.\n\n\n\n\n\n\nThe Goal\n\n\nThere is an FTP server somewhere on the network containing a document:\n\n\n\n\nLocate the FTP server\n\n\nConnect to the service \n\n\nRetrieve the file!\n\n\n\n\nTools\n\n\n\n\nscapy\n\n\nnmap\n\n\nwireshark or maybe \nwireshark\n\n\ntelnet/nc\n\n\ndsniff\n\n\n\n\nConcepts\n\n\n\n\nBash terminal-fu\n\n\nPacket capture and manipulation in scapy\n\n\nPacket analysis in wireshark\n\n\nRouter modes of operation\n\n\nNetwork topography, gateways\n\n\nBasic telnet/nc commands\n\n\n\n\n\n\nHints\n\n\n\n\nYou may need to find a way to see all of the traffic on the network.\n\n\nOther clients on the network might give you useful clues, if you can coerce them.\n\n\nThe target will most likely be isolated from the immediate local network, and will have some preferred clients.\n\n\n\n\n\n\nTASKS\n\n\nTASK - I\n\n\nRun the script \n find the details about the interface.\n\n\nTASK - II\n\n\nUnderstand the Network.\n\n\n\n\nIs there any traffic on the network?\n\n\nAre there devices connected to the network? Perform a network sweep?\n\n\n\n\nTASK - III\n\n\n\n\nHow to gain access to traffic beyond a switch?\n\n\nThink about exploiting the way layer 2 switches operate.\n\n\n\n\nScapy tips:\n\n- RandMAC() - Generates random MAC addresses.\n\n- RandIP() - Generates random IP addresses. \n\n\nTASK - IV\n\n\n\n\nWere you able to gain access to traffic beyond switch? If so, is there something interesting about the traffic? Is there some strange pattern in the traffic? \n\nHint: Port knocking. (Reference docs has more details on what port knocking is)\n\n\n\n\nTASK - V\n\n\nDid you manage to get access to some service on some machine? try some standard commands for that service to get more hints.\n\n\nTASK - VI\n\n\nThe target is not in the same sub-network and also doesn\nt accepts connections from specific machines.How do you compromise the machine?\nHint: ARP MitM\n\n\nTASK - VIII\n\n\nRetrive the payload using standard FTP commands.", 
+            "text": "Let\ns go Network hunting!\n\n\nTrivia\n\n\n\n\n\n\nTerminal-based game in which you will use common network attack vectors and penetration testing methods to analyze and compromise a virtual network.\n\n\n\n\n\n\nInvolves Network Security challenges designed to educate users on packet manipulation and common network attacks.\n\n\n\n\n\n\nThe whole challenge happens over sort of a software defined network(SDN).\n\n\n\n\n\n\nOriginally created by James Sullivan(MIT License), modified by us for a workshop setting.\n\n\n\n\n\n\n\n\nNetwork Hunt\n\n\n\n\nThe network hunt is a simple Software Defined Network \n\n\nThe network is completely defined by handcrafted packets using scapy/python which simulates a typical network setup.\n\n\n\n\n\n\nThe Goal\n\n\nThere is an FTP server somewhere on the network containing a document:\n\n\n\n\nLocate the FTP server\n\n\nConnect to the service \n\n\nRetrieve the file!\n\n\n\n\nTools\n\n\n\n\nscapy\n\n\nnmap\n\n\nwireshark or maybe \nwireshark\n\n\ntelnet/nc\n\n\ndsniff\n\n\n\n\nConcepts\n\n\n\n\nBash terminal-fu\n\n\nPacket capture and manipulation in scapy\n\n\nPacket analysis in wireshark\n\n\nRouter modes of operation\n\n\nNetwork topography, gateways\n\n\nBasic telnet/nc commands\n\n\n\n\n\n\nHints\n\n\n\n\nYou may need to find a way to see all of the traffic on the network.\n\n\nOther clients on the network might give you useful clues, if you can coerce them.\n\n\nThe target will most likely be isolated from the immediate local network, and will have some preferred clients.\n\n\n\n\n\n\nChoose your difficulty\n\n\nIn general the goal is to retrive FTP payload from the target system. You choose how difficult/challenging you want this exercise to be.\n\n\nMega Pwn\n\n\nRun the script, crack the challenge without looking at any further hints/tasks.\n\n\nFull Pwn\n\n\nRun the script, read through the tasks mentioned below for help and crack the challange\n\n\nMedium Pwn\n\n\n\n\nRun the script, read through the tasks mentioned below for help.\n\n\nIf you still find it challenging(which is fine), ask for the solution file, you\nll be provided with a file that has more in-depth discussion on the steps towards cracking the challenge.\n\n\n\n\nMini pwn\n\n\n\n\nUse the tasks, solutin file and take a look at the challenge source code to understand how things work and crack the challenge.\n\n\n\n\nTASKS\n\n\nTASK - I\n\n\nRun the script \n find the details about the new interface(\nipconfig\n, \nroute\n).\n\n\nTASK - II\n\n\nUnderstand the network.\n\n\n\n\nIs there any traffic on the network?\n\n\nAre there devices connected to the network? Perform a network sweep?\n\n\n\n\nTASK - III\n\n\n\n\nHow to gain access to traffic beyond a switch?\n\n\nThink about exploiting the way layer 2 switches operate.\n\n\n\n\nScapy tips:\n\n- RandMAC() - Generates random MAC addresses.\n\n- RandIP() - Generates random IP addresses. \n\n\nTASK - IV\n\n\n\n\nWere you able to gain access to traffic beyond switch? If so, is there something interesting about the traffic? Is there some strange pattern in the traffic? \n\nHint: Port knocking. (Reference docs has more details on what port knocking is)\n\n\n\n\nTASK - V\n\n\nDid you manage to get access to some service on some machine? try some standard commands for that service to get more hints.\n\n\nTASK - VI\n\n\nThe target is not in the same sub-network and also accepts connections from only specific machines.How do you compromise the machine? \n\nHint: ARP MitM\n\n\nTASK - VIII\n\n\nRetrive the payload using standard FTP commands.", 
             "title": "Network Hunt"
         }, 
         {
@@ -1111,18 +1111,43 @@
             "title": "Concepts"
         }, 
         {
+            "location": "/exercises/network_hunt/index.html#choose-your-difficulty", 
+            "text": "In general the goal is to retrive FTP payload from the target system. You choose how difficult/challenging you want this exercise to be.", 
+            "title": "Choose your difficulty"
+        }, 
+        {
+            "location": "/exercises/network_hunt/index.html#mega-pwn", 
+            "text": "Run the script, crack the challenge without looking at any further hints/tasks.", 
+            "title": "Mega Pwn"
+        }, 
+        {
+            "location": "/exercises/network_hunt/index.html#full-pwn", 
+            "text": "Run the script, read through the tasks mentioned below for help and crack the challange", 
+            "title": "Full Pwn"
+        }, 
+        {
+            "location": "/exercises/network_hunt/index.html#medium-pwn", 
+            "text": "Run the script, read through the tasks mentioned below for help.  If you still find it challenging(which is fine), ask for the solution file, you ll be provided with a file that has more in-depth discussion on the steps towards cracking the challenge.", 
+            "title": "Medium Pwn"
+        }, 
+        {
+            "location": "/exercises/network_hunt/index.html#mini-pwn", 
+            "text": "Use the tasks, solutin file and take a look at the challenge source code to understand how things work and crack the challenge.", 
+            "title": "Mini pwn"
+        }, 
+        {
             "location": "/exercises/network_hunt/index.html#tasks", 
             "text": "", 
             "title": "TASKS"
         }, 
         {
             "location": "/exercises/network_hunt/index.html#task-i", 
-            "text": "Run the script   find the details about the interface.", 
+            "text": "Run the script   find the details about the new interface( ipconfig ,  route ).", 
             "title": "TASK - I"
         }, 
         {
             "location": "/exercises/network_hunt/index.html#task-ii", 
-            "text": "Understand the Network.   Is there any traffic on the network?  Are there devices connected to the network? Perform a network sweep?", 
+            "text": "Understand the network.   Is there any traffic on the network?  Are there devices connected to the network? Perform a network sweep?", 
             "title": "TASK - II"
         }, 
         {
@@ -1142,7 +1167,7 @@
         }, 
         {
             "location": "/exercises/network_hunt/index.html#task-vi", 
-            "text": "The target is not in the same sub-network and also doesn t accepts connections from specific machines.How do you compromise the machine?\nHint: ARP MitM", 
+            "text": "The target is not in the same sub-network and also accepts connections from only specific machines.How do you compromise the machine?  \nHint: ARP MitM", 
             "title": "TASK - VI"
         }, 
         {
@@ -1162,7 +1187,7 @@
         }, 
         {
             "location": "/epilogue/feedback/index.html", 
-            "text": "Feedback \n Suggestions\n\n\n\n\nSlack channel\n\n\n\n\nCredits\n\n\nnull - The Open Security Community. \n |  \n \nhttp://swachalit.null.co.in/\n\nPhillipe Biondi for Scapy tool \n excellent literature on it.  \n |  \n \nhttp://secdev.org/\n\nJames Sullivan for his brilliant ScapyHunt program. \n |  \n \nhttps://github.com/JamesSullivan1/scapyHunt/\n\nPeople at packetstan esp. Judy Novak. \n |  \n \npacketstan.com\n\nTom Christie, Dougal Matthews for the documentation generator \n |  \n \nmkdocs.org\n\n\nReferences\n\n\nScapy documentation \n presentations\n \n\n\nNmap book\n \n\n\nScapy notes by iphelix\n \n\n\nBoston2016 pcap discussion\n \n\n\nTaste of Scapy by Judy Novak\n [PDF] \n\n\nDetection of Promiscuous Nodes Using ARP Packets\n [PDF]\n\n\nCAM overflow attack - Hackpedia\n \n\n\nHow to arp spoof on Linux\n\n\nPassive OS fingerprinting", 
+            "text": "Feedback \n Suggestions\n\n\n\n\nSlack channel\n\n\n\n\nCredits\n\n\nnull - The Open Security Community. \n |  \n \nhttp://swachalit.null.co.in/\n\nPhillipe Biondi for Scapy tool \n excellent literature on it.  \n |  \n \nhttp://secdev.org/\n\nJames Sullivan for his brilliant ScapyHunt program. \n |  \n \nhttps://github.com/JamesSullivan1/scapyHunt/\n\nPeople at packetstan esp. Judy Novak. \n |  \n \npacketstan.com\n\nReactOS open source operating system \n |  \n \nhttps://www.reactos.org/\n\nTom Christie, Dougal Matthews for the documentation generator \n |  \n \nmkdocs.org\n\n\nReferences\n\n\nScapy documentation \n presentations\n \n\n\nNmap book\n \n\n\nScapy notes by iphelix\n \n\n\nBoston2016 pcap discussion\n \n\n\nTaste of Scapy by Judy Novak\n [PDF] \n\n\nDetection of Promiscuous Nodes Using ARP Packets\n [PDF]\n\n\nCAM overflow attack - Hackpedia\n \n\n\nHow to arp spoof on Linux\n\n\nPassive OS fingerprinting", 
             "title": "Feedback"
         }, 
         {
@@ -1172,7 +1197,7 @@
         }, 
         {
             "location": "/epilogue/feedback/index.html#credits", 
-            "text": "null - The Open Security Community.   |     http://swachalit.null.co.in/ \nPhillipe Biondi for Scapy tool   excellent literature on it.    |     http://secdev.org/ \nJames Sullivan for his brilliant ScapyHunt program.   |     https://github.com/JamesSullivan1/scapyHunt/ \nPeople at packetstan esp. Judy Novak.   |     packetstan.com \nTom Christie, Dougal Matthews for the documentation generator   |     mkdocs.org", 
+            "text": "null - The Open Security Community.   |     http://swachalit.null.co.in/ \nPhillipe Biondi for Scapy tool   excellent literature on it.    |     http://secdev.org/ \nJames Sullivan for his brilliant ScapyHunt program.   |     https://github.com/JamesSullivan1/scapyHunt/ \nPeople at packetstan esp. Judy Novak.   |     packetstan.com \nReactOS open source operating system   |     https://www.reactos.org/ \nTom Christie, Dougal Matthews for the documentation generator   |     mkdocs.org", 
             "title": "Credits"
         }, 
         {
