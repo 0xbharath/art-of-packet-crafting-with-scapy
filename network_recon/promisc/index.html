@@ -460,7 +460,7 @@
 <p>Unlike Monitor mode, in promisc mode the listener has to be connected to the network.</p>
 </li>
 <li>
-<p>Some tools that use promiscuous mode - Wireshark, Tcpdump, Aircrack-ng, cain and abel, Snort, Virtualbox&hellip;</p>
+<p>Some tools that use promiscuous mode - Wireshark, Tcpdump, Aircrack-ng, cain and abel, Snort, VirtualBox&hellip;</p>
 </li>
 <li>Extremely effective because of it&rsquo;s passive nature.</li>
 </ul>
@@ -476,27 +476,32 @@
 <h2 id="detecting-promisc-node-the-idea"><strong> Detecting promisc node -  The idea:</strong></h2>
 <ul>
 <li>
-<p>All the packets recieved by promisc NIC are passed on to the kernel, so the basic idea of detection is to send specially crafted packets that may trick the system kernel to respond to packets that it is not supposed to respond to.</p>
+<p>All the packets recieved by promisc NIC are passed on to the kernel, so the basic idea of detection is to send specially crafted packets that may trick the system kernel to respond to packets that it is not supposed to respond to in normal mode.</p>
 </li>
 <li>
 <p>Fake ARP request packets, ICMP Ping(echo request) with wrong MAC but right IP address could do the job.</p>
 </li>
 </ul>
 <h2 id="hardware-filter">Hardware filter</h2>
-<p>Normally,  NIC of a machine filters and accepts only packets that have destination address set to the NIC&rsquo;s own hardware address, broadcast address (FF FF FF FF FF FF), and multicast address 1(01 00 5E 00 00 01). Let&rsquo;s call this a hardware filter.
-But in promiscuous mode NIC is set to accept every packet that it recieves.</p>
+<p>Normally,  NIC of a machine filters and accepts only packets that have destination address set to the NIC&rsquo;s own hardware address, broadcast address (FF FF FF FF FF FF), and multicast address 1(01 00 5E 00 00 01). Let&rsquo;s call this a hardware filter, where packets are filtered by NIC based of destination address.
+<br>
+<strong>In promiscuous mode, NIC is set to accept every packet that it recieves, like it has no hardware filtering.</strong></p>
 <ul>
-<li>Should be easy to find promisc nodes, right?
-Just send packet that is supposed to be filtered by normal mode hardware filter, only a promisc node would pass it to kernel and respond to that.</li>
-<li>Let&rsquo;s try: <strong>00:00:00:00:00:01</strong>. What happens??</li>
+<li>Using the above information it should be easy to find promisc nodes, right? <br>
+Just send packet using a destination address that is supposed to be filtered by hardware filter when in normal mode, only if a machine is in promisc mode, it would pass the packet to kernel without hardware filtering and would respond to that packet.</li>
+<li>Let&rsquo;s send an ARP packet to destination <strong>00:00:00:00:00:01</strong>. What happens??</li>
 </ul>
 <h2 id="software-filter">Software Filter</h2>
-<p>Operating system kernels implement a filter, let&rsquo;s call it <strong>software filter</strong>.
-Even though a packet passes through hardware filter, kernel is implementing another filter.</p>
-<h4 id="hardware-filter-vs-software-filter">Hardware filter vs Software filter</h4>
-<p>The hardware filter usually blocks packets that are not supposed to arrive to the system kernel. </p>
+<ul>
+<li>Operating system kernels implement a filter, let&rsquo;s call it <strong>software filter</strong>.</li>
+<li>Even though a packet passes through hardware filter, kernel is implementing another filter and this mechanism is filtering out some other addresses so we are not getting a response.</li>
+</ul>
+<h4 id="breaking-hardware-filter-software-filter">Breaking Hardware filter &amp; Software filter</h4>
+<ul>
+<li>The hardware filter usually blocks packets that are not supposed to arrive to the system kernel. </li>
+</ul>
 <p>We need to craft a packet that is:<br>
-a. Blocked by the hardware filter in normal mode.<br>
+a. Blocked by the hardware filter in normal mode, only passed to kernel in promisc mode.<br>
 b. Should be able to pass the software filter.<br></p>
 <p align="center">
 <img align="center" src="../../img/promisc_table.png">

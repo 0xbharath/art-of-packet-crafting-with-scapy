@@ -463,6 +463,59 @@
 <img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len" src='../../img/tcp_header.png'>
 </p>
 
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>TCP flag</th>
+<th>Binary</th>
+<th>Decimal</th>
+<th>TCP Dump syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URG</td>
+<td>00100000</td>
+<td>32</td>
+<td>&lsquo;tcp[13] == 32&rsquo;</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>00010000</td>
+<td>16</td>
+<td>&lsquo;tcp[13] == 16&rsquo;</td>
+</tr>
+<tr>
+<td>PSH</td>
+<td>00001000</td>
+<td>8</td>
+<td>&lsquo;tcp[13] == 8&rsquo;</td>
+</tr>
+<tr>
+<td>RST</td>
+<td>00000100</td>
+<td>4</td>
+<td>&lsquo;tcp[13] == 4&rsquo;</td>
+</tr>
+<tr>
+<td>SYN</td>
+<td>00000010</td>
+<td>2</td>
+<td>&lsquo;tcp[13] == 2&rsquo;</td>
+</tr>
+<tr>
+<td>FIN</td>
+<td>00000001</td>
+<td>1</td>
+<td>&lsquo;tcp[13] == 1&rsquo;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SYN-ACK</strong> = 00010010 = <strong>18</strong> 
+<br>
+<strong>RST-ACK</strong> = 00010100 = <strong>20</strong></p>
+<p>TCP flags mnemonic - <strong>U</strong>nskilled <strong>A</strong>ttackers <strong>P</strong>ester <strong>R</strong>eal <strong>S</strong>ecurity <strong>F</strong>olks</p>
 <h2 id="udp-header">UDP Header</h2>
 <p><p align = 'center'>
 <img alt='lists1' style="display:block; margin:0 auto" alt="calling sorted with key=len"  src='../../img/udp_header.png'>
