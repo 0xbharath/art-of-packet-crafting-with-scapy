@@ -362,6 +362,8 @@
                 
                     <li><a class="toctree-l4" href="#exercise-7">Exercise 7</a></li>
                 
+                    <li><a class="toctree-l4" href="#exercise-8">Exercise 8</a></li>
+                
             
             </ul>
         
@@ -589,6 +591,20 @@ The port 4444 on 192.168.56.103 is open
 <li>Decode the hex checksums into ascii and that&rsquo;s the exfiltrated data.</li>
 </ul>
 <h2 id="exercise-6">Exercise 6</h2>
+<h3 id="packet-analysis">Packet analysis</h3>
+<ul>
+<li>Given a pcap file, find all the unique hosts in that pcap file and try and determine their OS.</li>
+</ul>
+<pre><code class="bash">verax@humla $ python list_scan.py evidence.pcap
+
+List of all the hosts and possible OS
+-------------------------------------
+192.168.56.0   - Linux
+45.65.29.124   - Windows
+198.56.101.2   - Linux
+</code></pre>
+
+<h2 id="exercise-7">Exercise 7</h2>
 <h4 id="dummy-network-scanner">Dummy network scanner</h4>
 <ul>
 <li>
@@ -615,7 +631,7 @@ Exclude =&gt; IPSet(['192.168.56.2/32'])
 <li><code>netaddr.IPSet</code> has a remove method to remove elements.</li>
 </ul>
 <p><br/></p>
-<h2 id="exercise-7">Exercise 7</h2>
+<h2 id="exercise-8">Exercise 8</h2>
 <h4 id="local-network-interface-enumeration">Local network interface enumeration.</h4>
 <ul>
 <li>Use a python library to list all the interfaces on your machine, find as much as you can(interface labels, addressing etc).</li>

