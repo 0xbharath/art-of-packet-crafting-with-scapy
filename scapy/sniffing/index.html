@@ -432,7 +432,7 @@
 <h2 id="sniff">Sniff()</h2>
 <ul>
 <li>Scapy&rsquo;s in-built <code>sniff()</code> function helps us capture all traffic:</li>
-<li><code>sniff()</code> hasCount, filters, iface, timeout options. </li>
+<li><code>sniff()</code> has <code>count</code>, <code>filter</code>, <code>iface</code>, <code>lfilter</code>, <code>prn</code>, <code>timeout</code> options. </li>
 <li>Can apply BPF filters .(Same as TCPDUMP).</li>
 </ul>
 <pre><code class="python">&gt;&gt;&gt; sniff(count=4, iface='eth3')
@@ -470,10 +470,25 @@ Ether / IP / TCP 64.233.167.99:www &gt; 192.168.1.100:33168 SA
 Ether / IP / TCP 192.168.1.100:33168 &gt; 64.233.167.99:www A
 Ether / IP / TCP 192.168.1.100:33168 &gt; 64.233.167.99:www PA / Raw
 Ether / IP / TCP 64.233.167.99:www &gt; 192.168.1.100:33168 A
-
 </code></pre>
 
-<p>&mdash; TBD &mdash;</p>
+<ul>
+<li>Scapy can sniff packets offline from pcap files.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; pkts = sniff(offline='http_google.pcap')
+&gt;&gt;&gt; 
+&gt;&gt;&gt; pkts.nsummary()
+0000 Ether / IP / TCP 172.16.16.128:1606 &gt; 74.125.95.104:http S
+0001 Ether / IP / TCP 74.125.95.104:http &gt; 172.16.16.128:1606 SA
+0002 Ether / IP / TCP 172.16.16.128:1606 &gt; 74.125.95.104:http A
+0003 Ether / IP / TCP 172.16.16.128:1606 &gt; 74.125.95.104:http PA / Raw
+0004 Ether / IP / TCP 74.125.95.104:http &gt; 172.16.16.128:1606 A / Padding
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; sniff(offline='http_google.pcap', lfilter = lambda s: s[TCP].flags == 18, prn = lambda x: x[IP].dst)
+172.16.16.128
+&lt;Sniffed: TCP:1 UDP:0 ICMP:0 Other:0&gt;
+</code></pre>
               
             </div>
           </div>

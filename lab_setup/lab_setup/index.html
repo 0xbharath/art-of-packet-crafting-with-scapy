@@ -539,7 +539,7 @@
 </code></pre>
 
 <ul>
-<li>All the VMs have host-only interface turned on by default. Windows interface naming convention tend to be inconsistent. In case are having trouble starting VMs due to network interface problems, change the interface name in script manually to match your VirtualBox host-only adapter interface name.</li>
+<li>All the VMs have host-only interface turned on by default. Windows interface naming convention tend to be inconsistent. In case you are having trouble starting VMs due to network interface name, change the interface name in script manually to match your VirtualBox host-only adapter interface name.</li>
 </ul>
 <pre><code>vboxmanage modifyvm &quot;victim1&quot; --nic1 hostonly --hostonlyadapter1 &quot;your_interface_name_here&quot;
 </code></pre>
@@ -553,13 +553,14 @@
 <h3 id="attacker-machine">Attacker machine</h3>
 <p><strong>Username</strong>: attacker <br>
 <strong>Password</strong>: attacker <br></p>
-<p>Python third-party modules available - scapy, netaddr <br>
-Other security tools available - nmap, wireshark, dsniff(macof), tcpdump. <br></p>
+<p>Python third-party modules available - scapy <br>
+Other security tools available - nmap, wireshark, dsniff, macof, tcpdump. <br></p>
 <ul>
-<li>The VM displayed after starting labs is your attacker.</li>
+<li>The VM displayed after running <code>start_labs.sh</code> is our attacker.</li>
 <li>This is our &lsquo;base box&rsquo; for this workshop from where we orchestrate our attacks.</li>
 <li>Login using the above credentials and <strong>run <code>startx</code> command to get a GUI.</strong></li>
 <li>The GUI is openbox based, it is intended to be super minimal so don&rsquo;t be surprised about lack of some &lsquo;features&rsquo;.</li>
+<li><code>Readme.txt</code> file in home directory has more info on tools installed and essential commands etc.</li>
 </ul>
 <h3 id="victim-machines">Victim machines</h3>
 <ul>

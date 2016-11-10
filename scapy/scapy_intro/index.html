@@ -448,18 +448,44 @@
 <li>Dozens of in-built functions to automate various network utilities/attacks..</li>
 </ul>
 <h2 id="whats-different-about-scapy">What&rsquo;s different about Scapy?</h2>
-<p>You might be wondering that there are dozens of packet crafting tools and why use Scapy?</p>
+<p>You might be wondering that there are dozens of packet crafting tools, network scanners so why should we use Scapy?</p>
 <ul>
 <li>
-<p>Decode, Not Interpret .</p>
+<p>Scapy is not just another packet crafting tool, it comes with a lot of new concepts and paradigms.</p>
 </li>
 <li>
-<p>Probe Once, Interpret Many Times.</p>
-</li>
-<li>
-<p>Scapy is not a simple shell command program; <strong>Scapy runs inside Python interpreter</strong>, provides you the whole language when dealing with packets but you don’t need to master Python to use Scapy though.</p>
+<p>Scapy is not desgined as a simple but rather a framework upon which you can build other custom tools.</p>
 </li>
 </ul>
+<h4 id="absolute-freedom-over-packets">Absolute freedom over packets</h4>
+<ul>
+<li>A lot of packet crafting tools does not have a way to set certain fields in packets(limitations of sock_raw) i.e. the kernel is still in control of ceratin fields and will calculate those fields on behalf of the tool(cheksums, IHL)</li>
+<li>Most packet crating tools let&rsquo;s you fiddle with only limited fields/protocols, it is impossible to stack unrelated protocol headers into a single packet.</li>
+</ul>
+<p>Try to find a tool that can do</p>
+<ul>
+<li>an ICMP echo request with some given padding data</li>
+<li>an IP protocol scan with the More Fragments flag</li>
+<li>some ARP cache poisoning with a VLAN hopping attack</li>
+<li>a traceroute with an applicative payload (DNS, ISAKMP, etc.)</li>
+</ul>
+<p>Scapy tries to overcome those problems. It enables you to build exactly the packets you want. Even if I think stacking a 802.1q layer on top of TCP has no sense, it may have some for somebody else working on some product I don’t know. Scapy has a flexible model that tries to avoid such arbitrary limits. You’re free to put any value you want in any field you want, and stack them like you want. You’re an adult after all.</p>
+<h4 id="decode-not-interpret">Decode, Not Interpret</h4>
+<p><strong>Tool that interprets         - </strong> “The port 80 is filtered” <br>
+<strong>Tool that decodes            - </strong> “I have recieved ICMP type 3; code 13 from port 80”</p>
+<ul>
+<li>Having a tool that interprets is convenient but it is not the the best approach all the time.</li>
+<li>Tools interpret results based on the tool authors logic but every network is unique, one interpretation does not fit all the senarios.</li>
+<li>Interpreting results can help users that don’t know what a port scan is but it can also make more harm than good, as it injects bias into the results. A more knowledgable penetration tester woud want to see all the information and make interpretation himself. Unfortunately many tools discard most information that is needed.</li>
+<li>Networks are complex especially with the advent of firewalls, cloud infrastructure etc so each pen test is unique and you have to pay attention to even the minute details rather than relying on some tools interpretation blindly.</li>
+</ul>
+<h4 id="fast-packet-desgining-power-of-python">Fast packet desgining &amp; power of Python</h4>
+<p>Other tools stick to the program-that-you-run-from-a-shell paradigm. The result is an awful syntax to describe a packet. For these tools, the solution adopted uses a higher but less powerful description, in the form of scenarios imagined by the tool’s author. As an example, only the IP address must be given to a port scanner to trigger the port scanning scenario. Even if the scenario is tweaked a bit, you still are stuck to a port scan.</p>
+<p>Scapy is not a simple shell command program; <strong>Scapy runs inside Python interpreter</strong>, provides you the whole language when dealing with packets but you don’t need to master Python to use Scapy though.</p>
+<p>Scapy’s paradigm is to propose a Domain Specific Language (DSL) that enables a powerful and fast description of any kind of packet. Using the Python syntax and a Python interpreter as the DSL syntax and interpreter has many advantages: there is no need to write a separate interpreter, users don’t need to learn yet another language and they benefit from a complete, concise and very powerful language.</p>
+<h4 id="probe-once-interpret-many-times">Probe Once, Interpret Many Times.</h4>
+<p>Network recon/Network mapping is not simply scanning ports, it&rsquo;s far more complex and involves techniques like TTL analysis, understanding IP based trust relationships in the network etc.</p>
+<p>Unlike many tools, which discard all the information which they deem irrelavent, Scapy gives all the information, i.e. all the stimuli sent and all the responses received. Scapy gives the complete raw data, which can be used many times during analysis. You&rsquo;ll have all the Power of Python to dig through the data and perform analysis.</p>
 <h2 id="scapy-limitations">Scapy Limitations</h2>
 <ul>
 <li>

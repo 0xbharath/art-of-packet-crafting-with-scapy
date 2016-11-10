@@ -445,14 +445,34 @@
 <p>Most scapy funtions like send(), sniff() functions has fine grain options like applying bpf filters, timeout, retry, verbosity etc. Use help(function_name) to find out more options.</p>
 </div>
 <h2 id="send">send()</h2>
-<p>Send packets at Layer 3(Scapy creates Layer 2 header), Does not recieve any packets.</p>
-<pre><code class="python">&gt;&gt;&gt; send(IP(dst=&quot;1.2.3.4&quot;)/ICMP())
+<ul>
+<li>Send packets at Layer 3(Scapy creates Layer 2 header), Does not recieve any packets.</li>
+<li><code>loop</code> argument is by default 0, if it&rsquo;s value is anything oth than 0 then the packets will be sent in a loop till CTRL-C is pressed.</li>
+<li><code>count</code> can be used to set exact number of packets to be sent.</li>
+<li><code>inter</code> can be used to set numbers of seconds between each packet.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; send(IP(dst='8.8.8.8')/TCP(dport=53, flags='S'))
 .
 Sent 1 packets.
+&gt;&gt;&gt; 
+&gt;&gt;&gt; send(IP(dst=['8.8.8.8', '8.8.8.4'])/TCP(dport=53, flags='S'))
+..
+Sent 2 packets.
+&gt;&gt;&gt;
+&gt;&gt;&gt; send(IP(dst='8.8.8.8')/TCP(dport=53, flags='S'), count=10)
+..........
+Sent 10 packets.
+&gt;&gt;&gt;
+&gt;&gt;&gt; send(IP(dst='8.8.8.8')/TCP(dport=53, flags='S'), loop=1)
+......................... [... snipped ...]
+Sent 1503 packets.
 </code></pre>
 
 <h2 id="sendp">sendp()</h2>
-<p>Send packets at Layer 2(Must provide Layer 2 header), Does not recieve any packets.</p>
+<ul>
+<li>Same as send() but sends packets at Layer 2(Must provide Layer 2 header), Does not recieve any packets.</li>
+<li>Use <code>iface</code> to set interface to send packets on. (If not set <code>conf.iface</code> value will be used)</li>
+</ul>
 <pre><code class="python">&gt;&gt;&gt; sendp(Ether()/IP(dst=&quot;1.2.3.4&quot;,ttl=(1,4)), iface=&quot;eth1&quot;)
 ....
 Sent 4 packets.
@@ -467,7 +487,7 @@ Sent 11 packets.
 <h2 id="sr">sr()</h2>
 <ul>
 <li>Sends packets and receiving answers. </li>
-<li>sr() returns a list of tuples of probe and answer in a packet list, and the unanswered packets.</li>
+<li>sr() returns a two lists, first list contains stimulus-response couple(like a tuple), and teh second list contains the unanswered probes.</li>
 </ul>
 <pre><code class="python">&gt;&gt;&gt; sr(IP(dst=&quot;192.168.8.1&quot;)/TCP(dport=[21,22,23]))
 
@@ -488,8 +508,7 @@ Received 6 packets, got 3 answers, remaining 0 packets
 
 <h2 id="sr1">sr1()</h2>
 <ul>
-<li>Sends packets and recieves only the first response . </li>
-<li>The function returns a couple of packet and answers, and the unanswered packets.</li>
+<li>Sends all the stimulus and records only the first response. </li>
 </ul>
 <pre><code class="python">&gt;&gt;&gt; p=sr1(IP(dst=&quot;scanme.nmap.org&quot;)/ICMP()/&quot;XXXXXXXXXXX&quot;)
 Begin emission:
@@ -500,8 +519,8 @@ Received 5 packets, got 1 answers, remaining 0 packets
 
 <h2 id="srloop">srloop()</h2>
 <ul>
-<li>Sends packets, recieves and displays responses, in a loop . </li>
-<li>The function returns a couple of packet and answers, and the unanswered</li>
+<li>Sends stimulus, recieves responses and displays responses, in a loop. </li>
+<li>The function returns a couple of packet and answers, and the unanswered.</li>
 </ul>
 <pre><code class="python">&gt;&gt;&gt; packet = IP(dst='192.168.56.102')/ICMP()
 &gt;&gt;&gt; srloop(packet)

@@ -220,6 +220,8 @@
                 
                     <li><a class="toctree-l4" href="#interacting-with-fields-inside-packet">Interacting with fields inside packet</a></li>
                 
+                    <li><a class="toctree-l4" href="#checking-for-presence-of-layer-in-packet">Checking for presence of layer in packet</a></li>
+                
                     <li><a class="toctree-l4" href="#scapys-sprintf">Scapy's sprintf</a></li>
                 
                     <li><a class="toctree-l4" href="#pythons-format-method">Python’s format method</a></li>
@@ -454,13 +456,8 @@ options    : PacketListField      = []              ([])
 </code></pre>
 
 <p><br></p>
-<p><strong>Display short  &amp; interesting summary of a packet.</strong></p>
-<pre><code class="python">&gt;&gt;&gt; packet.summary()
-'Ether / IP / TCP 192.168.1.100:ftp_data &gt; 8.8.8.8:domain S'
-</code></pre>
-
-<p><br></p>
-<p><strong>Show() function displays detailed headers but <em>does not assemble</em> the packet</strong></p>
+<p><strong>show()</strong></p>
+<p>Displays detailed headers but <em>does not assemble</em> the packet</p>
 <pre><code class="python">&gt;&gt;&gt; packet.show()
 ###[ IP ]###
   version= 4
@@ -473,9 +470,9 @@ options    : PacketListField      = []              ([])
   dst= Net('8.8.8.8/30')
 </code></pre>
 
-<p><br>
-<strong>Show2() is similar to show() but also assembles
-the packet and calculates the checksums and IHL.</strong></p>
+<p><br></p>
+<p><strong>show2</strong></p>
+<p>Similar to show() but also assembles the packet and calculates the checksums and IHL.</p>
 <pre><code class="python">&gt;&gt;&gt; packet.show2()
 ###[ IP ]###
   version= 4L
@@ -486,13 +483,45 @@ the packet and calculates the checksums and IHL.</strong></p>
   chksum= 0xa8cd
   src= 192.168.1.100
   dst= 8.8.8.8
-
-### ** Get only the values supplied by the user.
 </code></pre>
 
 <p><br>
 <strong>Get only user supplied values</strong></p>
 <pre><code class="python">&gt;&gt;&gt; b.hide_defaults( )
+</code></pre>
+
+<p><strong>summary</strong></p>
+<ul>
+<li>Display short  &amp; interesting summary of a packet.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; packet.summary()
+'Ether / IP / TCP 192.168.1.100:ftp_data &gt; 8.8.8.8:domain S'
+</code></pre>
+
+<p><br></p>
+<p><strong>nsummary</strong></p>
+<ul>
+<li>Display short  &amp; interesting summary of a packet with numbering.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; pkts[0].nsummary()
+0000 IP / TCP 192.168.1.103:ftp_data &gt; 198.58.109.32:tcpmux S ==&gt; IP / TCP 198.58.109.32:tcpmux &gt; 192.168.1.103:ftp_data SA
+0001 IP / TCP 192.168.1.103:ftp_data &gt; 198.58.109.32:3128 S ==&gt; IP / TCP 198.58.109.32:3128 &gt; 192.168.1.103:ftp_data SA
+0002 IP / TCP 192.168.1.103:ftp_data &gt; 198.58.109.32:http_alt S ==&gt; IP / TCP 198.58.109.32:http_alt &gt; 192.168.1.103:ftp_data SA
+</code></pre>
+
+<p><br></p>
+<p><code>summary()</code> and <code>nsummary()</code> supports advanced features such as:</p>
+<ul>
+<li>Filtering packets by individual header field values using <code>lfilter</code> argument.</li>
+<li>Printing only necessary parts of packet using <code>prn</code> argument.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; egadz[0].nsummary(lfilter= lambda (s,r): r[TCP].sport == 3128 or r[TCP].sport==1)
+0000 IP / TCP 192.168.1.103:ftp_data &gt; 198.58.109.32:tcpmux S ==&gt; IP / TCP 198.58.109.32:tcpmux &gt; 192.168.1.103:ftp_data SA
+0001 IP / TCP 192.168.1.103:ftp_data &gt; 198.58.109.32:3128 S ==&gt; IP / TCP 198.58.109.32:3128 &gt; 192.168.1.103:ftp_data SA
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; egadz[0].nsummary(lfilter= lambda (s,r): r[TCP].sport == 3128, prn = lambda (s,r): s.dst)
+0001 198.58.109.32
 </code></pre>
 
 <p><br></p>
@@ -518,13 +547,22 @@ the packet and calculates the checksums and IHL.</strong></p>
 2
 </code></pre>
 
-<p><br>
-<strong><code>.haslayer</code> checks for presence of a layer in a packet</strong></p>
+<p><br></p>
+<h3 id="checking-for-presence-of-layer-in-packet">Checking for presence of layer in packet</h3>
+<p><strong>haslayer method</strong></p>
+<p>checks for presence of a layer in a packet</p>
 <pre><code class="python">&gt;&gt;&gt; if packet.haslayer(TCP):
 ...     print packet[TCP].flags
 ... 
 2
 &gt;&gt;&gt;
+</code></pre>
+
+<p><strong>Using an <code>in</code> construct</strong></p>
+<pre><code class="python">&gt;&gt;&gt; pkt = IP()/TCP()/DNS()
+&gt;&gt;&gt;
+&gt;&gt;&gt; DNS in pkt
+True
 </code></pre>
 
 <p><br></p>
@@ -533,6 +571,8 @@ the packet and calculates the checksums and IHL.</strong></p>
 <li><code>sprintf()</code> method is one of the very powerful features of Scapy.<code>sprintf</code> comes very handy while writing custom tools.</li>
 <li><code>sprintf</code> fills a format string with values from the packet , much like it sprintf from C Library, except here it fills the format string with field values from packets.</li>
 </ul>
+<p><center>sprintf format &nbsp; &nbsp; -  &nbsp;&nbsp;      <b> % [ [ fmt ] [ r ] , ] [ layer [ :nb ] . ] field % </center></b>  <br>
+<center>Example &emsp;&emsp;&emsp;  -  &nbsp;&nbsp;      <b> %-5sr, TCP.flags% </center></b></p>
 <pre><code class="python">&gt;&gt;&gt; packet.sprintf(&quot;Ethernet source is %Ether.src% and IP proto is %IP.proto%&quot;)
 'Ethernet source is 00:00:00:00:00:00 and IP proto is icmp'
 
@@ -557,6 +597,35 @@ IP / TCP 192.168.5.22:discard &gt; 192.168.5.20:ftp-data SA / Padding
 0012 13
 0021 22
 0024 25
+</code></pre>
+
+<h4 id="packet-handlers">Packet handlers</h4>
+<p>In the below example, we used lambda function to write a packet handler that can handle TCP packets but this function does not work with anything other than TCP packets.</p>
+<pre><code class="python">&gt;&gt;&gt; f=lambda x:x.sprintf(&quot;%IP.dst%:%TCP.dport%&quot;)
+&gt;&gt;&gt; f(IP(dst='8.8.8.8')/TCP())
+'8.8.8.8:www'
+&gt;&gt;&gt; f(IP('8.8.8.8')/UDP())
+'8.8.8.8:??'
+</code></pre>
+
+<p>Having a function that can work with various packets can be helpful in practical senarios, we can achieve this using <strong>conditional substrings in sprintf()</strong>. A conditional substring is only triggered when a layer is present in the packet or else it is ignored. You can also use <code>!</code> for checking the absence of a layer.</p>
+<p><center>Conditional substring format &emsp;&emsp;&emsp;  -  &nbsp;&nbsp;      <b> { [ ! ] layer : substring } </center></b></p>
+<pre><code class="python">&gt;&gt;&gt; f=lambda x: x.sprintf(&quot;=&gt; {IP:ip=%IP.dst% {UDP:dport=%UDP.dport%}\
+... {TCP:%TCP.dport%/%TCP.flags%}{ICMP:type=%r,ICMP.type%}}\
+... {!IP:not an IP packet}&quot;)
+&gt;&gt;&gt; 
+&gt;&gt;&gt; f(IP()/TCP())
+'=&gt; ip=127.0.0.1 http/S'
+&gt;&gt;&gt; 
+&gt;&gt;&gt; f(IP()/UDP())
+'=&gt; ip=127.0.0.1 dport=domain'
+&gt;&gt;&gt; 
+&gt;&gt;&gt; f(IP()/ICMP())
+'=&gt; ip=127.0.0.1 type=8'
+&gt;&gt;&gt;
+&gt;&gt;&gt; f(Ether()/ARP())
+'=&gt; not an IP packet'
+
 </code></pre>
 
 <p><br></p>

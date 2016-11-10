@@ -216,6 +216,8 @@
                 
                     <li><a class="toctree-l4" href="#scapy-ip-notations">Scapy IP notations</a></li>
                 
+                    <li><a class="toctree-l4" href="#creating-set-of-packets">Creating set of packets</a></li>
+                
             
             </ul>
         
@@ -446,10 +448,10 @@
 <ul>
 <li>A full-fledged DNS request packet</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; dns_query = Ether()/IP(dst='8.8.8.8')/UDP(dport=53)/DNS(opcode='QUERY')/DNSQR(qname='null.co.in', qtype = 'A')
+<pre><code class="python">&gt;&gt;&gt; dns_query = IP(dst=&quot;8.8.8.8&quot;)/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname=&quot;www.thepacketgeek.com&quot;))
 &gt;&gt;&gt; 
 &gt;&gt;&gt; dns_query
-&lt;Ether  type=0x800 |&lt;IP  frag=0 proto=udp dst=8.8.8.8 |&lt;UDP  sport=domain dport=domain |&lt;DNS  opcode=QUERY |&lt;DNSQR  qname='null.co.in' qtype=A |&gt;&gt;&gt;&gt;&gt;
+&lt;IP  frag=0 proto=udp dst=8.8.8.8 |&lt;UDP  sport=domain dport=domain |&lt;DNS  rd=1 qd=&lt;DNSQR  qname='www.thepacketgeek.com' |&gt; |&gt;&gt;&gt;
 </code></pre>
 
 <p><strong>Create each layer individually and stack them using &lsquo;/&rsquo; operator</strong></p>
@@ -474,6 +476,32 @@
 [&lt;IP  dst=8.8.8.8 |&gt;, &lt;IP  dst=8.8.8.9 |&gt;, &lt;IP  dst=8.8.8.10 |&gt;, &lt;IP  dst=8.8.8.11 |&gt;]
 
 &gt;&gt;&gt; packet = IP(dst = 'egadz.metasploit.com/30')
+</code></pre>
+
+<h3 id="creating-set-of-packets">Creating set of packets</h3>
+<p>We can create a set of packets implicitly using Scapy.</p>
+<pre><code class="python">pkts = IP(ttl=[1,3,5,(7,10)])/TCP()
+</code></pre>
+
+<p>For inspecting set of packets you can use list comprehensions</p>
+<pre><code class="python">[pkt for pkt in pkts]
+
+&gt;&gt;&gt; [pkt for pkt in pkts]
+[&lt;IP  frag=0 ttl=1 proto=tcp |&lt;TCP  |&gt;&gt;, &lt;IP  frag=0 ttl=3 proto=tcp |&lt;TCP  |&gt;&gt;, &lt;IP  frag=0 ttl=5 proto=tcp |&lt;TCP  |&gt;&gt;, &lt;IP  frag=0 ttl=7 proto=tcp |&lt;TCP  |&gt;&gt;, &lt;IP  frag=0 ttl=8 proto=tcp |&lt;TCP  |&gt;&gt;, &lt;IP  frag=0 ttl=9 proto=tcp |&lt;TCP  |&gt;&gt;, &lt;IP  frag=0 ttl=10 proto=tcp |&lt;TCP  |&gt;&gt;]
+&gt;&gt;&gt;
+&gt;&gt;&gt; from pprint import pprint
+&gt;&gt;&gt; pprint([pkt for pkt in pkts])
+[&lt;IP  frag=0 ttl=1 proto=tcp |&lt;TCP  |&gt;&gt;,
+ &lt;IP  frag=0 ttl=3 proto=tcp |&lt;TCP  |&gt;&gt;,
+ &lt;IP  frag=0 ttl=5 proto=tcp |&lt;TCP  |&gt;&gt;,
+ &lt;IP  frag=0 ttl=7 proto=tcp |&lt;TCP  |&gt;&gt;,
+ &lt;IP  frag=0 ttl=8 proto=tcp |&lt;TCP  |&gt;&gt;,
+ &lt;IP  frag=0 ttl=9 proto=tcp |&lt;TCP  |&gt;&gt;,
+ &lt;IP  frag=0 ttl=10 proto=tcp |&lt;TCP  |&gt;&gt;]
+
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; IP(dst=&quot;192.168.*.1-10&quot;)/TCP(dport=(0,1024))
 </code></pre>
               
             </div>
