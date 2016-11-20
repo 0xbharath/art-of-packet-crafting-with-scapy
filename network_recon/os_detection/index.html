@@ -469,9 +469,9 @@ This behaviour of Linux network stack is complied into the kernel so it isn&rsqu
 <li>Establish a TCP three-way handshake with the target.</li>
 <li>All we have to do after handshake is to create a segment with <strong>no TCP flags and add some payload</strong> and send it.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt;PUSH=(sport=1024,dport=80,flags=””,seq=12346,ack=my_ack)  # No flags set.
-&gt;&gt;&gt;data=”JUST A FILLER”
-&gt;&gt;&gt;send(ip/PUSH/data)
+<pre><code class="python">payload=&quot;just some data&quot;
+data_packet = TCP(sport=1500, dport=80, flags=&quot;&quot;, seq=102, ack=my_ack)    # Notice that we explicitly mentioned to not set any flags
+send(ip/data_packet/my_payload)
 </code></pre>
 
 <ul>

@@ -474,8 +474,14 @@
 <ul>
 <li>Using the above information it should be easy to find promisc nodes, right? <br>
 Just send packet using a destination address that is supposed to be filtered by hardware filter when in normal mode, only if a machine is in promisc mode, it would pass the packet to kernel without hardware filtering and would respond to that packet.</li>
-<li>Let&rsquo;s send an ARP packet to destination <strong>00:00:00:00:00:01</strong>. What happens??</li>
+<li>Let&rsquo;s send an ARP packet to destination <strong>00:00:00:00:00:01</strong>. What happens??
+<br></li>
 </ul>
+<p>An ARP packet needs Ether header. You only have to set <code>dst</code> field in Ether header(to our selected address) and <code>pdst</code> field in ARP header(to the target IP address), all the other fields are filled in by Scapy.</p>
+<pre><code class="python">promisc_test = Ether(dst='00:00:00:00:00:01')/ARP(pdst='192.168.56.101')
+</code></pre>
+
+<p>If our logic was correct, a promisc machine should reply to this packet but we didn&rsquo;t get a reply. It could be either that the target is not in promisc mode or there is some more filtering going on.</p>
 <h2 id="software-filter">Software Filter</h2>
 <ul>
 <li>Operating system kernels implement a filter, let&rsquo;s call it <strong>software filter</strong>.</li>
@@ -487,7 +493,18 @@ Just send packet using a destination address that is supposed to be filtered by 
 </ul>
 <p>We need to craft a packet that is:<br>
 a. Blocked by the hardware filter in normal mode, only passed to kernel in promisc mode.<br>
-b. Should be able to pass the software filter.<br></p>
+b. Should be able to pass the software filter. <br></p>
+<h4 id="final-test">Final test</h4>
+<p>The following table is a collection of special set of MAC addresses and the machines behaviour when it recieves a packet with one of these addresses as destination in the Ethernet header.</p>
+<p>A machine in promisc mode will reply to the below packet(given the <code>pdst</code> matches it&rsquo;s IP)</p>
+<pre><code class="python">promisc_test = Ether(dst='FF:FF:FF:FF:FF:FE')/ARP(pdst='192.168.56.107')
+</code></pre>
+
+<p>If you are more observant, you can notice that only a Linux machine in promisc mode responds to the address 01:00:00:00:00:00, this could be used as a simple OS detection technique.</p>
+<pre><code class="python">promisc_test = Ether(dst='01:00:00:00:00:00')/ARP(pdst='192.168.56.107')
+# Any machine that answers to this is probably a Linux machine in promisc mode
+</code></pre>
+
 <p align="center">
 <img align="center" src="../../img/promisc_table.png">
 </p>

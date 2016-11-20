@@ -448,10 +448,10 @@
 <ul>
 <li>A full-fledged DNS request packet</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; dns_query = IP(dst=&quot;8.8.8.8&quot;)/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname=&quot;www.thepacketgeek.com&quot;))
+<pre><code class="python">&gt;&gt;&gt; dns_query = IP(dst=&quot;8.8.8.8&quot;)/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname=&quot;null.co.in&quot;))
 &gt;&gt;&gt; 
 &gt;&gt;&gt; dns_query
-&lt;IP  frag=0 proto=udp dst=8.8.8.8 |&lt;UDP  sport=domain dport=domain |&lt;DNS  rd=1 qd=&lt;DNSQR  qname='www.thepacketgeek.com' |&gt; |&gt;&gt;&gt;
+&lt;IP  frag=0 proto=udp dst=8.8.8.8 |&lt;UDP  sport=domain dport=domain |&lt;DNS  rd=1 qd=&lt;DNSQR  qname='null.co.in' |&gt; |&gt;&gt;&gt;
 </code></pre>
 
 <p><strong>Create each layer individually and stack them using &lsquo;/&rsquo; operator</strong></p>

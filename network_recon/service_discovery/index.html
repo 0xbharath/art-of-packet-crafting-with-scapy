@@ -467,9 +467,8 @@
 <li>Craft an IP header with the source and destination IP addresses.</li>
 <li>Craft a TCP header where we generate the TCP source port, assign the destination port that the server listens on, set the TCP flags to turn the <strong>SYN bit on, and generate the client’s ISN.</strong></li>
 </ul>
-<pre><code class="python">ip = IP(src='192.168.56.1', dst='192.168.56.101')
-syn = TCP(sport=4000, dport=80, flags='S', seq='12345')
-syn_pkt = ip/syn
+<pre><code class="python">ip=IP(src=&quot;10.0.0.1&quot;, dst=&quot;20.0.0.2&quot;)
+syn_packet = TCP(sport=1500, dport=80, flags=&quot;S&quot;, seq=100)
 </code></pre>
 
 <p><strong>Step II - Listen for the server&rsquo;s response (SYN - ACK)</strong></p>
@@ -477,8 +476,8 @@ syn_pkt = ip/syn
 <li>Save the server’s response. (ideally the response should be syn-ack).</li>
 <li>Extract the server’s TCP sequence number and increment the value by one.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; syn_ack = sr1(packet)
-&gt;&gt;&gt; my_ack = syn_ack.seq+1
+<pre><code class="python">synack_packet = sr1(ip/syn_packet)
+my_ack = syn_ack.seq+1
 </code></pre>
 
 <p><strong>Send an acknowledgement from client for server&rsquo;s response (ACK)</strong></p>
@@ -486,9 +485,8 @@ syn_pkt = ip/syn
 <li>IP header has the same source and destination as the intial SYN packet.</li>
 <li>TCP header has the same TCP source and destination ports as syn packet, only ACK bit is set, increment the client’s ISN by one since the SYN packet consumes one sequence number, set the acknowledgement value to the incremented server’s sequence number value.</li>
 </ul>
-<pre><code class="python">ack = TCP(sport=4000, dport=80, flags='A', seq='12346', ack=my_ack)
-ack_pkt = ip/ack
-send(ack_pkt)
+<pre><code class="python">ack_packet = TCP(sport=1500, dport=80, flags=&quot;A&quot;, seq=101, ack=my_ack)
+send(ip/TCP_ACK)
 </code></pre>
 
 <p><strong>If everything went right, we have just sucessfully established TCP three-way handshake</strong></p>
@@ -532,7 +530,7 @@ send(ack_pkt)
 <li>We use a simple lambda function to loop over the answered probes and print interesting fields.</li>
 <li>In the below example, each entry in <code>ans</code> i.e. a stimuli response pair is passed on to a lambda function(stimuli &amp; response as <code>s</code>, <code>r</code> respectively). Inside lambda function, we use sprintf to extract interesting fields.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; ans, unans = sr(IP(dst=&quot;192.168.56.90-110&quot;)/TCP(dport=(20,24),flags=&quot;S&quot;))
+<pre><code class="python">&gt;&gt;&gt; ans, unans = sr(IP(dst=&quot;192.168.56.90&quot;)/TCP(dport=(20,24),flags=&quot;S&quot;))
 &gt;&gt;&gt; ans.summary( lambda(s,r): r.sprintf(&quot;%TCP.sport% \t %TCP.flags%&quot;) )
 'ftp_data    RA'
 '21          RA
@@ -544,6 +542,7 @@ send(ack_pkt)
 <h6 id="syn-scan-on-multiple-targets-multiple-ports">SYN scan on multiple targets, multiple ports</h6>
 <ul>
 <li><code>make_table</code> is an advanced feature in scapy that helps you visualize larger and complex scans.</li>
+<li><code>make_table</code> takes three values - for rows, coloumns and the table data. (In the below example, target IPs are on x-axis, target ports on y-axis and the TCP flags in response are tabular data)</li>
 </ul>
 <pre><code class="python">&gt;&gt;&gt; ans,unans = sr(IP(dst=[&quot;scanme.nmap.org&quot;,&quot;egadz.metasploit.com&quot;])/TCP(dport=[10,20,30],flags=&quot;S&quot;))
 &gt;&gt;&gt;
