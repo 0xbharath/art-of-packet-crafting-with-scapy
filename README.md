@@ -1,4 +1,4 @@
-# The-Art-of-Packet-Crafting-with-Scapy
+# The Art of Packet Crafting with Scapy
 
 Online notes for this workshop is available at - https://www.disruptivelabs.in/training/packet-crafting-scapy/
 
