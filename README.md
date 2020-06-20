@@ -1,8 +1,10 @@
 # The Art of Packet Crafting with Scapy
 
-Online notes for this workshop is available at - https://www.disruptivelabs.in/training/packet-crafting-scapy/
+Online notes for this workshop is available at - https://scapy.disruptivelabs.in/
 
 Virtual machine for the workshop is available at - https://archive.org/details/pysos_class3_labs_32bit.7z
+
+**Documentation is being tracked as part of `documentation` branch. If you want to contribute to the documentation then make changes to `documentation` branch and raise a PR.**
 
 ## Prerequisites
 - Little bit of programming experience in some language, not necessarily Python is preferable. (enough to know what's a "variable" or "if statement" etc)
