@@ -44,7 +44,7 @@
 
 - [Network Attacks](attacks/index.md)
    - [CAM Overflow Attack](attacks/cam_overflow.md)
-   - [Host Discovery](attacks/arp_spoofing.md)
+   - [ARP Spoofing](attacks/arp_spoofing.md)
 
 - [Libraries](libraries/index.md)
    - [netaddr](libraries/netaddr.md)
