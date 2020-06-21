@@ -1,8 +1,6 @@
-# Summary
-
 # The Art of Packet Crafting with Scapy
+## Table of Contents
 
-[The Art of Packet Crafting with Scapy](toc.md)
 - [Introduction](intro/index.md)
    - [Workshop Overview](intro/workshop-overview.md)
    - [License](intro/license.md)
