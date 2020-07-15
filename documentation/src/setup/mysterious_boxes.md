@@ -10,13 +10,19 @@ Follow the guidlines listed below as-is if you are using *nix OS. If you are usi
 
 ### Step 2
 
-- Download the lab setup files and virtual machines available at following link into a directory
+- Download the lab setup files and virtual machines available as zip file at following link
 
 [https://archive.org/download/scapy-pc-workshop-32bit/scapy-pc-workshop-32bit.zip](https://archive.org/download/scapy-pc-workshop-32bit/scapy-pc-workshop-32bit.zip)
 
+- Extract the zip file in a directory 
+
+```
+unzip scapy-pc-workshop-32bit.zip
+```
+
 ### Step 3
 
-- Change the directory to the directory where you have downloaded the files
+- Change the directory to the directory where you have extracted the files
 
 - Run the script `import_labs.sh`
         
