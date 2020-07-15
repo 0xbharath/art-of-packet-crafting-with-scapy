@@ -12,7 +12,7 @@ Follow the guidlines listed below as-is if you are using *nix OS. If you are usi
 
 - Download the lab setup files and virtual machines available at following link into a directory
 
-[https://archive.org/details/pysos_class3_labs_32bit.7z](https://archive.org/details/pysos_class3_labs_32bit.7z)
+[https://archive.org/download/scapy-pc-workshop-32bit/scapy-pc-workshop-32bit.zip](https://archive.org/download/scapy-pc-workshop-32bit/scapy-pc-workshop-32bit.zip)
 
 ### Step 3
 
@@ -62,8 +62,9 @@ vboxmanage modifyvm "victim1" --nic1 hostonly --hostonlyadapter1 <YOUR_INTERFACE
 
 - The VM displayed after running `start_labs.sh` is our attacker
 - This is our base machine for this workshop from where we orchestrate our attacks
-- Login using the above credentials and run `startx` command to get a GUI
--  The GUI is openbox based, it is intended to be super minimal so don’t be surprised about lack of "features"
+- The attacker machine has SSH server running so you can use SSH to login to the machine
+- For GUI, you can login using the above credentials in the VM and run `startx` command
+- The GUI is openbox based, it is intended to be super minimal so don’t be surprised about lack of "features"
 - `readme.txt` file in home directory has more info on tools installed and essential commands etc
 
 ### Victim machines
