@@ -22,7 +22,7 @@ Scapy is not desgined as a simple but rather a framework upon which you can buil
 
 ### Absolute freedom over packets
 
-A lot of packet crafting tools does not have a way to set certain fields in packets(limitations of sock_raw) i.e. the kernel is still in control of ceratin fields and will calculate those fields on behalf of the tool(cheksums, IHL)
+A lot of packet crafting tools does not have a way to set certain fields in packets (limitations of `sock_raw`) i.e. the kernel is still in control of certain fields and will calculate those fields on behalf of the tool (checksums, IHL)
 
 Most packet crating tools let’s you fiddle with only limited fields/protocols, it is impossible to stack unrelated protocol headers into a single packet.
 
@@ -33,7 +33,7 @@ Most packet crating tools let’s you fiddle with only limited fields/protocols,
 - Some ARP cache poisoning with a VLAN hopping attack
 - A traceroute with an applicative payload (DNS, ISAKMP, etc.)
 
-Scapy tries to overcome those problems. It enables you to build exactly the packets you want. Even if I think stacking a 802.1q layer on top of TCP has no sense, it may have some for somebody else working on some product. 
+Scapy tries to overcome those problems. It enables you to build exactly the packets you want. Even if you think stacking a 802.1q layer on top of TCP makes no sense, it may have some for somebody else working on some product. 
 
 Scapy has a flexible model that tries to avoid any arbitrary limits. You’re free to put any value you want in any field you want, and stack them like you want. You’re an adult after all.
 

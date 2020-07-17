@@ -7,9 +7,9 @@
 ## send()
 
 - Send packets at Layer 3(Scapy creates Layer 2 header), Does not recieve any packets.
-- `loop` argument is by default 0, if it’s value is anything oth than 0 then the packets will be sent in a loop till CTRL-C is pressed
+- `loop` argument is by default 0, if it’s value is anything other than 0 then the packets will be sent in a loop till CTRL-C is pressed
 - `count` can be used to set exact number of packets to be sent.
-- `inter can be used to set numbers of seconds between each packet.
+- `inter` can be used to set numbers of seconds between each packet.
 
 ```
 >>> send(IP(dst='8.8.8.8')/TCP(dport=53, flags='S'))
